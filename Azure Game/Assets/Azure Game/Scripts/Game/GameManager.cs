@@ -27,15 +27,15 @@ public class GameManager : MonoBehaviour
     // function definitions
     void Start() {
 		//player = GetComponent<Player>();
-		m_State = PlayerState.Liquid;
+		m_State = PlayerState.Solid;
 		ChangeLayer();
-		player.ChangeState(1);
+		player.ChangeState(0);
 		m_Temperature = Temperature.Warm;
 		m_TemperatureText.text = "Warm";
 		m_PlayerAlive = true;
 
         m_Roomtemp = 20.0f;
-        m_Playertemp = 0.0f;
+        m_Playertemp = -10.0f;
 	}
 
     public void TogglePauseMenu()
@@ -96,6 +96,24 @@ public class GameManager : MonoBehaviour
         if(m_Playertemp < m_Roomtemp)
         {
             m_Playertemp += 0.08f;
+        }
+
+        if((int)m_Playertemp > 40)
+        {
+            player.ChangeState(2);
+            ChangeLayer();
+        }
+
+        else if((int)m_Playertemp > 10)
+        {
+            player.ChangeState(1);
+            ChangeLayer();
+        }
+
+        else
+        {
+            player.ChangeState(0);
+            ChangeLayer();
         }
     }
 
@@ -194,35 +212,39 @@ public class GameManager : MonoBehaviour
 
 	public void HeatUpPlayer()
 	{
-		//player.GetComponent<PlayerControls>().RaiseState();
-		switch (m_State)
-		{
-			case PlayerState.Solid:
-				m_State = PlayerState.Liquid;
-				player.ChangeState(1);
-				break;
-			case PlayerState.Liquid:
-				m_State = PlayerState.Gas;
-				player.ChangeState(2);
-				break;
-		}
-		ChangeLayer();
-	}
+        //player.GetComponent<PlayerControls>().RaiseState();
+        //switch (m_State)
+        //{
+        //	case PlayerState.Solid:
+        //		m_State = PlayerState.Liquid;
+        //		player.ChangeState(1);
+        //		break;
+        //	case PlayerState.Liquid:
+        //		m_State = PlayerState.Gas;
+        //		player.ChangeState(2);
+        //		break;
+        //}
+        //ChangeLayer();
+
+        m_Playertemp += 20;
+    }
 	
 	public void CoolDownPlayer()
 	{
-		//player.GetComponent<PlayerControls>().LowerState();
-		switch (m_State)
-		{
-			case PlayerState.Gas:
-				m_State = PlayerState.Liquid;
-				player.ChangeState(1);
-				break;
-			case PlayerState.Liquid:
-				m_State = PlayerState.Solid;
-				player.ChangeState(0);
-				break;
-		}
-		ChangeLayer();
+        //player.GetComponent<PlayerControls>().LowerState();
+        //switch (m_State)
+        //{
+        //	case PlayerState.Gas:
+        //		m_State = PlayerState.Liquid;
+        //		player.ChangeState(1);
+        //		break;
+        //	case PlayerState.Liquid:
+        //		m_State = PlayerState.Solid;
+        //		player.ChangeState(0);
+        //		break;
+        //}
+        //ChangeLayer();
+
+        m_Playertemp -= 20;
 	}
 }
