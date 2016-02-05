@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
 	//public Text m_TemperatureText;
 	public Text m_TemperatureText;
 	private bool m_PlayerAlive;
-	
+
+    public float m_Roomtemp;
+    public float m_Playertemp;
+
 
     //----------------------------------------
     // handles
@@ -30,6 +33,9 @@ public class GameManager : MonoBehaviour
 		m_Temperature = Temperature.Warm;
 		m_TemperatureText.text = "Warm";
 		m_PlayerAlive = true;
+
+        m_Roomtemp = 20.0f;
+        m_Playertemp = 0.0f;
 	}
 
     public void TogglePauseMenu()
@@ -79,6 +85,19 @@ public class GameManager : MonoBehaviour
 			Time.timeScale = 0f;
 		}
 	}
+
+    void Update()
+    {
+        if(m_Playertemp > m_Roomtemp)
+        {
+            m_Playertemp -= 0.08f;
+        }
+
+        if(m_Playertemp < m_Roomtemp)
+        {
+            m_Playertemp += 0.08f;
+        }
+    }
 
 	public void ChangeState(int state)
 	{
