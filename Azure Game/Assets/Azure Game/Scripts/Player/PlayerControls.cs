@@ -53,6 +53,11 @@ public class PlayerControls : MonoBehaviour {
 
         if (!jump)
             jump_debounce = false; 
+        else
+        {
+            //if (jump_debounce)
+             //   jump = false;
+        }
 
         if (!e)
             e_up = false;

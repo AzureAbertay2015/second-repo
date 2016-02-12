@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 	
 	void ScanForDeath()
 	{
-
+        
 // PeterM branch - commenting this out for now
 /*
         if (!GM.IsPlayerAlive() && m_GameRestarted)

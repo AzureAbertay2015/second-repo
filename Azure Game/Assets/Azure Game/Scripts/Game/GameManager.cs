@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /* The GameManager is a global accessor to the worker units of the game.
 
@@ -17,6 +16,10 @@ using System.Collections;
 
 class GameManager
 {
+    private const string PLAYER_NAME = "Player"; // Player tag name
+    private const string UIMANAGER_NAME = "UIManager"; // UI Manager prefab name.
+    private const string GAMERULES_NAME = "GameRules"; // GameRules prefab name.
+
     // Static references
     private static Player g_pPlayer = null;
     private static UIManager g_pUIManager = null;
@@ -29,7 +32,7 @@ class GameManager
         {
             Debug.LogError("No global player found, did you forget to add a Player or GameManagerObject object to the scene?");
         }
-
+       
         return g_pPlayer;
 
     }
@@ -62,10 +65,10 @@ class GameManager
         // Initialise managers.
 
         GameObject o;
-        o = Object.Instantiate(Resources.Load("UIManager")) as GameObject;
+        o = Object.Instantiate(Resources.Load(UIMANAGER_NAME)) as GameObject;
         g_pUIManager = o.GetComponent<UIManager>();
 
-        o = Object.Instantiate(Resources.Load("GameRules")) as GameObject;
+        o = Object.Instantiate(Resources.Load(GAMERULES_NAME)) as GameObject;
         g_pGameRules = o.GetComponent<GameRules>();
     }
 
@@ -74,11 +77,10 @@ class GameManager
     {
         // Grab the player from the scene.
 
-        g_pPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        g_pPlayer = GameObject.FindGameObjectWithTag(PLAYER_NAME).GetComponent<Player>();
 
         // Is this critical? We might not have a player on a main menu scene for example.
-        // LogWarning it for now in case a designer forgets in an actual level.
-        // - PeterM
+        // LogWarning it for now in case a designer forgets in an actual level. - PeterM
 
         if (g_pPlayer == null)
             Debug.LogWarning("No player found in scene!");

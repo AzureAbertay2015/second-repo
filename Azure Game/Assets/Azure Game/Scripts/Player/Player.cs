@@ -4,9 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     // Defines
-    public const string SOLID_MODEL = "CubePrototype02x02x02";
-    public const string LIQUID_MODEL = "CubePrototype02x02x02";
-    public const string GAS_MODEL = "CubePrototype02x02x02";
+    const string SOLID_MODEL = "CubePrototype02x02x02";
+    const string LIQUID_MODEL = "CubePrototype02x02x02";
+    const string GAS_MODEL = "CubePrototype02x02x02";
 
     const string SOLID_MATERIAL = "Black Grid";
     const string LIQUID_MATERIAL = "Blue";
@@ -122,11 +122,21 @@ public class Player : MonoBehaviour {
         // Otherwise add force in the move direction.
         m_Rigidbody.AddForce(moveDirection * m_MovePower);
 
+        Debug.DrawRay(transform.position, -Vector3.up * k_GroundRayLength, Color.red, 1.0f, false);
+
+        Vector3 vecStart = transform.position + Vector3.up * 2;
+
+        bool bJump = Physics.Raycast(vecStart, -Vector3.up, k_GroundRayLength);
+
+        //Debug.Log("bJump = " + bJump.ToString());
+
         // If on the ground and jump is pressed...
-        if (Physics.Raycast(transform.position, -Vector3.up, k_GroundRayLength) && jump && (int)m_Rigidbody.velocity.y == 0)
+        if ( bJump && jump )
         {
             // ... add force in upwards.
             m_Rigidbody.AddForce(Vector3.up * m_JumpPower, ForceMode.Impulse);
+           // Debug.Log("Jumping! " + m_Rigidbody.velocity.y );
+            
         }
     }
 
