@@ -27,8 +27,7 @@ public class Player : MonoBehaviour {
     private Material m_SolidMaterial;
     private Material m_LiquidMaterial;
     private Material m_GasMaterial;
-
-
+    
     public GameManager m_GameManager;
     
     [SerializeField]
