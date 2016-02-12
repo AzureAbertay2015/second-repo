@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CoolerScript : MonoBehaviour {
 
-	public GameManager m_GameManager;
+	//public GameManager m_GameManager;
 	private bool m_Triggered;
 
 	// Use this for initialization
@@ -17,7 +17,7 @@ public class CoolerScript : MonoBehaviour {
 		{
 			if (!m_Triggered)
 			{
-				m_GameManager.CoolDownPlayer();
+				GameManager.GetGameRules().CoolDownPlayer();
 				m_Triggered = true;
 			}
 		}

@@ -3,13 +3,15 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    public GameManager GM;
+    private GameRules m_GameRules;
 	private bool m_GameRestarted;
 
     // Use this for initialization
     void Start()
     {
-       ///
+		///
+		m_GameRules = GameManager.GetGameRules();
+	  
     }
 
     // Update is called once per frame
@@ -22,17 +24,17 @@ public class UIManager : MonoBehaviour
     void ScanForKeyStroke()
     {
         if (Input.GetKeyDown("escape")&& !Input.GetKeyDown("space"))
-            GM.TogglePauseMenu();
+            m_GameRules.TogglePauseMenu();
     }
 	
 	void ScanForDeath()
 	{
-		if (!GM.IsPlayerAlive() && m_GameRestarted)
+		if (!m_GameRules.IsPlayerAlive() && m_GameRestarted)
 		{
-			GM.ToggleDeathMenu();
+			m_GameRules.ToggleDeathMenu();
 			m_GameRestarted = false;
 		}
-		if (GM.IsPlayerAlive())
+		if (m_GameRules.IsPlayerAlive())
 			m_GameRestarted = true;
 	}    
 }
