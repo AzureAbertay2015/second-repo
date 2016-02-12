@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using System;
 
 /* The GameManager is a global accessor to the worker units of the game.
 

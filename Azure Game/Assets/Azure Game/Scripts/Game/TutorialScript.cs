@@ -5,21 +5,15 @@ using System;
 
 public class TutorialScript : MonoBehaviour {
     
-    [SerializeField]
     public String m_tutorialString;
-    public GameManager m_gameManager;
-
-	// Use this for initialization
-	void Start ()
+    
+    //called when an object collides with this
+    void OnTriggerEnter(Collider other)
     {
-	}
-
-    // Update is called once per frame
-    void DoActivateTrigger(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            m_gameManager.ToggleTutorial(m_tutorialString);
+            GameManager.GetGameRules().ToggleTutorial(m_tutorialString);
+            Debug.Log("Tutorial triggered");
         }
     }
 }
