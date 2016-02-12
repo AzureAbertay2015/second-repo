@@ -10,9 +10,7 @@ public class SwitchScript : MonoBehaviour {
 
 	public enum SwitchType { AirConditioner, Heater };
 	public SwitchType m_SwitchType;
-
-	public GameManager m_GameManager;
-
+	
 	// Use this for initialization
 	void Start () {
 		m_OpenRotation = Quaternion.Euler(6, 0, 0);
@@ -32,10 +30,10 @@ public class SwitchScript : MonoBehaviour {
 		GameObject o = this.transform.GetChild(0).gameObject;
 		o.transform.rotation = m_OpenRotation;
 		if (m_SwitchType == SwitchType.AirConditioner) {
-			m_GameManager.CoolDownRoom();
+			GameManager.GetGameRules().CoolDownRoom();
 		}
 		else if (m_SwitchType == SwitchType.Heater) {
-			m_GameManager.HeatUpRoom();
+			GameManager.GetGameRules().HeatUpRoom();
 		}
 	}
 
@@ -46,11 +44,11 @@ public class SwitchScript : MonoBehaviour {
 		o.transform.rotation = m_ClosedRotation;
 		if (m_SwitchType == SwitchType.AirConditioner)
 		{
-			m_GameManager.HeatUpRoom();
+			GameManager.GetGameRules().HeatUpRoom();
 		}
 		else if (m_SwitchType == SwitchType.Heater)
 		{
-			m_GameManager.CoolDownRoom();
+			GameManager.GetGameRules().CoolDownRoom();
 		}
 	}
 

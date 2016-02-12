@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HeaterScript : MonoBehaviour {
 
-	public GameManager m_GameManager;
+	//public GameManager m_GameManager;
 	private bool m_Triggered;
 
 	// Use this for initialization
@@ -17,7 +17,7 @@ public class HeaterScript : MonoBehaviour {
 		{
 			if (!m_Triggered)
 			{
-				m_GameManager.HeatUpPlayer();
+				GameManager.GetGameRules().HeatUpPlayer();
 				m_Triggered = true;
 			}
 		}
