@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WinScript : MonoBehaviour {
-	public GameManager m_GameManager;
+	//public GameManager m_GameManager;
 	private bool m_Toggled;
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,8 @@ public class WinScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player" && !m_Toggled)
 		{
-			m_GameManager.ToggleWinMenu();
+            //m_GameManager.ToggleWinMenu();
+            GameManager.GetGameRules().ToggleWinMenu();
 			m_Toggled = true;
 		}
 	}

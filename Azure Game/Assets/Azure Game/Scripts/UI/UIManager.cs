@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    public GameManager GM;
+    //public GameManager GM;
 	private bool m_GameRestarted;
 
     // Use this for initialization
@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     void ScanForKeyStroke()
     {
         if (Input.GetKeyDown("escape")&& !Input.GetKeyDown("space"))
-            GM.TogglePauseMenu();
+            GameManager.GetGameRules().TogglePauseMenu();
     }
 	
 	void ScanForDeath()

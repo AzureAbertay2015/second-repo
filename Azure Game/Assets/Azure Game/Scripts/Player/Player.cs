@@ -27,9 +27,7 @@ public class Player : MonoBehaviour {
     private Material m_SolidMaterial;
     private Material m_LiquidMaterial;
     private Material m_GasMaterial;
-    
-    public GameManager m_GameManager;
-    
+        
     [SerializeField]
     private float m_MovePower = 10; // The force added to the player to move it.
     [SerializeField]
@@ -170,27 +168,23 @@ public class Player : MonoBehaviour {
                 SetMesh(m_pSolidMesh);
                 SetMaterial(m_SolidMaterial);
                 m_State = State.Solid;
-                //m_pPlayer.ChangeState(0);
                 break;
             case State.Liquid:
                 SetMesh(m_pLiquidMesh);
                 SetMaterial(m_LiquidMaterial);
                 m_State = State.Liquid;
-                //m_pPlayer.ChangeState(1);
                 break;
             case State.Gas:
                 SetMesh(m_pGasMesh);
                 SetMaterial(m_GasMaterial);
                 m_State = State.Gas;
-                //m_pPlayer.ChangeState(2);
                 break;
+
             default:
                 break;
         }
 
         SetupLayer();
-
-		m_GameManager.ChangeState((int)state);
 
     }
 
