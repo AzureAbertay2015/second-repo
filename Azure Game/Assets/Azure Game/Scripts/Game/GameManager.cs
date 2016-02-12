@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -80,7 +81,23 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void ChangeState(int state)
+    public void ToggleTutorial(String text)
+    {
+        if (UI.GetComponentsInChildren<Canvas>()[4].enabled)
+        {
+            UI.GetComponentsInChildren<Canvas>()[4].enabled = false;
+            Time.timeScale = 1.0f;
+
+        }
+        else
+        {
+            UI.GetComponentsInChildren<Canvas>()[4].enabled = true;
+            Time.timeScale = 0f;
+            UI.GetComponentsInChildren<Canvas>()[4].GetComponent<Text>().text = text;
+        }
+    }
+
+    public void ChangeState(int state)
 	{
 		if (state >= 0)
 		{
