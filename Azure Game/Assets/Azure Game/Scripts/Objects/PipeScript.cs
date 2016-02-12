@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class PipeScript : MonoBehaviour {
-
-	private Player m_Player;
 	private Vector3 m_EndPosition1;
 	private Vector3 m_EndPosition2;
 	private enum ClosestEnd { end1, end2 };
@@ -28,7 +26,7 @@ public class PipeScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			if (m_Player.m_State == Player.State.Liquid)
+			if (GameManager.GetPlayer().GetState() == Player.State.Liquid)
 			{
 				//other.gameObject.transform.position = m_EndPosition;
 				Debug.Log("Player piped");
