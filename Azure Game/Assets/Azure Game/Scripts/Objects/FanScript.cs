@@ -22,7 +22,8 @@ public class FanScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			if (m_GameManager.m_State == GameManager.PlayerState.Gas)
+			//if (m_GameManager.m_State == GameManager.PlayerState.Gas)
+            if ( m_GameManager.GetPlayerState() == Player.State.Gas )
 			{
 				other.gameObject.GetComponent<Rigidbody>().AddForce(GetComponentInParent<Transform>().up * m_FanForce);
 			}			

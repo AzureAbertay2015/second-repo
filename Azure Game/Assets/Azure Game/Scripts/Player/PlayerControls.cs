@@ -4,17 +4,6 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerControls : MonoBehaviour {
 
-    public const string SOLID_MODEL = "CubePrototype02x02x02";
-    public const string LIQUID_MODEL = "CubePrototype02x02x02";
-    public const string GAS_MODEL = "CubePrototype02x02x02";
-
-    const string SOLID_MATERIAL = "Black Grid";
-    const string LIQUID_MATERIAL = "Blue";
-    const string GAS_MATERIAL = "Green";
-
-    
-    
-
     private Player m_pPlayer; // Reference to the ball controller.
 
     private Vector3 move;
@@ -28,81 +17,11 @@ public class PlayerControls : MonoBehaviour {
     private bool q; // whether the 'q' key is pressed
     private bool e_up;// is 'e' key released
     private bool q_up;//is 'q' key released
-
-
-   // private int m_iState;
-
-    private Mesh m_pSolidMesh;
-    private Mesh m_pLiquidMesh;
-    private Mesh m_pGasMesh;
-
-    private Material m_SolidMaterial;
-    private Material m_LiquidMaterial;
-    private Material m_GasMaterial;
-
+    
     private bool jump_debounce = false;
-
-    public enum State { Solid, Liquid, Gas };
-    public State m_State;
-    private State m_PreviousState;
-
-    private void SetMesh( Mesh target_mesh )
-    {
-        GetComponent<MeshFilter>().mesh = target_mesh;
-        // switch the collider
-        if (target_mesh == m_pSolidMesh)
-        {            
-            GetComponents<BoxCollider>()[0].enabled = true;
-            GetComponents<BoxCollider>()[1].enabled = false;
-            GetComponents<BoxCollider>()[2].enabled = false;
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-        if (target_mesh == m_pLiquidMesh)
-        {            
-            GetComponents<BoxCollider>()[0].enabled = false;
-            GetComponents<BoxCollider>()[1].enabled = true;
-            GetComponents<BoxCollider>()[2].enabled = false;
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-        if (target_mesh == m_pGasMesh)
-        {
-            GetComponents<BoxCollider>()[0].enabled = false;
-            GetComponents<BoxCollider>()[1].enabled = false;
-            GetComponents<BoxCollider>()[2].enabled = true;
-            GetComponent<Rigidbody>().useGravity = false;
-        }
-    }
-
-    private void SetMaterial(Material target_material)
-    {
-        GetComponent<MeshRenderer>().material = target_material;
-    }
     
     private void Awake()
     {
-
-        GameObject o;
-        m_State = State.Solid;
-        m_PreviousState = State.Solid;
-
-        o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
-        m_pSolidMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-
-		o = Instantiate(Resources.Load(LIQUID_MODEL)) as GameObject;
-        m_pLiquidMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-
-		o = Instantiate(Resources.Load(GAS_MODEL)) as GameObject;
-        m_pGasMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-
-		m_SolidMaterial = Resources.Load(SOLID_MATERIAL) as Material;
-		m_LiquidMaterial = Resources.Load(LIQUID_MATERIAL) as Material;
-		m_GasMaterial = Resources.Load(GAS_MATERIAL) as Material;
-
-		SetMesh(m_pSolidMesh);
-		SetMaterial(m_SolidMaterial);
             
         // Set up the reference.
         m_pPlayer = GetComponent<Player>();
@@ -147,13 +66,13 @@ public class PlayerControls : MonoBehaviour {
         if (e && !e_up)
         {
             e_up = true;
-			RaiseState();
+			m_pPlayer.RaiseState();
         }
 
         if (q && !q_up)
         {
             q_up = true;
-			LowerState();
+			m_pPlayer.LowerState();
         }
         
         // calculate move direction
@@ -178,80 +97,5 @@ public class PlayerControls : MonoBehaviour {
         jump = false;
     }
 
-	public int GetState()
-	{
-		if (m_State == State.Solid) return 0;
-		else if (m_State == State.Liquid) return 1;
-		else if (m_State == State.Gas) return 2;
-		else return -1;
-	}
-
-	public void RaiseState()
-	{
-		switch (m_State)
-		{
-			case State.Solid:
-				SetMesh(m_pLiquidMesh);
-				SetMaterial(m_LiquidMaterial);
-				m_PreviousState = m_State;
-				m_State = State.Liquid;
-				m_pPlayer.ChangeState(1);
-				break;
-			case State.Liquid:
-				SetMesh(m_pGasMesh);
-				SetMaterial(m_GasMaterial);
-				m_PreviousState = m_State;
-				m_State = State.Gas;
-				m_pPlayer.ChangeState(2);
-				break;
-		}
-	}
-
-	public void LowerState()
-	{
-		switch (m_State)
-		{
-			case State.Gas:
-				SetMesh(m_pLiquidMesh);
-				SetMaterial(m_LiquidMaterial);
-				m_PreviousState = m_State;
-				m_State = State.Liquid;
-				m_pPlayer.ChangeState(1);
-				break;
-			case State.Liquid:
-				SetMesh(m_pSolidMesh);
-				SetMaterial(m_SolidMaterial);
-				m_PreviousState = m_State;
-				m_State = State.Solid;
-				m_pPlayer.ChangeState(0);
-				break;
-		}
-	}
-
-	public void ChangeState(int state)
-	{
-		switch (state)
-		{
-			case 0:
-				SetMesh(m_pSolidMesh);
-				SetMaterial(m_SolidMaterial);
-				m_State = State.Solid;
-				//m_pPlayer.ChangeState(0);
-				break;
-			case 1:
-				SetMesh(m_pLiquidMesh);
-				SetMaterial(m_LiquidMaterial);
-				m_State = State.Liquid;
-				//m_pPlayer.ChangeState(1);
-				break;
-			case 2:
-				SetMesh(m_pGasMesh);
-				SetMaterial(m_GasMaterial);
-				m_State = State.Gas;
-				//m_pPlayer.ChangeState(2);
-				break;
-			default:
-				break;
-		}
-	}
+	
 }

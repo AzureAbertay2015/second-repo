@@ -27,12 +27,17 @@ public class UIManager : MonoBehaviour
 	
 	void ScanForDeath()
 	{
-		if (!GM.IsPlayerAlive() && m_GameRestarted)
+
+// PeterM branch - commenting this out for now
+/*
+        if (!GM.IsPlayerAlive() && m_GameRestarted)
 		{
 			GM.ToggleDeathMenu();
 			m_GameRestarted = false;
 		}
 		if (GM.IsPlayerAlive())
 			m_GameRestarted = true;
+*/
+
 	}    
 }

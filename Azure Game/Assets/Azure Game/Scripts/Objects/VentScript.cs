@@ -24,8 +24,8 @@ public class VentScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			if (m_GameManager.m_State == GameManager.PlayerState.Gas)
-				TeleportToOtherVent();
+            if (m_GameManager.GetPlayerState() == Player.State.Gas)
+                TeleportToOtherVent();
 			//Invoke("TeleportToOtherVent", 0.1f);
 		}
 		//Debug.Log(other.gameObject.tag);

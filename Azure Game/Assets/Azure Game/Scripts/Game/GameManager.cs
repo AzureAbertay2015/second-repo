@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public enum PlayerState { Solid, Liquid, Gas };
 	public enum Temperature { Cold, Warm, Hot };
 
-	public PlayerState m_State;
+	//public PlayerState m_State;
 	public Temperature m_Temperature;
 	//public Text m_TemperatureText;
 	public Text m_TemperatureText;
@@ -18,15 +18,14 @@ public class GameManager : MonoBehaviour
     //----------------------------------------
     // handles
     public UIManager UI;
-	public Player player;
+	public Player m_pPlayer;
 
     //-----------------------------------------
     // function definitions
     void Start() {
 		//player = GetComponent<Player>();
-		m_State = PlayerState.Liquid;
-		ChangeLayer();
-		player.ChangeState(1);
+		//m_State = PlayerState.Liquid;
+		m_pPlayer.ChangeState(Player.State.Liquid);
 		m_Temperature = Temperature.Warm;
 		m_TemperatureText.text = "Warm";
 		m_PlayerAlive = true;
@@ -80,9 +79,20 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+    public Player GetPlayer()
+    {
+        return m_pPlayer;
+    }
+
+    public Player.State GetPlayerState()
+    {
+        return m_pPlayer.GetState();
+    }
+
 	public void ChangeState(int state)
 	{
-		if (state >= 0)
+        /*
+        if (state >= 0)
 		{
 			switch (state)
 			{
@@ -100,7 +110,7 @@ public class GameManager : MonoBehaviour
 					break;
 			}
 		}
-		ChangeLayer();
+        */
 	}
 
 	public void ChangeTemperature(Temperature t)
@@ -134,30 +144,7 @@ public class GameManager : MonoBehaviour
 		if (m_Temperature == Temperature.Hot) ChangeTemperature(Temperature.Warm);
 		else if (m_Temperature == Temperature.Warm) ChangeTemperature(Temperature.Cold);
 	}
-
-	private void ChangeLayer()
-	{
-		switch (m_State)
-		{
-			case PlayerState.Solid:
-				player.gameObject.layer = 9;
-				//Debug.Log("Layer changed to: " + player.gameObject.layer);
-				break;
-			case PlayerState.Liquid:
-				player.gameObject.layer = 10;// water
-				//Debug.Log("Layer changed to: " + player.gameObject.layer);
-				break;
-			case PlayerState.Gas:
-				player.gameObject.layer = 11;
-				//Debug.Log("Layer changed to: " + player.gameObject.layer);
-				break;		
-			default:
-				player.gameObject.layer = 0; // default
-				//Debug.Log("Layer changed to: " + player.gameObject.layer);
-				break;
-		}
-	}
-
+    
 	public void RestartLevel()
 	{
 		Application.LoadLevel("Game Scene");
@@ -175,35 +162,45 @@ public class GameManager : MonoBehaviour
 
 	public void HeatUpPlayer()
 	{
-		//player.GetComponent<PlayerControls>().RaiseState();
+        //player.GetComponent<PlayerControls>().RaiseState();
+
+        m_pPlayer.RaiseState();
+
+        /*
 		switch (m_State)
 		{
 			case PlayerState.Solid:
 				m_State = PlayerState.Liquid;
-				player.ChangeState(1);
+				player.ChangeState(Player.State.Liquid);
 				break;
 			case PlayerState.Liquid:
 				m_State = PlayerState.Gas;
-				player.ChangeState(2);
+				player.ChangeState(Player.State.Gas);
 				break;
 		}
-		ChangeLayer();
+        */
+		
 	}
 	
 	public void CoolDownPlayer()
 	{
-		//player.GetComponent<PlayerControls>().LowerState();
-		switch (m_State)
+        //player.GetComponent<PlayerControls>().LowerState();
+
+        m_pPlayer.LowerState();
+
+        /*
+        switch (m_State)
 		{
 			case PlayerState.Gas:
 				m_State = PlayerState.Liquid;
-				player.ChangeState(1);
+				player.ChangeState(Player.State.Liquid);
 				break;
 			case PlayerState.Liquid:
 				m_State = PlayerState.Solid;
-				player.ChangeState(0);
+				player.ChangeState(Player.State.Gas);
 				break;
 		}
-		ChangeLayer();
+        */
+		
 	}
 }
