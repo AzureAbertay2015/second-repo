@@ -13,8 +13,10 @@ public class PlayerTempUI : MonoBehaviour {
 	void Start () {
 
         m_Playertemptext = GetComponent<Text>();
-	
-	}
+
+        m_Tempmanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

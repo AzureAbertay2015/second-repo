@@ -5,13 +5,10 @@ using UnityEngine.UI;
 public class GameRules : MonoBehaviour {
 
     public enum PlayerState { Solid, Liquid, Gas };
-    public enum Temperature { Cold, Warm, Hot };
-
-    public Temperature m_Temperature;
-    //public Text m_TemperatureText;
-    //public Text m_TemperatureText;
-    private bool m_PlayerAlive;
     
+    private bool m_PlayerAlive;
+    public TemperatureManager m_Tempmanager;
+            
     //----------------------------------------
     // handles
  
@@ -19,12 +16,9 @@ public class GameRules : MonoBehaviour {
     // function definitions
     void Start()
     {
-        //player = GetComponent<Player>();
-        //m_State = PlayerState.Liquid;
-        GameManager.GetPlayer().ChangeState(Player.State.Liquid);
-        m_Temperature = Temperature.Warm;
-        //m_TemperatureText.text = "Warm"; // Adam needs to fix this -PeterM
         m_PlayerAlive = true;
+
+        m_Tempmanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
     }
 
     public void TogglePauseMenu()
@@ -85,41 +79,16 @@ public class GameRules : MonoBehaviour {
         return GameManager.GetPlayer().GetState();
     }
 
-    public void ChangeState(int state)
-    {
-      
-    }
 
-    public void ChangeTemperature(Temperature t)
-    {
-        m_Temperature = t;
-        switch (t)
-        {
-            case Temperature.Cold:
-                //m_TemperatureText.text = "Cold";
-                break;
-            case Temperature.Warm:
-                //m_TemperatureText.text = "Warm";
-                break;
-            case Temperature.Hot:
-                //m_TemperatureText.text = "Hot";
-                break;
-            default:
-                //m_TemperatureText.text = "Sample Text";
-                break;
-        }
-    }
-
+    
     public void HeatUpRoom()
     {
-        if (m_Temperature == Temperature.Cold) ChangeTemperature(Temperature.Warm);
-        else if (m_Temperature == Temperature.Warm) ChangeTemperature(Temperature.Hot);
+        m_Tempmanager.ChangeRoomTemp(20.0f);
     }
 
     public void CoolDownRoom()
     {
-        if (m_Temperature == Temperature.Hot) ChangeTemperature(Temperature.Warm);
-        else if (m_Temperature == Temperature.Warm) ChangeTemperature(Temperature.Cold);
+        m_Tempmanager.ChangeRoomTemp(-20.0f);
     }
 
     public void RestartLevel()
@@ -139,12 +108,12 @@ public class GameRules : MonoBehaviour {
 
     public void HeatUpPlayer()
     {
-         GameManager.GetPlayer().RaiseState();
+        m_Tempmanager.ChangePlayerTemp(20.0f);
     }
 
     public void CoolDownPlayer()
     {
-          GameManager.GetPlayer().LowerState();
+        m_Tempmanager.ChangePlayerTemp(-20.0f);
     }
        
 }
