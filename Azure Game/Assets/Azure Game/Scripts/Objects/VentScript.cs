@@ -5,19 +5,14 @@ public class VentScript : MonoBehaviour {
 
 	public VentScript m_OtherVent;
 	private Vector3 m_ApparitionPosition;
-	private Vector3 m_TempVel;
+	public float m_ApparitionDistance;
 
 	// Use this for initialization
 	void Start () {
 		m_ApparitionPosition = transform.position;
-		m_ApparitionPosition.z += 2;
+		m_ApparitionPosition += Vector3.Scale(transform.forward, new Vector3(m_ApparitionDistance, m_ApparitionDistance, m_ApparitionDistance));
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject.tag == "Player")
@@ -27,7 +22,6 @@ public class VentScript : MonoBehaviour {
 		}
 	}
 
-
 	public Vector3 GetApparitionPosition()
 	{
 		return m_ApparitionPosition;
@@ -35,10 +29,11 @@ public class VentScript : MonoBehaviour {
 
 	private void TeleportToOtherVent()
 	{
-		Debug.Log("Teleport to: " + m_OtherVent.m_ApparitionPosition);
+		// teleport player to the other vent
 		GameManager.GetPlayer().transform.position = m_OtherVent.m_ApparitionPosition;
-		m_TempVel = GameManager.GetPlayer().GetComponent<Rigidbody>().velocity;
-		m_TempVel.z = -m_TempVel.z;
-		GameManager.GetPlayer().GetComponent<Rigidbody>().velocity = m_TempVel;
+
+		// keep the velocity, rotate it to the exit's forward axis
+		float magnitude = GameManager.GetPlayer().GetComponent<Rigidbody>().velocity.magnitude;
+		GameManager.GetPlayer().GetComponent<Rigidbody>().velocity = m_OtherVent.transform.forward * magnitude;
 	}
 }
