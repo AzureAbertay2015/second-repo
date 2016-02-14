@@ -7,7 +7,7 @@ public class cameraScript : MonoBehaviour
     private Vector3 newPos;
     public Vector3 cameraOffset;
 	public GameObject fourthWall;
-	public GameObject Player;
+	//public GameObject Player;
     
     // Use this for initialization
     void Start()
@@ -19,10 +19,10 @@ public class cameraScript : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.Euler(0, 180, 0);
-        //var player = GameObject.FindGameObjectWithTag("Player");
+        var Player = GameObject.FindGameObjectWithTag("Player");
         newPos.x = Player.transform.position.x + cameraOffset.x;
         newPos.y = Player.transform.position.y + cameraOffset.y;
-        newPos.z = fourthWall.transform.position.z + cameraOffset.z;
+        newPos.z = fourthWall.transform.position.z + cameraOffset.z + 10;
         transform.position = newPos;
     }
 }
