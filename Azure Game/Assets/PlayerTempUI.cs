@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerTempUI : MonoBehaviour {
 
     private Text m_Playertemptext;
-    public GameManager m_Gamemanager;
+    public TemperatureManager m_Tempmanager;
     int m_Playertemp;
 
 
@@ -19,7 +19,7 @@ public class PlayerTempUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        m_Playertemp = (int)m_Gamemanager.m_Playertemp;
+        m_Playertemp = (int)m_Tempmanager.m_Playertemp;
         m_Playertemptext.text = m_Playertemp.ToString() + "C";
 
     }

@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 
 	public PlayerState m_State;
 	public Temperature m_Temperature;
-	//public Text m_TemperatureText;
 	public Text m_TemperatureText;
 	private bool m_PlayerAlive;
 
@@ -88,33 +87,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(m_Playertemp > m_Roomtemp)
-        {
-            m_Playertemp -= 0.08f;
-        }
+      
 
-        if(m_Playertemp < m_Roomtemp)
-        {
-            m_Playertemp += 0.08f;
-        }
-
-        if((int)m_Playertemp > 40)
-        {
-            player.ChangeState(2);
-            ChangeLayer();
-        }
-
-        else if((int)m_Playertemp > 10)
-        {
-            player.ChangeState(1);
-            ChangeLayer();
-        }
-
-        else
-        {
-            player.ChangeState(0);
-            ChangeLayer();
-        }
     }
 
 	public void ChangeState(int state)
@@ -172,7 +146,7 @@ public class GameManager : MonoBehaviour
 		else if (m_Temperature == Temperature.Warm) ChangeTemperature(Temperature.Cold);
 	}
 
-	private void ChangeLayer()
+	public void ChangeLayer()
 	{
 		switch (m_State)
 		{
@@ -226,7 +200,11 @@ public class GameManager : MonoBehaviour
         //}
         //ChangeLayer();
 
-        m_Playertemp += 20;
+        if(m_Playertemp == m_Roomtemp)
+        {
+            m_Playertemp += 30;
+        }
+         
     }
 	
 	public void CoolDownPlayer()
@@ -245,6 +223,10 @@ public class GameManager : MonoBehaviour
         //}
         //ChangeLayer();
 
-        m_Playertemp -= 20;
+        if(m_Playertemp == m_Roomtemp)
+        {
+            m_Playertemp -= 30;
+        }
+        
 	}
 }

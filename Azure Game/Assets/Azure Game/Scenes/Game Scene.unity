@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197ffaabe8a391e4d9efae7b872f275d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Gamemanager: {fileID: 118793586}
+  m_Tempmanager: {fileID: 1122312850}
 --- !u!114 &430083977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,6 +2244,7 @@ GameObject:
   - 65: {fileID: 799539059}
   - 114: {fileID: 799539056}
   - 114: {fileID: 799539057}
+  - 114: {fileID: 799539065}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2373,6 +2374,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &799539065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799539055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe13ac7a76eb67f4995e6c03aba6df12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Gamemanager: {fileID: 118793586}
+  m_Roomtemp: 0
+  m_Playertemp: 0
+  m_Tempchange: 0
 --- !u!1 &824578520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +2815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33f826d50ed2844c9858c04632f38d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Gamemanager: {fileID: 118793586}
+  m_Tempmanager: {fileID: 1122312850}
 --- !u!1001 &972772451
 Prefab:
   m_ObjectHideFlags: 0
@@ -3557,6 +3573,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d180c4d76dcafc54cbd346c779ea81ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1122312849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1122312851}
+  - 114: {fileID: 1122312850}
+  m_Layer: 0
+  m_Name: TemperatureManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1122312850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1122312849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe13ac7a76eb67f4995e6c03aba6df12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Gamemanager: {fileID: 118793586}
+  m_Roomtemp: 0
+  m_Playertemp: 0
+  m_Tempchange: 0
+--- !u!4 &1122312851
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1122312849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
 --- !u!1001 &1125952106
 Prefab:
   m_ObjectHideFlags: 0
