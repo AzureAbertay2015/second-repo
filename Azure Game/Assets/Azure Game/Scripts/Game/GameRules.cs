@@ -74,19 +74,11 @@ public class GameRules : MonoBehaviour {
             Time.timeScale = 0f;
         }
     }
-    public void ToggleTutorial(string text)
+
+    public void ToggleTutorial(string tutorialDialog)
     {
-        if (GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].enabled)
-        {
-            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].enabled = false;
-            Time.timeScale = 1.0f;
-        }
-        else
-        {
-            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].enabled = true;
-            Time.timeScale = 0f;
-            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].GetComponent<Text>().text = text;
-        }
+        GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].enabled = true;
+        GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].GetComponentInChildren<Text>().text = tutorialDialog;
     }
 
     public Player GetPlayer()
