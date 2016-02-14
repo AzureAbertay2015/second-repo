@@ -5,7 +5,6 @@ public class HeaterScript : MonoBehaviour {
 
 	//public GameManager m_GameManager;
 	private bool m_Triggered;
-
 	private bool m_HeaterTurnedOn;
 
 	// Use this for initialization
