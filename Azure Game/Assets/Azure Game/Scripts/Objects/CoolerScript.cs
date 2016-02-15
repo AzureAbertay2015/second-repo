@@ -6,11 +6,13 @@ public class CoolerScript : MonoBehaviour {
 	//public GameManager m_GameManager;
 	private bool m_Triggered;
 	private bool m_CoolerTurnedOn;
+	private CoolerEmissionScript m_CoolerEmissionScript;
 
 	// Use this for initialization
 	void Start () {
 		m_Triggered = false;
 		m_CoolerTurnedOn = true;
+		m_CoolerEmissionScript = gameObject.GetComponent<CoolerEmissionScript>();
     }
 	
 	void OnTriggerEnter(Collider other)
@@ -36,19 +38,12 @@ public class CoolerScript : MonoBehaviour {
 	void SwitchOn()
 	{
 		m_CoolerTurnedOn = true;
-		transform.GetChild(0).GetComponent<Light>().enabled = true;
-
-		if (!transform.GetChild(0).GetComponent<Light>().enabled)
-			Debug.LogError("Light is still off");
+		m_CoolerEmissionScript.EmissionSwitchOn();
 	}
 
 	void SwitchOff()
 	{
 		m_CoolerTurnedOn = false;
-		transform.GetChild(0).GetComponent<Light>().enabled = false;
-
-		if (transform.GetChild(0).GetComponent<Light>().enabled)
-			Debug.LogError("Light is still on");
-
+		m_CoolerEmissionScript.EmissionSwitchOff();
 	}
 }
