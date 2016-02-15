@@ -4,7 +4,6 @@ using System.Collections;
 public class HeaterSwitchScript : SwitchScript {
 
 	public GameObject m_Heater;
-	private HeaterEmissionScript m_HeaterEmissionScript;
 	private HeaterEmissionScript m_BaseEmissionScript;
 
 

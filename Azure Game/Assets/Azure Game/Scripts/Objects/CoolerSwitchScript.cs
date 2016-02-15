@@ -4,13 +4,11 @@ using System.Collections;
 public class CoolerSwitchScript : SwitchScript {
 
 	public GameObject m_Cooler;
-	private CoolerEmissionScript m_CoolerEmissionScript;
 	private CoolerEmissionScript m_BaseEmissionScript;
 
 	void Start()
 	{
 		m_CoolerEmissionScript = m_Cooler.GetComponent<CoolerEmissionScript>();
-
 		m_BaseEmissionScript = transform.GetChild(1).gameObject.GetComponent<CoolerEmissionScript>();
 	}
 

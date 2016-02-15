@@ -6,8 +6,8 @@ public class SwitchScript : MonoBehaviour {
 
 	public enum SwitchType { AirConditioner, Heater };
 	public SwitchType m_SwitchType;
-	private HeaterEmissionScript m_HeaterEmissionScript;
-	private CoolerEmissionScript m_CoolerEmissionScript;
+	protected HeaterEmissionScript m_HeaterEmissionScript;
+	protected CoolerEmissionScript m_CoolerEmissionScript;
 	
 	// Use this for initialization
 	void Start () {
