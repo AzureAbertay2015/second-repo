@@ -17,8 +17,12 @@ public class HeaterScript : MonoBehaviour {
 		{
 			if (!m_Triggered)
 			{
+<<<<<<< HEAD
                 //m_GameManager.HeatUpPlayer();
                 GameManager.GetGameRules().HeatUpPlayer();
+=======
+				GameManager.GetGameRules().HeatUpPlayer();
+>>>>>>> refs/remotes/origin/master
 				m_Triggered = true;
 			}
 		}

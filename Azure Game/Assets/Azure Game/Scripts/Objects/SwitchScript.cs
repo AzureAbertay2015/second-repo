@@ -10,9 +10,13 @@ public class SwitchScript : MonoBehaviour {
 
 	public enum SwitchType { AirConditioner, Heater };
 	public SwitchType m_SwitchType;
+<<<<<<< HEAD
 
 	//public GameManager m_GameManager;
 
+=======
+	
+>>>>>>> refs/remotes/origin/master
 	// Use this for initialization
 	void Start () {
 		m_OpenRotation = Quaternion.Euler(6, 0, 0);
@@ -32,6 +36,7 @@ public class SwitchScript : MonoBehaviour {
 		GameObject o = this.transform.GetChild(0).gameObject;
 		o.transform.rotation = m_OpenRotation;
 		if (m_SwitchType == SwitchType.AirConditioner) {
+<<<<<<< HEAD
             GameManager.GetGameRules().CoolDownRoom();
 			//m_GameManager.CoolDownRoom();
 		}
@@ -39,6 +44,13 @@ public class SwitchScript : MonoBehaviour {
             GameManager.GetGameRules().HeatUpRoom();
             //m_GameManager.HeatUpRoom();
         }
+=======
+			GameManager.GetGameRules().CoolDownRoom();
+		}
+		else if (m_SwitchType == SwitchType.Heater) {
+			GameManager.GetGameRules().HeatUpRoom();
+		}
+>>>>>>> refs/remotes/origin/master
 	}
 
 	public void SwitchOff()
@@ -48,6 +60,7 @@ public class SwitchScript : MonoBehaviour {
 		o.transform.rotation = m_ClosedRotation;
 		if (m_SwitchType == SwitchType.AirConditioner)
 		{
+<<<<<<< HEAD
             //m_GameManager.HeatUpRoom();
             GameManager.GetGameRules().HeatUpRoom();
 		}
@@ -56,6 +69,14 @@ public class SwitchScript : MonoBehaviour {
             //m_GameManager.CoolDownRoom();
             GameManager.GetGameRules().CoolDownRoom();
         }
+=======
+			GameManager.GetGameRules().HeatUpRoom();
+		}
+		else if (m_SwitchType == SwitchType.Heater)
+		{
+			GameManager.GetGameRules().CoolDownRoom();
+		}
+>>>>>>> refs/remotes/origin/master
 	}
 
 	void OnTriggerStay(Collider other)

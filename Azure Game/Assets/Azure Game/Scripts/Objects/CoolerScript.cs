@@ -17,8 +17,12 @@ public class CoolerScript : MonoBehaviour {
 		{
 			if (!m_Triggered)
 			{
+<<<<<<< HEAD
                 //m_GameManager.CoolDownPlayer();
                 GameManager.GetGameRules().CoolDownPlayer();
+=======
+				GameManager.GetGameRules().CoolDownPlayer();
+>>>>>>> refs/remotes/origin/master
 				m_Triggered = true;
 			}
 		}
