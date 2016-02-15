@@ -5,9 +5,20 @@ public class ButtonScript : MonoBehaviour {
 
     public GameObject Door;
 
-    void DoActivateTrigger(Collider collider)
+    void OnCollisionEnter(Collision collision)
     {
-        if (collider.gameObject.tag == "Player")
-            StartCoroutine(Door.GetComponent<DoorScript>().OpenUp());
+		if (collision.collider.gameObject.tag == "Player" && GameManager.GetPlayer().GetState() == Player.State.Solid)
+		{
+			StartCoroutine(Door.GetComponent<DoorScript>().OpenUp());
+			StartCoroutine(gameObject.GetComponent<DoorScript>().OpenUp());
+		}
     }
+
+	void OnCollisionExit(Collision collision)
+	{
+		if (collision.collider.gameObject.tag == "Player")
+		{
+			StartCoroutine(gameObject.GetComponent<DoorScript>().Close());
+		}
+	}
 }
