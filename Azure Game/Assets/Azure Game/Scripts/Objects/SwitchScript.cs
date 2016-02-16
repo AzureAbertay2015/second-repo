@@ -8,15 +8,19 @@ public class SwitchScript : MonoBehaviour {
 	public SwitchType m_SwitchType;
 	protected HeaterEmissionScript m_HeaterEmissionScript;
 	protected CoolerEmissionScript m_CoolerEmissionScript;
-	
+
 	// Use this for initialization
 	void Start () {
 		transform.GetChild(0).gameObject.transform.Rotate(6, 0, 0, Space.Self);
 		m_SwitchState = true;
 		if (m_SwitchType == SwitchType.Heater)
+		{
 			m_HeaterEmissionScript = gameObject.transform.GetChild(1).GetComponent<HeaterEmissionScript>();
+		}
 		else
+		{
 			m_CoolerEmissionScript = gameObject.transform.GetChild(1).GetComponent<CoolerEmissionScript>();
+		}
 	}
 
 	public void SwitchOn()

@@ -173,10 +173,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 170088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978d2d33acf9d1248836fa9c61ab6045, type: 3}
+  m_Script: {fileID: 11500000, guid: ef409a1640837734588cdbd781c9694f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 2
+  m_PathName: piston_path
+  m_LoopType: 0
+  m_EaseType: 24
+  m_MoveToPath: 0
+  m_Time: 2
+  m_Delay: 0
+  m_IsRunning: 1
+  m_isPaused: 0
 --- !u!114 &11495722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathName: path
+  pathName: piston_path
   pathColor: {r: 1, g: 0, b: 0, a: 1}
   nodes:
   - {x: 0, y: 4.2546196, z: 0}
