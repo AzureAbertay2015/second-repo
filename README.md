@@ -2,7 +2,7 @@
 ## Branch Summary
 ### Task
 My task is to implement GameObjects. 
-### Items completed this far
+### Items completed so far
 1. Button
 2. Switch
 3. Fan
@@ -23,12 +23,15 @@ My task is to implement GameObjects.
   * Heater
   * Cooler
   * Both can be operated by switches
+
 ### In this branch
 * Levels
   * "Splash screen" - a splash screen
   * "Game Scene" - a level to test all the gameobjects
   * "Menu Scene" - A main menu
   * "pt-building-testing" - a place to build items without other objects getting in the way
+
 ## Web Build
 The current web build for my branch is hosted on Azure. Currently being updated daily.
+
 [Link](http://unitybuildpt.azurewebsites.net "pt web build")
