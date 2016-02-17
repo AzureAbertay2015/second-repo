@@ -18,7 +18,7 @@ public class WinScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player" && !m_Toggled)
 		{
-			FindObjectOfType<GameRules>().ToggleWinMenu();
+			GameManager.GetGameRules().ToggleWinMenu();
 			m_Toggled = true;
 		}
 	}
