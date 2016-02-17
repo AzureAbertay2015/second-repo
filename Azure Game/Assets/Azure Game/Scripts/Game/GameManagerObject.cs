@@ -14,7 +14,6 @@ public class GameManagerObject : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GameManager.LevelLoadFinish();
-        Debug.LogWarning("Start!");
 	}
 	
 	// Update is called once per frame
