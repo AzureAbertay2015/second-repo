@@ -328,13 +328,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 126650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59e5bce8b958ff48a546835010fbbcd, type: 3}
+  m_Script: {fileID: 11500000, guid: d4ab2fccb188cc44980740fe024a2842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SwitchedOnMaterial: {fileID: 2100000, guid: d4502dc4bd502a441b56f7a3de777c5b,
-    type: 2}
-  m_SwitchedOffMaterial: {fileID: 2100000, guid: fb9d26bf368a50143a7cae13c13e6c03,
-    type: 2}
 --- !u!114 &11497110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,12 +339,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 135298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba6b98124dc31b40aa596b6bad283aa, type: 3}
+  m_Script: {fileID: 11500000, guid: a31bb0094e377864db4e99e9336e9c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SwitchState: 1
-  m_SwitchType: 1
-  m_Heater: {fileID: 126650}
+  m_SwitchState: 0
+  m_SwitchType: 0
+  m_Heater: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
