@@ -128,6 +128,10 @@ Prefab:
       propertyPath: m_TagString
       value: TemperatureManager
       objectReference: {fileID: 0}
+    - target: {fileID: 11440704, guid: ac89c1fe7f7d65241af64e0c7aef0a9e, type: 2}
+      propertyPath: m_Energyscript
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac89c1fe7f7d65241af64e0c7aef0a9e, type: 2}
   m_IsPrefabParent: 0
