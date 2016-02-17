@@ -83,12 +83,12 @@ public class GameRules : MonoBehaviour {
     
     public void HeatUpRoom()
     {
-        m_Tempmanager.ChangeRoomTemp(20.0f);
+        m_Tempmanager.ChangeRoomTemp(25.0f);
     }
 
     public void CoolDownRoom()
     {
-        m_Tempmanager.ChangeRoomTemp(-20.0f);
+        m_Tempmanager.ChangeRoomTemp(-25.0f);
     }
 
     public void RestartLevel()

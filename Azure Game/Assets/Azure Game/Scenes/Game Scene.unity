@@ -1619,8 +1619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfc7b5af8c9da940974c19141b9623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OtherVent: {fileID: 0}
-  m_ApparitionDistance: 0
+  m_OtherVent: {fileID: 912556529}
+  m_ApparitionDistance: 1.25
 --- !u!65 &897878607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1646,6 +1646,12 @@ Transform:
   - {fileID: 1691806353}
   m_Father: {fileID: 0}
   m_RootOrder: 22
+--- !u!114 &912556529 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11447318, guid: 1bf58d2bb5b46164699e1c6fcf2ddf89,
+    type: 2}
+  m_PrefabInternal: {fileID: 1814625400}
+  m_Script: {fileID: 11500000, guid: 2cfc7b5af8c9da940974c19141b9623f, type: 3}
 --- !u!1 &948027533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,6 +3794,22 @@ Prefab:
     - target: {fileID: 183182, guid: 1bf58d2bb5b46164699e1c6fcf2ddf89, type: 2}
       propertyPath: m_Name
       value: Vent
+      objectReference: {fileID: 0}
+    - target: {fileID: 499236, guid: 1bf58d2bb5b46164699e1c6fcf2ddf89, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 43.4799995
+      objectReference: {fileID: 0}
+    - target: {fileID: 499236, guid: 1bf58d2bb5b46164699e1c6fcf2ddf89, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447318, guid: 1bf58d2bb5b46164699e1c6fcf2ddf89, type: 2}
+      propertyPath: m_OtherVent
+      value: 
+      objectReference: {fileID: 897878606}
+    - target: {fileID: 499236, guid: 1bf58d2bb5b46164699e1c6fcf2ddf89, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.31999993
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bf58d2bb5b46164699e1c6fcf2ddf89, type: 2}

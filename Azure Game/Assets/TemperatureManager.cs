@@ -57,5 +57,15 @@ public class TemperatureManager : MonoBehaviour {
     public void ChangePlayerTemp(float t)
     {
         m_Playertemp += t;
+
+        if(t > 0 && m_Playertemp > (m_Roomtemp + t))
+        {
+            m_Playertemp = m_Roomtemp + t;
+        }
+
+        else if (t < 0 && m_Playertemp < (m_Roomtemp + t))
+        {
+            m_Playertemp = m_Roomtemp + t;
+        }
     }
 }
