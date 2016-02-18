@@ -1505,7 +1505,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Roomtemp: 0
   m_Playertemp: 0
+  m_Prevplayertemp: 0
   m_Tempchange: 0
+  m_LiqGascutoff: 0
+  m_SolidLiqcutoff: 0
+  m_Abilitytempchange: 0
 --- !u!4 &860793644 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}

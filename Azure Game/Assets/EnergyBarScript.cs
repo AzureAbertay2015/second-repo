@@ -5,16 +5,19 @@ using UnityEngine.UI;
 public class EnergyBarScript : MonoBehaviour
 {
 
-    private float m_Fillamount;
+    public float m_Fillamount;
 
     [SerializeField]
     private Image Filler;
+
+    public float m_Chargeamount;
 
     // Use this for initialization
     void Start()
     {
 
         m_Fillamount = 0;
+        m_Chargeamount = 0.05f;
 
     }
 
@@ -24,11 +27,12 @@ public class EnergyBarScript : MonoBehaviour
 
         UpdateFiller();
 
-        if (m_Fillamount - m_Fillamount < 100)
+        if (m_Fillamount + (m_Chargeamount * Time.deltaTime) < 1.0f)
         {
-            m_Fillamount += 0.05f * Time.deltaTime;
+            m_Fillamount += m_Chargeamount * Time.deltaTime;
         }
 
+        //Debug.Log("fill amount " + m_Fillamount);
 
     }
 
