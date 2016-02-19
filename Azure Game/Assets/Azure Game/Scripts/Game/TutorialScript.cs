@@ -27,7 +27,7 @@ public class TutorialScript : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player" && m_triggeredDialog == true)
         {
-            m_tutorialDialog = " ";
+            m_tutorialDialog = "";
             GameManager.GetGameRules().ToggleTutorial(m_tutorialDialog);
         }
     }
