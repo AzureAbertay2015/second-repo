@@ -214,6 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6128b00634fd114d9365b8591186080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SwitchedOnMaterial: {fileID: 2100000, guid: 06a597ede88602b409f8d7d52aa44132,
+    type: 2}
+  m_SwitchedOffMaterial: {fileID: 2100000, guid: 1849f95530700db4584ac793aa1576c1,
+    type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
