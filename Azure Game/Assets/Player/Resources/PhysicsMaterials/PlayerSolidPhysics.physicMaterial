@@ -6,8 +6,8 @@ PhysicMaterial:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PlayerSolidPhysics
-  dynamicFriction: 1000
-  staticFriction: 1000
+  dynamicFriction: 100000
+  staticFriction: 100000
   bounciness: 1
   frictionCombine: 0
   bounceCombine: 0

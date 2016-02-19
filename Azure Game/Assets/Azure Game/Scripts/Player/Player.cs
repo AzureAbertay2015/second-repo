@@ -31,25 +31,36 @@ public class Player : MonoBehaviour {
     private Mesh m_pLiquidMesh;
     private Mesh m_pGasMesh;
 
-    private Mesh[] m_pMeshes;
-    private Material[] m_pMaterials;
     private PhysicMaterial[] m_pPhysicMaterials;
 
-/*
-    private Material m_SolidMaterial;
-    private Material m_LiquidMaterial;
-    private Material m_GasMaterial;
 
-    private PhysicMaterial m_pSolidPhysicMaterial;
-    private PhysicMaterial m_pLiquidPhysicMaterial;
-    private PhysicMaterial m_pGasPhysicMaterial;
-*/
-            
     [SerializeField]
-    private float m_MovePower = 10; // The force added to the player to move it.
+    private float m_MovePower = 1.5f; // The force added to the player to move it.
     [SerializeField]
     private float m_MaxAngularVelocity = 25; // The maximum velocity the ball can rotate at.
-    
+
+    [SerializeField]
+    private float m_ForceMultiplierSolid = 1.0f;
+    [SerializeField]
+    private float m_ForceMultiplierLiquid = 0.5f;
+    [SerializeField]
+    private float m_ForceMultiplierGas = 0.1f;
+
+    [SerializeField]
+    private float m_GravityForceSolid = 2.0f;
+    [SerializeField]
+    private float m_GravityForceLiquid = 0.5f;
+    [SerializeField]
+    private float m_GravityForceGas = 0.1f;
+
+    [SerializeField]
+    private float m_MaxAngularVelocitySolid = 15f;
+    [SerializeField]
+    private float m_MaxAngularVelocityLiquid = 25f;
+    [SerializeField]
+    private float m_MaxAngularVelocityGas = 15f;
+
+
     public float m_JumpPower = 20; // The force added to the ball when it jumps.
 
     private const float k_GroundRayLength = 1f; // The length of the ray to check if the ball is grounded.
@@ -58,71 +69,23 @@ public class Player : MonoBehaviour {
     private SphereCollider m_SphereCollider;
     private ParticleSystem m_GasParticleSystem;
     private PlayerModel m_PlayerModel;
-   
+
+    private RaycastHit m_GroundEntityData;
+    private bool m_bOnGround;
+
     private void LoadPlayerResources()
-    { 
+    {
         GameObject o;
-      
-        // Initialise arrays (3 states currently)
-        m_pMeshes = new Mesh[3];
-        m_pMaterials = new Material[3];
+    
         m_pPhysicMaterials = new PhysicMaterial[3];
-
-        o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
-        m_pMeshes[0] = o.GetComponent<MeshFilter>().mesh;
-        m_pMaterials[0] = Resources.Load(SOLID_MATERIAL) as Material;
         m_pPhysicMaterials[0] = Resources.Load(SOLID_PHYSIC_MATERIAL) as PhysicMaterial;
-
-        o = Instantiate(Resources.Load(LIQUID_MODEL)) as GameObject;
-        m_pMeshes[1] = o.GetComponent<MeshFilter>().mesh;
-        m_pMaterials[1] = Resources.Load(LIQUID_MATERIAL) as Material;
         m_pPhysicMaterials[1] = Resources.Load(LIQUID_PHYSIC_MATERIAL) as PhysicMaterial;
-
-        o = Instantiate(Resources.Load(GAS_MODEL)) as GameObject;
-       // m_pMeshes[2] = o.GetComponent<MeshFilter>().mesh;
-        m_pMaterials[2] = Resources.Load(GAS_MATERIAL) as Material;
         m_pPhysicMaterials[2] = Resources.Load(GAS_PHYSIC_MATERIAL) as PhysicMaterial;
 
         o = Instantiate(Resources.Load(PLAYER_MODEL_PREFAB)) as GameObject;
         m_PlayerModel = o.GetComponent<PlayerModel>();
         m_PlayerModel.SetHostPlayer(this);
-
-        /*
-        o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
-        m_pSolidMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-
-=======
-        o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
-        m_pSolidMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-
->>>>>>> refs/remotes/origin/master
-        o = Instantiate(Resources.Load(LIQUID_MODEL)) as GameObject;
-        m_pLiquidMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-
-        o = Instantiate(Resources.Load(GAS_MODEL)) as GameObject;
-        m_pGasMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-
-        m_SolidMaterial = Resources.Load(SOLID_MATERIAL) as Material;
-        m_LiquidMaterial = Resources.Load(LIQUID_MATERIAL) as Material;
-        m_GasMaterial = Resources.Load(GAS_MATERIAL) as Material;
-<<<<<<< HEAD
-        
-
-        m_pSolidPhysicMaterial = Resources.Load(SOLID_PHYSIC_MATERIAL) as PhysicMaterial;
-        m_pLiquidPhysicMaterial = Resources.Load(LIQUID_PHYSIC_MATERIAL) as PhysicMaterial;
-        m_pGasPhysicMaterial = Resources.Load(GAS_PHYSIC_MATERIAL) as PhysicMaterial;
-
-        */
-
-        //SetMesh(m_pSolidMesh);
-        //SetMaterial(m_SolidMaterial);
-
-        //ChangeState(State.Solid);
-
+        m_PlayerModel.InitPlayerModel();
     }
 
     private void InitPlayer()
@@ -135,54 +98,13 @@ public class Player : MonoBehaviour {
         
         ChangeState(State.Solid);
               
-        // Set the maximum angular velocity.
-        GetComponent<Rigidbody>().maxAngularVelocity = m_MaxAngularVelocity;
+        // Don't use gravity, use our own force.
+        m_Rigidbody.useGravity = false;
 
         // Ensure our tag is always Player!
         gameObject.tag = "Player";
     }
-        
-    private void SetMesh(Mesh target_mesh)
-    {
-
-       // GetComponent<MeshFilter>().mesh = target_mesh;
-        // switch the collider
-
-        /*
-=======
-        GetComponent<MeshFilter>().mesh = target_mesh;
-        // switch the collider
->>>>>>> refs/remotes/origin/master
-        if (target_mesh == m_pSolidMesh)
-        {
-            GetComponents<BoxCollider>()[0].enabled = true;
-            GetComponents<BoxCollider>()[1].enabled = false;
-            GetComponents<BoxCollider>()[2].enabled = false;
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-        if (target_mesh == m_pLiquidMesh)
-        {
-            GetComponents<BoxCollider>()[0].enabled = false;
-            GetComponents<BoxCollider>()[1].enabled = true;
-            GetComponents<BoxCollider>()[2].enabled = false;
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-        if (target_mesh == m_pGasMesh)
-        {
-            GetComponents<BoxCollider>()[0].enabled = false;
-            GetComponents<BoxCollider>()[1].enabled = false;
-            GetComponents<BoxCollider>()[2].enabled = true;
-            GetComponent<Rigidbody>().useGravity = false;
-        }
-<<<<<<< HEAD
-        */
-
-    }
-
-    private void SetMaterial(Material target_material)
-    {
-        GetComponent<MeshRenderer>().material = target_material;
-    }
+       
 
     private void Awake()
     {
@@ -191,19 +113,57 @@ public class Player : MonoBehaviour {
 
     private void Start()
     {
-          InitPlayer();
+          //InitPlayer();
     }
     
     private void Update()
     {
     }   
 
+    private void UpdateOnGround()
+    {
+
+        Ray ray = new Ray(transform.localPosition, -Vector3.up);
+       
+        m_bOnGround = Physics.Raycast(ray, out m_GroundEntityData);
+
+    }
+
     public void Move(Vector3 moveDirection, bool jump)
     {
-        // Otherwise add force in the move direction.
-        m_Rigidbody.AddForce(moveDirection * m_MovePower);
 
-        Debug.DrawRay(transform.position, -Vector3.up * k_GroundRayLength, Color.red, 1.0f, false);
+        float power = m_MovePower;
+        float gravity = 0.0f;
+
+        if ( GetState() == State.Solid )
+        {
+            power *= m_ForceMultiplierSolid;
+            gravity = m_GravityForceSolid;
+        }
+        else if ( GetState() == State.Liquid )
+        {
+            power *= m_ForceMultiplierLiquid;
+            gravity = m_GravityForceLiquid;
+        }
+        else
+        {
+            power *= m_ForceMultiplierGas;
+            gravity = m_GravityForceGas;
+        }
+
+        UpdateOnGround();
+
+        // Otherwise add force in the move direction.
+        m_Rigidbody.AddForce(moveDirection * power);
+
+        if (m_bOnGround)
+            Debug.Log("Ground Normal is " + m_GroundEntityData.normal);
+
+        m_Rigidbody.AddForce(-Vector3.up * gravity);
+
+        
+        
+       // Debug.DrawRay(transform.position, -Vector3.up * k_GroundRayLength, Color.red, 1.0f, false);
 
         Vector3 vecStart = transform.position + Vector3.up * 2;
 
@@ -221,26 +181,33 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void SetupLayer()
+    public int GetLayerForState( Player.State state )
     {
         switch (m_State)
         {
             case State.Solid:
-                gameObject.layer = 9;
+               return 9;
                 //Debug.Log("Layer changed to: " + player.gameObject.layer);
                 break;
             case State.Liquid:
-                gameObject.layer = 10;// water
-                                           //Debug.Log("Layer changed to: " + player.gameObject.layer);
+               return 10;// water
+                                      //Debug.Log("Layer changed to: " + player.gameObject.layer);
                 break;
             case State.Gas:
-                gameObject.layer = 11;
+                return 11;
                 //Debug.Log("Layer changed to: " + player.gameObject.layer);
                 break;
             default:
                 Debug.Assert(false); // This should never happen!
-                    break;
+                break;
         }
+
+        return 0;
+    }
+
+    private void SetupLayer()
+    {
+        gameObject.layer = GetLayerForState(m_State);
     }
 
     public void ChangeState(State state)
@@ -261,31 +228,33 @@ public class Player : MonoBehaviour {
                 //SetMaterial(m_SolidMaterial);
                 m_State = State.Solid;
                 m_GasParticleSystem.enableEmission = false;
+                // Set the maximum angular velocity.
+                m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
                 break;
             case State.Liquid:
                 //SetMesh(m_pLiquidMesh);
                 //SetMaterial(m_LiquidMaterial);
                 m_State = State.Liquid;
                 m_GasParticleSystem.enableEmission = false;
+                m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
                 break;
             case State.Gas:
                // SetMesh(m_pGasMesh);
                 //SetMaterial(m_GasMaterial);
                 m_State = State.Gas;
                 m_GasParticleSystem.enableEmission = true;
+                m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
                 break;
 
             default:
                 break;
         }
-
-
-        GetComponent<MeshFilter>().mesh = m_pMeshes[(int)state];
-        GetComponent<MeshRenderer>().material = m_pMaterials[(int)state];
-              
+             
         m_SphereCollider.sharedMaterial = m_pPhysicMaterials[(int)state];
         m_SphereCollider.enabled = false;
         m_SphereCollider.enabled = true;
+
+        m_PlayerModel.SetState(m_State);
 
         SetupLayer();
 
