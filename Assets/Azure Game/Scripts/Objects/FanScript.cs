@@ -2,15 +2,11 @@
 using System.Collections;
 
 public class FanScript : MonoBehaviour {
-
-	//public Vector3 m_FanForce;
 	public float m_FanForce;
-	public Player m_Player;
-	public GameManager m_GameManager;
+	private GameRules m_GameRules;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -22,7 +18,7 @@ public class FanScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			if (m_GameManager.m_State == GameManager.PlayerState.Gas)
+			if (GameManager.GetPlayer().GetState() == Player.State.Gas)
 			{
 				other.gameObject.GetComponent<Rigidbody>().AddForce(GetComponentInParent<Transform>().up * m_FanForce);
 			}			
