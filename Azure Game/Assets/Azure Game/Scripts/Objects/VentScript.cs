@@ -4,11 +4,7 @@ using System.Collections;
 public class VentScript : MonoBehaviour {
 
 	public VentScript m_OtherVent;
-<<<<<<< HEAD
-	//public GameManager m_GameManager;
-	public Player m_Player;
-=======
->>>>>>> refs/remotes/origin/master
+
 	private Vector3 m_ApparitionPosition;
 	private Vector3 m_TempVel;
 
@@ -27,15 +23,9 @@ public class VentScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-<<<<<<< HEAD
-            //if (m_GameManager.GetPlayerState() == Player.State.Gas)
-            if ( GameManager.GetGameRules().GetPlayerState() == Player.State.Gas )
-                TeleportToOtherVent();
-			//Invoke("TeleportToOtherVent", 0.1f);
-=======
+
 			if (GameManager.GetPlayer().GetState() == Player.State.Gas)
 				TeleportToOtherVent();
->>>>>>> refs/remotes/origin/master
 		}
 	}
 

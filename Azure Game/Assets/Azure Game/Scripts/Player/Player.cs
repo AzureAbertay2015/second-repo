@@ -4,27 +4,21 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     // Defines
-<<<<<<< HEAD
+
     const string SOLID_MODEL = "RollerBall"; //"CubePrototype02x02x02";
     const string LIQUID_MODEL = "RollerBall";
     const string GAS_MODEL = "RollerBall";
-=======
-    const string SOLID_MODEL = "CubePrototype02x02x02";
-    const string LIQUID_MODEL = "CubePrototype02x02x02";
-    const string GAS_MODEL = "CubePrototype02x02x02";
->>>>>>> refs/remotes/origin/master
 
     const string SOLID_MATERIAL = "Black Grid";
     const string LIQUID_MATERIAL = "Blue";
     const string GAS_MATERIAL = "Green";
 
-<<<<<<< HEAD
     const string SOLID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerSolidPhysics";
     const string LIQUID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerLiquidPhysics";
     const string GAS_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerGasPhysics";
-    
-=======
->>>>>>> refs/remotes/origin/master
+
+    const string PLAYER_MODEL_PREFAB = "PlayerModel";
+
     const string PLAYER_TAG = "Player";
 
     // Temperature states
@@ -37,11 +31,11 @@ public class Player : MonoBehaviour {
     private Mesh m_pLiquidMesh;
     private Mesh m_pGasMesh;
 
-<<<<<<< HEAD
     private Mesh[] m_pMeshes;
     private Material[] m_pMaterials;
     private PhysicMaterial[] m_pPhysicMaterials;
 
+/*
     private Material m_SolidMaterial;
     private Material m_LiquidMaterial;
     private Material m_GasMaterial;
@@ -49,12 +43,8 @@ public class Player : MonoBehaviour {
     private PhysicMaterial m_pSolidPhysicMaterial;
     private PhysicMaterial m_pLiquidPhysicMaterial;
     private PhysicMaterial m_pGasPhysicMaterial;
-=======
-    private Material m_SolidMaterial;
-    private Material m_LiquidMaterial;
-    private Material m_GasMaterial;
->>>>>>> refs/remotes/origin/master
-        
+*/
+            
     [SerializeField]
     private float m_MovePower = 10; // The force added to the player to move it.
     [SerializeField]
@@ -63,17 +53,12 @@ public class Player : MonoBehaviour {
     public float m_JumpPower = 20; // The force added to the ball when it jumps.
 
     private const float k_GroundRayLength = 1f; // The length of the ray to check if the ball is grounded.
+
     private Rigidbody m_Rigidbody;
-    
-    private void LoadPlayerResources()
-    { 
-        GameObject o;
-        m_State = State.Solid;
-        m_PreviousState = State.Solid;
-
-<<<<<<< HEAD
     private SphereCollider m_SphereCollider;
-
+    private ParticleSystem m_GasParticleSystem;
+    private PlayerModel m_PlayerModel;
+   
     private void LoadPlayerResources()
     { 
         GameObject o;
@@ -94,10 +79,13 @@ public class Player : MonoBehaviour {
         m_pPhysicMaterials[1] = Resources.Load(LIQUID_PHYSIC_MATERIAL) as PhysicMaterial;
 
         o = Instantiate(Resources.Load(GAS_MODEL)) as GameObject;
-        m_pMeshes[2] = o.GetComponent<MeshFilter>().mesh;
+       // m_pMeshes[2] = o.GetComponent<MeshFilter>().mesh;
         m_pMaterials[2] = Resources.Load(GAS_MATERIAL) as Material;
         m_pPhysicMaterials[2] = Resources.Load(GAS_PHYSIC_MATERIAL) as PhysicMaterial;
 
+        o = Instantiate(Resources.Load(PLAYER_MODEL_PREFAB)) as GameObject;
+        m_PlayerModel = o.GetComponent<PlayerModel>();
+        m_PlayerModel.SetHostPlayer(this);
 
         /*
         o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
@@ -134,11 +122,6 @@ public class Player : MonoBehaviour {
         //SetMaterial(m_SolidMaterial);
 
         //ChangeState(State.Solid);
-=======
-
-        SetMesh(m_pSolidMesh);
-        SetMaterial(m_SolidMaterial);
->>>>>>> refs/remotes/origin/master
 
     }
 
@@ -146,30 +129,22 @@ public class Player : MonoBehaviour {
     {
         LoadPlayerResources();
 
-<<<<<<< HEAD
         m_Rigidbody = GetComponent<Rigidbody>();
         m_SphereCollider = GetComponent<SphereCollider>();
-
+        m_GasParticleSystem = GetComponent<ParticleSystem>();
+        
         ChangeState(State.Solid);
               
         // Set the maximum angular velocity.
         GetComponent<Rigidbody>().maxAngularVelocity = m_MaxAngularVelocity;
-                
-=======
-        ChangeState(State.Solid);
 
-        m_Rigidbody = GetComponent<Rigidbody>();
-        // Set the maximum angular velocity.
-        GetComponent<Rigidbody>().maxAngularVelocity = m_MaxAngularVelocity;
-
->>>>>>> refs/remotes/origin/master
         // Ensure our tag is always Player!
         gameObject.tag = "Player";
     }
         
     private void SetMesh(Mesh target_mesh)
     {
-<<<<<<< HEAD
+
        // GetComponent<MeshFilter>().mesh = target_mesh;
         // switch the collider
 
@@ -201,8 +176,7 @@ public class Player : MonoBehaviour {
         }
 <<<<<<< HEAD
         */
-=======
->>>>>>> refs/remotes/origin/master
+
     }
 
     private void SetMaterial(Material target_material)
@@ -210,7 +184,6 @@ public class Player : MonoBehaviour {
         GetComponent<MeshRenderer>().material = target_material;
     }
 
-<<<<<<< HEAD
     private void Awake()
     {
         InitPlayer();
@@ -218,14 +191,12 @@ public class Player : MonoBehaviour {
 
     private void Start()
     {
-        
-=======
-    private void Start()
-    {
-        InitPlayer();
->>>>>>> refs/remotes/origin/master
+          InitPlayer();
     }
-
+    
+    private void Update()
+    {
+    }   
 
     public void Move(Vector3 moveDirection, bool jump)
     {
@@ -285,50 +256,37 @@ public class Player : MonoBehaviour {
         switch (state)
         {
             case State.Solid:
-<<<<<<< HEAD
+
                 //SetMesh(m_pSolidMesh);
                 //SetMaterial(m_SolidMaterial);
                 m_State = State.Solid;
+                m_GasParticleSystem.enableEmission = false;
                 break;
             case State.Liquid:
                 //SetMesh(m_pLiquidMesh);
                 //SetMaterial(m_LiquidMaterial);
                 m_State = State.Liquid;
+                m_GasParticleSystem.enableEmission = false;
                 break;
             case State.Gas:
-                //SetMesh(m_pGasMesh);
+               // SetMesh(m_pGasMesh);
                 //SetMaterial(m_GasMaterial);
-=======
-                SetMesh(m_pSolidMesh);
-                SetMaterial(m_SolidMaterial);
-                m_State = State.Solid;
-                break;
-            case State.Liquid:
-                SetMesh(m_pLiquidMesh);
-                SetMaterial(m_LiquidMaterial);
-                m_State = State.Liquid;
-                break;
-            case State.Gas:
-                SetMesh(m_pGasMesh);
-                SetMaterial(m_GasMaterial);
->>>>>>> refs/remotes/origin/master
                 m_State = State.Gas;
+                m_GasParticleSystem.enableEmission = true;
                 break;
 
             default:
                 break;
         }
 
-<<<<<<< HEAD
+
         GetComponent<MeshFilter>().mesh = m_pMeshes[(int)state];
         GetComponent<MeshRenderer>().material = m_pMaterials[(int)state];
-               
+              
         m_SphereCollider.sharedMaterial = m_pPhysicMaterials[(int)state];
         m_SphereCollider.enabled = false;
         m_SphereCollider.enabled = true;
 
-=======
->>>>>>> refs/remotes/origin/master
         SetupLayer();
 
     }

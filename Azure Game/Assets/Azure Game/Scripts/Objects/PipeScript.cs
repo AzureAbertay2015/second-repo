@@ -2,12 +2,8 @@
 using System.Collections;
 
 public class PipeScript : MonoBehaviour {
-<<<<<<< HEAD
 
-	//public GameManager m_GameManager;
-=======
->>>>>>> refs/remotes/origin/master
-	private Vector3 m_EndPosition1;
+    private Vector3 m_EndPosition1;
 	private Vector3 m_EndPosition2;
 	private enum ClosestEnd { end1, end2 };
 	private ClosestEnd m_ClosestEnd;
@@ -31,14 +27,8 @@ public class PipeScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-<<<<<<< HEAD
-            //if (m_GameManager.GetPlayerState() == Player.State.Gas)
-            if ( GameManager.GetGameRules().GetPlayerState() == Player.State.Gas )
-            {
-=======
 			if (GameManager.GetPlayer().GetState() == Player.State.Liquid)
 			{
->>>>>>> refs/remotes/origin/master
 				//other.gameObject.transform.position = m_EndPosition;
 				Debug.Log("Player piped");
 				FindNearestEnd(other.transform.position);
