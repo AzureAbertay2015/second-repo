@@ -71,13 +71,13 @@ public class PlayerControls : MonoBehaviour {
         if (e && !e_up)
         {
             e_up = true;
-			m_pPlayer.RaiseState();
+			//m_pPlayer.RaiseState();
         }
 
         if (q && !q_up)
         {
             q_up = true;
-			m_pPlayer.LowerState();
+			//m_pPlayer.LowerState();
         }
         
         // calculate move direction

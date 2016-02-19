@@ -68,9 +68,7 @@ public class Player : MonoBehaviour {
     private void InitPlayer()
     {
         LoadPlayerResources();
-
-        ChangeState(State.Solid);
-
+        
         m_Rigidbody = GetComponent<Rigidbody>();
         // Set the maximum angular velocity.
         GetComponent<Rigidbody>().maxAngularVelocity = m_MaxAngularVelocity;
@@ -162,29 +160,22 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void ChangeState(State state)
+    public void ChangeState(int state)
 	{
-
-        if (state < State.Solid)
-            state = State.Solid;
-
-        if (state > State.Gas)
-            state = State.Gas;
-            
 
         switch (state)
         {
-            case State.Solid:
+            case 0:
                 SetMesh(m_pSolidMesh);
                 SetMaterial(m_SolidMaterial);
                 m_State = State.Solid;
                 break;
-            case State.Liquid:
+            case 1:
                 SetMesh(m_pLiquidMesh);
                 SetMaterial(m_LiquidMaterial);
                 m_State = State.Liquid;
                 break;
-            case State.Gas:
+            case 2:
                 SetMesh(m_pGasMesh);
                 SetMaterial(m_GasMaterial);
                 m_State = State.Gas;
@@ -201,16 +192,6 @@ public class Player : MonoBehaviour {
     public State GetState()
     {
         return m_State;
-    }
-
-    public void RaiseState()
-    {
-        ChangeState(++m_State);
-    }
-
-    public void LowerState()
-    {
-        ChangeState(--m_State);
     }
  
 }

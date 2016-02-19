@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 8c41e2a010504184e8726fc535a6dbdb
-timeCreated: 1455274307
+timeCreated: 1455466802
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_Tempmanager: {fileID: 11467060, guid: 46f0da7986133a94db65d042fe58aafe, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
