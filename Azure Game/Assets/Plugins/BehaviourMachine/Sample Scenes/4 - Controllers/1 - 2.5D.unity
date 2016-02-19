@@ -8,25 +8,25 @@ SceneSettings:
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
     smallestOccluder: 5
-    smallestHole: .25
+    smallestHole: 0.25
     backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Fog: 0
-  m_FogColor: {r: .5, g: .5, b: .5, a: 1}
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: .00999999978
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: .200000003, g: .200000003, b: .200000003, a: 1}
-  m_AmbientEquatorColor: {r: .200000003, g: .200000003, b: .200000003, a: 1}
-  m_AmbientGroundColor: {r: .200000003, g: .200000003, b: .200000003, a: 1}
+  m_AmbientSkyColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_AmbientEquatorColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_AmbientGroundColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SkyboxMaterial: {fileID: 0}
-  m_HaloStrength: .5
+  m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -40,7 +40,7 @@ RenderSettings:
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 5
+  serializedVersion: 6
   m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
@@ -66,7 +66,7 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightmapSnapshot: {fileID: 0}
+  m_LightingDataAsset: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
 NavMeshSettings:
@@ -74,15 +74,15 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentRadius: .5
+    agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: .400000006
+    agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 2
-    cellSize: .166666657
+    cellSize: 0.16666666
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &359430844
@@ -125,8 +125,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -142,10 +144,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: .500000119
+  m_Radius: 0.5000001
   m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &359430847
@@ -162,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359430844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.60000002, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1397074770}
@@ -201,7 +203,6 @@ MonoBehaviour:
   m_TextureVars: []
   m_MaterialVars: []
   m_ObjectVars: []
-  m_DynamicLists: []
   m_FsmEvents: []
   m_ConcreteFsmEvents: []
   m_Namespace: 
@@ -223,75 +224,99 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 30, y: 70}
   m_Transitions: []
-  m_CachedInstanceID: 27630
+  m_CachedInstanceID: 54666
   m_Description: 54686520706c6179657220436f6e74726f6c6c6572
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
   m_EnabledStates: []
   m_NodeSerialization:
     m_NodeTypes:
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    m_NodeTypeHash: 38ebee3938ebee3938ebee3938ebee3938ebee3938ebee3938ebee3938ebee39
-    m_NodeFieldStartIndex: 000000000300000006000000090000000c0000000f000000120000001500000018000000
+    - 4265686176696f75724d616368696e652e557064617465
+    - 4265686176696f75724d616368696e652e5072696f7269747953657175656e6365
+    - 4265686176696f75724d616368696e652e49734b6579446f776e
+    - 4265686176696f75724d616368696e652e497347726f756e646564
+    - 4265686176696f75724d616368696e652e417564696f506c6179
+    - 4265686176696f75724d616368696e652e426f6f6c536574
+    - 4265686176696f75724d616368696e652e4765744178697332
+    - 4265686176696f75724d616368696e652e4d6f7665
+    m_NodeTypeHash: 89ef8210fbd4a94442292c3c71d4c489de52ceaabb8eb60c21771d0eacbbda70
+    m_NodeFieldStartIndex: 000000000300000005000000090000000d00000011000000160000001d00000029000000
     m_BranchIndex: ffffffff00000000010000000100000001000000010000000000000000000000
     m_UnityObjectValue: []
-    m_IntValue: 0000000000000000000000000000000000000000000000000000000000000000
-    m_FloatValue: []
+    m_IntValue: 0300000001000000050000000100000020000000020000000600000007000000034221660100000008000000000000006c3ebe5209000000000000006c3ebe520100000003422166
+    m_FloatValue:
+    - 1
+    - 4
+    - 10
     m_StringValue:
-    - MissingNode
-    - 4265686176696f75724d616368696e652e557064617465
-    - MissingNode
-    - 4265686176696f75724d616368696e652e5072696f7269747953657175656e6365
-    - MissingNode
-    - 4265686176696f75724d616368696e652e49734b6579446f776e
-    - MissingNode
-    - 4265686176696f75724d616368696e652e497347726f756e646564
-    - MissingNode
-    - 4265686176696f75724d616368696e652e417564696f506c6179
-    - MissingNode
-    - 4265686176696f75724d616368696e652e426f6f6c536574
-    - MissingNode
-    - 4265686176696f75724d616368696e652e4765744178697332
-    - MissingNode
-    - 4265686176696f75724d616368696e652e4d6f7665
+    - 557064617465
+    - 5072696f7269747953657175656e6365
+    - 49734b6579446f776e
+    - 4265686176696f75724d616368696e652e46736d4576656e74
+    - 497347726f756e646564
+    - 4265686176696f75724d616368696e652e46736d4576656e74
+    - 4265686176696f75724d616368696e652e436f6e637265746547616d654f626a656374566172
+    - 417564696f506c6179
+    - 4265686176696f75724d616368696e652e436f6e637265746547616d654f626a656374566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 426f6f6c536574
+    - 4765744178697332
+    - 4265686176696f75724d616368696e652e436f6e6372657465537472696e67566172
+    - 4d6f7665
+    - 4265686176696f75724d616368696e652e436f6e637265746547616d654f626a656374566172
     m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 000000000000000001000000010000000200000003000000020000000400000005000000030000000600000007000000040000000800000009000000050000000a0000000b000000060000000c0000000d000000070000000e0000000f000000
-    m_FieldType: 010000000200000002000000010000000200000002000000010000000200000002000000010000000200000002000000010000000200000002000000010000000200000002000000010000000200000002000000010000000200000002000000
+    m_GenericFieldType:
+    - 4265686176696f75724d616368696e652e436f6e6372657465426f6f6c566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465426f6f6c566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    m_GenericFieldHash: e4b98a66264ce8ef264ce8efe4b98a66264ce8ef
+    m_GenericFieldSize: 0100000001000000010000000100000001000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000200000003000000040000000500000004000000050000000600000006000000070000000800000009000000070000000a0000000800000000000000090000000a0000000b0000000c0000000b0000000c00000001000000000000000d0000000d0000000e0000000e0000000f00000002000000010000000300000010000000110000000400000002000000
+    m_FieldType: 0100000002000000050000000100000002000000010000000200000011000000040000000100000002000000110000001100000001000000020000001100000011000000010000000200000014000000100000000500000001000000020000001100000004000000160000001000000003000000010000000200000011000000040000001600000010000000030000001000000005000000140000001000000003000000
     m_FieldPath:
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
+    - 696e7374616e63654944
+    - 6e616d65
+    - 656e61626c6564
+    - 696e7374616e63654944
+    - 6e616d65
+    - 696e7374616e63654944
+    - 6e616d65
+    - 6f6e53756363657373
+    - 6b6579436f6465
+    - 696e7374616e63654944
+    - 6e616d65
+    - 6f6e53756363657373
+    - 67616d654f626a656374
+    - 696e7374616e63654944
+    - 6e616d65
+    - 67616d654f626a656374
+    - 64656c6179
+    - 696e7374616e63654944
+    - 6e616d65
+    - 7661726961626c65
+    - 6e657756616c7565
+    - 6e657756616c75652e76616c7565
+    - 696e7374616e63654944
+    - 6e616d65
+    - 617869734e616d65
+    - 73746f726541786973436f6d706f6e656e74
+    - 73746f726541786973
+    - 6d756c7469706c696572
+    - 6d756c7469706c6965722e76616c7565
+    - 696e7374616e63654944
+    - 6e616d65
+    - 67616d654f626a656374
+    - 7370616365
+    - 646972656374696f6e
+    - 7370656564
+    - 73706565642e76616c7565
+    - 75736547726176697479
+    - 757365477261766974792e76616c7565
+    - 6a756d70
+    - 6a756d705370656564
+    - 6a756d7053706565642e76616c7565
 --- !u!54 &359430852
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -301,7 +326,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -347,6 +372,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -357,6 +383,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -367,6 +394,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -377,6 +405,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &465963413
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,8 +442,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -486,8 +517,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -574,14 +607,14 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .156862751, g: .156862751, b: .137254909, a: .0196078438}
+  m_BackGroundColor: {r: 0.15686275, g: 0.15686275, b: 0.13725491, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -597,7 +630,7 @@ Camera:
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
+  m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
 --- !u!4 &617197142
 Transform:
@@ -629,35 +662,48 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 27668
+  m_CachedInstanceID: 54704
   m_NodeSerialization:
     m_NodeTypes:
-    - BehaviourMachine.MissingNode
-    - BehaviourMachine.MissingNode
-    m_NodeTypeHash: 38ebee3938ebee39
-    m_NodeFieldStartIndex: 000000000300000006000000
-    m_BranchIndex: ffffffffffffffff
-    m_UnityObjectValue: []
-    m_IntValue: 0000000000000000
-    m_FloatValue: []
-    m_StringValue:
-    - MissingNode
     - 4265686176696f75724d616368696e652e45766572794672616d65
-    - MissingNode
     - 4265686176696f75724d616368696e652e4d6f7665546f7761726473
+    m_NodeTypeHash: 89ef82109b995567
+    m_NodeFieldStartIndex: 00000000030000000d000000
+    m_BranchIndex: ffffffffffffffff
+    m_UnityObjectValue:
+    - {fileID: 1397074769}
+    m_IntValue: 010000000100000002000000
+    m_FloatValue:
+    - 6
+    m_StringValue:
+    - 45766572794672616d65
+    - 4d6f7665546f7761726473
+    - 4265686176696f75724d616368696e652e436f6e637265746547616d654f626a656374566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465426f6f6c566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465426f6f6c566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465426f6f6c566172
     m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 000000000000000001000000010000000200000003000000
-    m_FieldType: 010000000200000002000000010000000200000002000000
+    m_GenericFieldType:
+    - 4265686176696f75724d616368696e652e436f6e637265746547616d654f626a656374566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    m_GenericFieldHash: e5faf787264ce8ef
+    m_GenericFieldSize: 0100000001000000
+    m_FieldIndex: 00000000000000000100000002000000010000000200000000000000000000000100000000000000030000000400000005000000
+    m_FieldType: 010000000200000005000000010000000200000011000000100000000f0000001000000003000000110000001100000011000000
     m_FieldPath:
-    - instanceID
-    - name
-    - missingNodeType
-    - instanceID
-    - name
-    - missingNodeType
+    - 696e7374616e63654944
+    - 6e616d65
+    - 656e61626c6564
+    - 696e7374616e63654944
+    - 6e616d65
+    - 6f626a656374546f4d6f7665
+    - 746172676574506f736974696f6e
+    - 746172676574506f736974696f6e2e76616c7565
+    - 7370656564
+    - 73706565642e76616c7565
+    - 69676e6f72655841786973
+    - 69676e6f72655941786973
+    - 69676e6f72655a41786973
   m_Description: 466f6c6c6f7773207468652043616d657261546172676574506f732e
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -684,7 +730,6 @@ MonoBehaviour:
   m_TextureVars: []
   m_MaterialVars: []
   m_ObjectVars: []
-  m_DynamicLists: []
   m_FsmEvents: []
   m_ConcreteFsmEvents: []
   m_Namespace: 
@@ -724,8 +769,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -797,8 +844,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -870,8 +919,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -970,8 +1021,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -1041,8 +1094,9 @@ Light:
     m_Type: 2
     m_Resolution: 3
     m_Strength: 1
-    m_Bias: .0500000007
-    m_NormalBias: .400000006
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -1061,7 +1115,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1600812195}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
+  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
   m_LocalPosition: {x: 0, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1103,8 +1157,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -1176,8 +1232,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
