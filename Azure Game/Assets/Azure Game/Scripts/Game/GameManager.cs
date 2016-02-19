@@ -59,6 +59,7 @@ class GameManager
         return g_pGameRules;
     }
 
+
     // This is called by GameManagerObject's Awake() - No scene objects are available at this time.
     public static void LevelLoadBegin()
     {
@@ -70,6 +71,7 @@ class GameManager
 
         o = Object.Instantiate(Resources.Load(GAMERULES_NAME)) as GameObject;
         g_pGameRules = o.GetComponent<GameRules>();
+
     }
 
     // This is called by GameManagerObject's Start() - Scene objects are available.
