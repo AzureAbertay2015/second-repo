@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
 
     public float m_JumpPower = 20; // The force added to the ball when it jumps.
 
-    private const float k_GroundRayLength = 1f; // The length of the ray to check if the ball is grounded.
+    private const float k_GroundRayLength = 2f; // The length of the ray to check if the ball is grounded.
 
     private Rigidbody m_Rigidbody;
     private SphereCollider m_SphereCollider;
@@ -122,10 +122,12 @@ public class Player : MonoBehaviour {
 
     private void UpdateOnGround()
     {
+        Vector3 startPosition = transform.localPosition;
+        startPosition.z++;
 
-        Ray ray = new Ray(transform.localPosition, -Vector3.up);
+        Ray ray = new Ray(startPosition, -Vector3.up);
        
-        m_bOnGround = Physics.Raycast(ray, out m_GroundEntityData);
+        m_bOnGround = Physics.Raycast(ray, out m_GroundEntityData, k_GroundRayLength, 1 );
 
     }
 
@@ -151,10 +153,24 @@ public class Player : MonoBehaviour {
             gravity = m_GravityForceGas;
         }
 
+       
+
         UpdateOnGround();
 
+        Vector3 dir = moveDirection;
+
+        if (!m_bOnGround)
+            power = m_MovePower * m_ForceMultiplierGas;
+       //else
+         //  dir += m_GroundEntityData.normal;
+
+
+        dir.Normalize();
+
+        dir.y = 0;
+
         // Otherwise add force in the move direction.
-        m_Rigidbody.AddForce(moveDirection * power);
+        m_Rigidbody.AddForce(dir * power);
 
         if (m_bOnGround)
             Debug.Log("Ground Normal is " + m_GroundEntityData.normal);
@@ -188,15 +204,12 @@ public class Player : MonoBehaviour {
             case State.Solid:
                return 9;
                 //Debug.Log("Layer changed to: " + player.gameObject.layer);
-                break;
             case State.Liquid:
                return 10;// water
                                       //Debug.Log("Layer changed to: " + player.gameObject.layer);
-                break;
             case State.Gas:
                 return 11;
                 //Debug.Log("Layer changed to: " + player.gameObject.layer);
-                break;
             default:
                 Debug.Assert(false); // This should never happen!
                 break;
