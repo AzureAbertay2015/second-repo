@@ -2,38 +2,37 @@
 using System.Collections;
 
 public class SwitchScript : MonoBehaviour {
-
-	public Quaternion m_OpenRotation;
-	public Quaternion m_ClosedRotation;
-
 	public bool m_SwitchState;
 
 	public enum SwitchType { AirConditioner, Heater };
 	public SwitchType m_SwitchType;
+	protected HeaterEmissionScript m_HeaterEmissionScript;
+	protected CoolerEmissionScript m_CoolerEmissionScript;
 	
 	// Use this for initialization
 	void Start () {
-		m_OpenRotation = Quaternion.Euler(6, 0, 0);
-		m_ClosedRotation = Quaternion.Euler(354, 0, 0);
-		m_SwitchState = false;	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	
+		transform.GetChild(0).gameObject.transform.Rotate(6, 0, 0, Space.Self);
+		m_SwitchState = true;
+		if (m_SwitchType == SwitchType.Heater)
+			m_HeaterEmissionScript = gameObject.transform.GetChild(1).GetComponent<HeaterEmissionScript>();
+		else
+			m_CoolerEmissionScript = gameObject.transform.GetChild(1).GetComponent<CoolerEmissionScript>();
 	}
 
 	public void SwitchOn()
 	{
 		m_SwitchState = true;
 		GameObject o = this.transform.GetChild(0).gameObject;
-		o.transform.rotation = m_OpenRotation;
-		if (m_SwitchType == SwitchType.AirConditioner) {
+		o.transform.Rotate(12, 0, 0, Space.Self);
+		if (m_SwitchType == SwitchType.AirConditioner)
+		{
 			GameManager.GetGameRules().CoolDownRoom();
+			m_CoolerEmissionScript.EmissionSwitchOn();
 		}
-		else if (m_SwitchType == SwitchType.Heater) {
+		else if (m_SwitchType == SwitchType.Heater)
+		{
 			GameManager.GetGameRules().HeatUpRoom();
+			m_HeaterEmissionScript.EmissionSwitchOn();
 		}
 	}
 
@@ -41,14 +40,16 @@ public class SwitchScript : MonoBehaviour {
 	{
 		m_SwitchState = false;
 		GameObject o = this.transform.GetChild(0).gameObject;
-		o.transform.rotation = m_ClosedRotation;
+		o.transform.Rotate(348, 0, 0, Space.Self);
 		if (m_SwitchType == SwitchType.AirConditioner)
 		{
 			GameManager.GetGameRules().HeatUpRoom();
+			m_CoolerEmissionScript.EmissionSwitchOff();
 		}
 		else if (m_SwitchType == SwitchType.Heater)
 		{
 			GameManager.GetGameRules().CoolDownRoom();
+			m_HeaterEmissionScript.EmissionSwitchOff();
 		}
 	}
 
