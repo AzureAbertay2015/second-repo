@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fourth Wall
   - Interactive
+  - EnergyBar
+  - TemperatureManager
   layers:
   - Default
   - TransparentFX
