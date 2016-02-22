@@ -251,6 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df43022aea58ff468a19d070ac8ca2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PullForce: 0
+  m_PullerType: 0
 --- !u!1001 &125807539
 Prefab:
   m_ObjectHideFlags: 0
@@ -1044,6 +1046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ca134f4382eb747a19be35c0186148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraOffset: {x: 0, y: 0, z: 0}
+  fourthWall: {fileID: 0}
 --- !u!1001 &702759768
 Prefab:
   m_ObjectHideFlags: 0
@@ -1250,6 +1254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfc7b5af8c9da940974c19141b9623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_OtherVent: {fileID: 0}
+  m_ApparitionDistance: 0
 --- !u!65 &778310490
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1374,6 +1380,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1f477b742d10b4fb8bfb306bd5f388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_State: 0
+  m_MovePower: 10
+  m_MaxAngularVelocity: 25
+  m_JumpPower: 20
 --- !u!54 &799539058
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1644,6 +1654,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef409a1640837734588cdbd781c9694f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PathName: 
+  m_LoopType: 0
+  m_EaseType: 0
+  m_MoveToPath: 0
+  m_Time: 0
+  m_Delay: 0
+  m_IsRunning: 0
+  m_isPaused: 0
 --- !u!114 &987134977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,6 +1673,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathName: 
+  pathColor: {r: 0, g: 1, b: 1, a: 1}
+  nodes:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  nodeCount: 0
+  initialized: 0
+  initialName: 
+  pathVisible: 1
 --- !u!4 &991542460 stripped
 Transform:
   m_PrefabParentObject: {fileID: 403878, guid: d9d020ab683683d49a530ddac6e9d9a6, type: 2}
