@@ -48,6 +48,7 @@ GameObject:
   - 4: {fileID: 468584}
   - 114: {fileID: 11488314}
   - 114: {fileID: 11450126}
+  - 114: {fileID: 11476404}
   m_Layer: 0
   m_Name: RotatingTrapPrefab
   m_TagString: Untagged
@@ -219,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.8400002, y: 18.4300003, z: -1.11000001}
+  m_LocalPosition: {x: 33.9700012, y: 23.1299992, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444122}
@@ -781,6 +782,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11476404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathName: Rotating Trap Path
+  pathColor: {r: 0, g: 1, b: 1, a: 1}
+  nodes:
+  - {x: 34, y: 23, z: -1}
+  - {x: 0, y: 23, z: -1}
+  nodeCount: 2
+  initialized: 1
+  initialName: New Path 1
+  pathVisible: 1
 --- !u!114 &11486996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -800,10 +821,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 116292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf44cc0e14ed4049ad2a023eb68750a, type: 3}
+  m_Script: {fileID: 11500000, guid: ef409a1640837734588cdbd781c9694f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationSpeed: 5
+  m_PathName: 
+  m_LoopType: 1
+  m_EaseType: 0
+  m_MoveToPath: 1
+  m_Time: 0
+  m_Delay: 0
+  m_IsRunning: 1
+  m_isPaused: 0
 --- !u!114 &11491662
 MonoBehaviour:
   m_ObjectHideFlags: 1
