@@ -220,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.9700012, y: 23.1299992, z: -1}
+  m_LocalPosition: {x: 34, y: 23, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444122}
@@ -824,11 +824,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef409a1640837734588cdbd781c9694f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PathName: 
-  m_LoopType: 1
+  m_PathName: Rotating Trap Path
+  m_LoopType: 2
   m_EaseType: 0
   m_MoveToPath: 1
-  m_Time: 0
+  m_Time: 2
   m_Delay: 0
   m_IsRunning: 1
   m_isPaused: 0

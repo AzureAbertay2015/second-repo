@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class GameRules : MonoBehaviour {
 
-    public enum PlayerState { Solid, Liquid, Gas };
     
     private bool m_PlayerAlive;
     public TemperatureManager m_Tempmanager;
@@ -127,6 +126,5 @@ public class GameRules : MonoBehaviour {
     public void CoolDownPlayer()
     {
         m_Tempmanager.ChangePlayerTemp(-20.0f);
-    }
-       
+    }       
 }

@@ -15,11 +15,11 @@ public class TemperatureManager : MonoBehaviour {
     public float m_Abilitytempchange;
 
     private EnergyBarScript m_Energyscript;
-    
+    private TemperatureScript[] m_temperatureScripts;
 
 	// Use this for initialization
-	void Start () {
-        
+	void Start ()
+    {        
         m_Roomtemp = 20.0f;
         m_Playertemp = -10.0f;
         m_Prevplayertemp = m_Playertemp;
@@ -29,9 +29,9 @@ public class TemperatureManager : MonoBehaviour {
         m_Abilitytempchange = 20.0f;
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
-        
+        m_temperatureScripts = FindObjectsOfType(typeof(TemperatureScript)) as TemperatureScript[]; 
     }
-	
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -65,7 +65,7 @@ public class TemperatureManager : MonoBehaviour {
 
         if (m_Playertemp < m_Roomtemp)
         {
-            m_Playertemp += m_Tempchange * Time.deltaTime; ;
+            m_Playertemp += m_Tempchange * Time.deltaTime; 
         }
 
         if (m_Playertemp >= m_LiqGascutoff && m_Prevplayertemp < m_LiqGascutoff)
@@ -74,7 +74,7 @@ public class TemperatureManager : MonoBehaviour {
             GameManager.GetPlayer().ChangeState(2);
         }
 
-        if (m_Playertemp >= m_SolidLiqcutoff &&  m_Playertemp < m_LiqGascutoff && (m_Prevplayertemp >= m_LiqGascutoff || m_Prevplayertemp < m_SolidLiqcutoff))
+        if (m_Playertemp >= m_SolidLiqcutoff && m_Playertemp < m_LiqGascutoff && (m_Prevplayertemp >= m_LiqGascutoff || m_Prevplayertemp < m_SolidLiqcutoff))
         {
             //Debug.Log("LIQUID");
             GameManager.GetPlayer().ChangeState(1);
@@ -88,6 +88,36 @@ public class TemperatureManager : MonoBehaviour {
 
         m_Prevplayertemp = m_Playertemp;
 
+        foreach (TemperatureScript m_temperatureScript in m_temperatureScripts)
+        {
+            if (m_temperatureScript.m_temp > m_Roomtemp)
+            {
+                m_temperatureScript.m_temp -= m_Tempchange * Time.deltaTime;
+            }
+
+            if (m_temperatureScript.m_temp < m_Roomtemp)
+            {
+                m_temperatureScript.m_temp += m_Tempchange * Time.deltaTime;
+            }
+
+            if (m_temperatureScript.m_temp >= m_temperatureScript.m_LiquidGasCutoff && m_temperatureScript.m_prevTemp < m_temperatureScript.m_LiquidGasCutoff)
+            {
+                //Debug.Log("GAS");
+                //GameManager.GetPlayer().ChangeState(2);
+            }
+
+            if (m_temperatureScript.m_temp >= m_temperatureScript.m_SolidLiquidCutoff && m_temperatureScript.m_temp < m_LiqGascutoff && (m_temperatureScript.m_prevTemp >= m_temperatureScript.m_LiquidGasCutoff || m_temperatureScript.m_prevTemp < m_temperatureScript.m_SolidLiquidCutoff))
+            {
+                //Debug.Log("LIQUID");
+                //GameManager.GetPlayer().ChangeState(1);
+            }
+
+            if (m_temperatureScript.m_temp < m_temperatureScript.m_SolidLiquidCutoff && m_temperatureScript.m_prevTemp >= m_temperatureScript.m_SolidLiquidCutoff)
+            {
+                //Debug.Log("SOLID");
+                //GameManager.GetPlayer().ChangeState(0);
+            }
+        }
     }
 
     public void ChangeRoomTemp(float t)
