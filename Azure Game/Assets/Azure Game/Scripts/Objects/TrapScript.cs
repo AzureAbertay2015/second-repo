@@ -2,15 +2,16 @@
 using System.Collections;
 
 public class TrapScript : MonoBehaviour {
-
-	//public GameManager m_GameManager;
+    
 	// Use this for initialization
 	void Start () {
+
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 
