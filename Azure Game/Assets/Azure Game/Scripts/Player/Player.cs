@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     // Defines
+    [SerializeField]
     const string SOLID_MODEL = "CubePrototype02x02x02";
     const string LIQUID_MODEL = "CubePrototype02x02x02";
     const string GAS_MODEL = "CubePrototype02x02x02";
@@ -14,15 +15,14 @@ public class Player : MonoBehaviour {
 
     const string PLAYER_TAG = "Player";
 
-    // Temperature states
-    
+    // Temperature states    
     public enum State { Solid, Liquid, Gas };
     public State m_State;
     private State m_PreviousState;
 
-    private Mesh m_pSolidMesh;
-    private Mesh m_pLiquidMesh;
-    private Mesh m_pGasMesh;
+    public Mesh m_pSolidMesh;
+    public Mesh m_pLiquidMesh;
+    public Mesh m_pGasMesh;
 
     private Material m_SolidMaterial;
     private Material m_LiquidMaterial;
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
         m_State = State.Solid;
         m_PreviousState = State.Solid;
 
-        o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
+        /*o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
         m_pSolidMesh = o.GetComponent<MeshFilter>().mesh;
         o.SetActive(false);
 
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
 
         o = Instantiate(Resources.Load(GAS_MODEL)) as GameObject;
         m_pGasMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
+        o.SetActive(false);*/
 
         m_SolidMaterial = Resources.Load(SOLID_MATERIAL) as Material;
         m_LiquidMaterial = Resources.Load(LIQUID_MATERIAL) as Material;

@@ -7,7 +7,7 @@ public class TemperatureManager : MonoBehaviour {
     public float m_Playertemp;
     public float m_Prevplayertemp;
 
-    public float m_Tempchange;
+    public float m_TemperatureChange;
 
     public float m_LiqGascutoff;
     public float m_SolidLiqcutoff;
@@ -15,7 +15,7 @@ public class TemperatureManager : MonoBehaviour {
     public float m_Abilitytempchange;
 
     private EnergyBarScript m_Energyscript;
-    private TemperatureScript[] m_temperatureScripts;
+    private StateChanger[] m_stateChangers;
 
 	// Use this for initialization
 	void Start ()
@@ -25,11 +25,11 @@ public class TemperatureManager : MonoBehaviour {
         m_Prevplayertemp = m_Playertemp;
         m_LiqGascutoff = 40.0f;
         m_SolidLiqcutoff = 10.0f;
-        m_Tempchange = 2.0f;
+        m_TemperatureChange = 2.0f;
         m_Abilitytempchange = 20.0f;
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
-        m_temperatureScripts = FindObjectsOfType(typeof(TemperatureScript)) as TemperatureScript[]; 
+        m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[]; 
     }
 
 	// Update is called once per frame
@@ -60,12 +60,12 @@ public class TemperatureManager : MonoBehaviour {
 
         if (m_Playertemp > m_Roomtemp)
         {
-            m_Playertemp -= m_Tempchange * Time.deltaTime;
+            m_Playertemp -= m_TemperatureChange * Time.deltaTime;
         }
 
         if (m_Playertemp < m_Roomtemp)
         {
-            m_Playertemp += m_Tempchange * Time.deltaTime; 
+            m_Playertemp += m_TemperatureChange * Time.deltaTime; 
         }
 
         if (m_Playertemp >= m_LiqGascutoff && m_Prevplayertemp < m_LiqGascutoff)
@@ -88,31 +88,31 @@ public class TemperatureManager : MonoBehaviour {
 
         m_Prevplayertemp = m_Playertemp;
 
-        foreach (TemperatureScript m_temperatureScript in m_temperatureScripts)
+        foreach (StateChanger stateChanger in m_stateChangers)
         {
-            if (m_temperatureScript.m_temp > m_Roomtemp)
+            if (stateChanger.m_Temperature > m_Roomtemp)
             {
-                m_temperatureScript.m_temp -= m_Tempchange * Time.deltaTime;
+                stateChanger.m_Temperature -= m_TemperatureChange * Time.deltaTime;
             }
 
-            if (m_temperatureScript.m_temp < m_Roomtemp)
+            if (stateChanger.m_Temperature < m_Roomtemp)
             {
-                m_temperatureScript.m_temp += m_Tempchange * Time.deltaTime;
+                stateChanger.m_Temperature += m_TemperatureChange * Time.deltaTime;
             }
 
-            if (m_temperatureScript.m_temp >= m_temperatureScript.m_LiquidGasCutoff && m_temperatureScript.m_prevTemp < m_temperatureScript.m_LiquidGasCutoff)
+            if (stateChanger.m_Temperature >= stateChanger.m_LiquidGasCutoff && stateChanger.m_PrevTemperature < stateChanger.m_LiquidGasCutoff)
             {
                 //Debug.Log("GAS");
                 //GameManager.GetPlayer().ChangeState(2);
             }
 
-            if (m_temperatureScript.m_temp >= m_temperatureScript.m_SolidLiquidCutoff && m_temperatureScript.m_temp < m_LiqGascutoff && (m_temperatureScript.m_prevTemp >= m_temperatureScript.m_LiquidGasCutoff || m_temperatureScript.m_prevTemp < m_temperatureScript.m_SolidLiquidCutoff))
+            if (stateChanger.m_Temperature >= stateChanger.m_SolidLiquidCutoff && stateChanger.m_Temperature < m_LiqGascutoff && (stateChanger.m_PrevTemperature >= stateChanger.m_LiquidGasCutoff || stateChanger.m_PrevTemperature < stateChanger.m_SolidLiquidCutoff))
             {
                 //Debug.Log("LIQUID");
                 //GameManager.GetPlayer().ChangeState(1);
             }
 
-            if (m_temperatureScript.m_temp < m_temperatureScript.m_SolidLiquidCutoff && m_temperatureScript.m_prevTemp >= m_temperatureScript.m_SolidLiquidCutoff)
+            if (stateChanger.m_Temperature < stateChanger.m_SolidLiquidCutoff && stateChanger.m_PrevTemperature >= stateChanger.m_SolidLiquidCutoff)
             {
                 //Debug.Log("SOLID");
                 //GameManager.GetPlayer().ChangeState(0);
