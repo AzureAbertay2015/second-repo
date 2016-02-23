@@ -5777,12 +5777,12 @@ MonoBehaviour:
   m_Temperature: 20
   m_PrevTemperature: 0
   m_State: 1
-  m_pSolidMesh: {fileID: 0}
-  m_pLiquidMesh: {fileID: 0}
-  m_pGasMesh: {fileID: 0}
-  m_SolidMaterial: {fileID: 0}
-  m_LiquidMaterial: {fileID: 0}
-  m_GasMaterial: {fileID: 0}
+  m_pSolidMesh: {fileID: 4300002, guid: 622a87b3379022740be7e2efea3ebd33, type: 3}
+  m_pLiquidMesh: {fileID: 4300002, guid: 622a87b3379022740be7e2efea3ebd33, type: 3}
+  m_pGasMesh: {fileID: 4300002, guid: 622a87b3379022740be7e2efea3ebd33, type: 3}
+  m_SolidMaterial: {fileID: 2100000, guid: 05548cc24a48d434b8e94db6ce1384e4, type: 2}
+  m_LiquidMaterial: {fileID: 2100000, guid: 6b010771d4f53c14d896d4443f050afd, type: 2}
+  m_GasMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &1947199015 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}

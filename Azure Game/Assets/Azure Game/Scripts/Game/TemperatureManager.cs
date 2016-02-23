@@ -117,6 +117,8 @@ public class TemperatureManager : MonoBehaviour {
                 //Debug.Log("SOLID");
                 //GameManager.GetPlayer().ChangeState(0);
             }
+
+            stateChanger.m_PrevTemperature = stateChanger.m_Temperature;
         }
     }
 
