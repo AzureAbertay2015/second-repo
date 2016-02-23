@@ -35,8 +35,8 @@ public class TemperatureManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        bool upArrow = Input.GetKeyDown(KeyCode.Q);
-        bool downArrow = Input.GetKeyDown(KeyCode.E);
+        bool upArrow = Input.GetKeyDown(KeyCode.E);
+        bool downArrow = Input.GetKeyDown(KeyCode.Q);
 
         if (upArrow)
         {
@@ -71,19 +71,19 @@ public class TemperatureManager : MonoBehaviour {
         if (m_Playertemp >= m_LiqGascutoff && m_Prevplayertemp < m_LiqGascutoff)
         {
             //Debug.Log("GAS");
-            GameManager.GetPlayer().ChangeState(2);
+            GameManager.GetPlayer().ChangeState(Player.State.Gas);
         }
 
         if (m_Playertemp >= m_SolidLiqcutoff &&  m_Playertemp < m_LiqGascutoff && (m_Prevplayertemp >= m_LiqGascutoff || m_Prevplayertemp < m_SolidLiqcutoff))
         {
             //Debug.Log("LIQUID");
-            GameManager.GetPlayer().ChangeState(1);
+            GameManager.GetPlayer().ChangeState(Player.State.Liquid);
         }
 
         if (m_Playertemp < m_SolidLiqcutoff && m_Prevplayertemp >= m_SolidLiqcutoff)
         {
             //Debug.Log("SOLID");
-            GameManager.GetPlayer().ChangeState(0);
+            GameManager.GetPlayer().ChangeState(Player.State.Solid);
         }
 
         m_Prevplayertemp = m_Playertemp;
