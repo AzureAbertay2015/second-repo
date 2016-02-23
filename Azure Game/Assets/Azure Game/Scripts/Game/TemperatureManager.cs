@@ -35,8 +35,8 @@ public class TemperatureManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        bool upArrow = Input.GetKeyDown(KeyCode.U);
-        bool downArrow = Input.GetKeyDown(KeyCode.J);
+        bool upArrow = Input.GetKeyDown(KeyCode.Q);
+        bool downArrow = Input.GetKeyDown(KeyCode.E);
 
         if (upArrow)
         {
