@@ -16,7 +16,7 @@ public class TrapScript : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player")
 		{
-			Debug.Log("Player collided with trap!");
+			//Debug.Log("Player collided with trap!");
 			GameManager.GetGameRules().KillPlayer();
 		}
 	}

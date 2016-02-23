@@ -29,7 +29,7 @@ public class PipeScript : MonoBehaviour {
 			if (GameManager.GetPlayer().GetState() == Player.State.Liquid)
 			{
 				//other.gameObject.transform.position = m_EndPosition;
-				Debug.Log("Player piped");
+				//Debug.Log("Player piped");
 				FindNearestEnd(other.transform.position);
 				if (m_ClosestEnd == ClosestEnd.end1)
 				{
