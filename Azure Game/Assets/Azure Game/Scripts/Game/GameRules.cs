@@ -69,6 +69,19 @@ public class GameRules : MonoBehaviour {
         }
     }
 
+    public void ToggleTutorial(string tutorialDialog)
+    {
+        if (tutorialDialog != "")
+        {
+            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].enabled = true;
+        }
+        else
+        {
+            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].enabled = false;
+        }
+        GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[4].GetComponentInChildren<Text>().text = tutorialDialog;
+    }
+
     public Player GetPlayer()
     {
         return GameManager.GetPlayer();

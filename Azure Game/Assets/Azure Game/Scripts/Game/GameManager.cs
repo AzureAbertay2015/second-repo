@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 /* The GameManager is a global accessor to the worker units of the game.
 
@@ -87,5 +89,4 @@ class GameManager
         if (g_pPlayer == null)
             Debug.LogWarning("No player found in scene!");
     }
-
 }
