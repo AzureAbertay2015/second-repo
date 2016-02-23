@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: fb9d26bf368a50143a7cae13c13e6c03, type: 2}
+  - {fileID: 2100000, guid: d4502dc4bd502a441b56f7a3de777c5b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -50,7 +50,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -88,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SwitchedOnMaterial: {fileID: 2100000, guid: d4502dc4bd502a441b56f7a3de777c5b,
     type: 2}
-  m_SwitchedOffMaterial: {fileID: 2100000, guid: fb9d26bf368a50143a7cae13c13e6c03,
+  m_SwitchedOffMaterial: {fileID: 2100000, guid: 063a27371d33fc240bb6b55863e026a4,
     type: 2}
 --- !u!114 &11431652
 MonoBehaviour:
