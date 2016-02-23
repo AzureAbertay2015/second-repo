@@ -54,6 +54,9 @@ public class Player : MonoBehaviour {
     private float m_GravityForceGas = 0.1f;
 
     [SerializeField]
+    private float m_GravityOnGroundFactor= 0.5f;
+
+    [SerializeField]
     private float m_MaxAngularVelocitySolid = 15f;
     [SerializeField]
     private float m_MaxAngularVelocityLiquid = 25f;
@@ -61,9 +64,11 @@ public class Player : MonoBehaviour {
     private float m_MaxAngularVelocityGas = 15f;
 
 
+
+
     public float m_JumpPower = 20; // The force added to the ball when it jumps.
 
-    private const float k_GroundRayLength = 2f; // The length of the ray to check if the ball is grounded.
+    private const float k_GroundRayLength = 2.5f; // The length of the ray to check if the ball is grounded.
 
     private Rigidbody m_Rigidbody;
     private SphereCollider m_SphereCollider;
@@ -72,6 +77,7 @@ public class Player : MonoBehaviour {
 
     private RaycastHit m_GroundEntityData;
     private bool m_bOnGround;
+    private int m_nCollisionCount;
 
     private void LoadPlayerResources()
     {
@@ -120,15 +126,55 @@ public class Player : MonoBehaviour {
     {
     }   
 
+    private bool IsValidCollision( Collision collision )
+    {
+        // Only flag a valid collision for objects with a z normal that isn't 0.
+        // This filters out walls and other stuff that doesn't count as the ground entity.
+        
+        return (collision.contacts[0].normal.z != 0);
+
+    }
+
+    public void OnCollisionEnter( Collision collision )
+    {
+
+       // Debug.Assert(collision.contacts.GetLength(0) == 1);
+
+        //if (IsValidCollision(collision)) 
+         //   m_nCollisionCount++;
+    }
+
+    public void OnCollisionExit(Collision collision )
+    {
+       // Debug.Assert(collision.contacts.GetLength(0) == 1, "count = " + collision.contacts.GetLength(0));
+
+       // if ( IsValidCollision(collision))
+        // m_nCollisionCount--;
+    }
+
     private void UpdateOnGround()
     {
+        /*
         Vector3 startPosition = transform.localPosition;
-        startPosition.z++;
+        startPosition.z+=2;
 
         Ray ray = new Ray(startPosition, -Vector3.up);
        
         m_bOnGround = Physics.Raycast(ray, out m_GroundEntityData, k_GroundRayLength, 1 );
+        */
 
+        m_bOnGround = Physics.CheckSphere(transform.localPosition, 0.75f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore); //Physics.SphereCast(transform.localPosition, 0.75f, -Vector3.up, out m_GroundEntityData, 1f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore);
+        
+        //if ( m_bOnGround )
+         //Debug.DrawLine(transform.localPosition, m_GroundEntityData.transform.localPosition);
+
+        //Debug.Assert(m_nCollisionCount >= 0);
+
+    }
+
+    public bool IsOnGround()
+    {
+        return m_bOnGround;
     }
 
     public void Move(Vector3 moveDirection, bool jump)
@@ -136,6 +182,7 @@ public class Player : MonoBehaviour {
 
         float power = m_MovePower;
         float gravity = 0.0f;
+        float airGravFactor = IsOnGround() ? m_GravityOnGroundFactor : 1.0f;
 
         if ( GetState() == State.Solid )
         {
@@ -152,14 +199,12 @@ public class Player : MonoBehaviour {
             power *= m_ForceMultiplierGas;
             gravity = m_GravityForceGas;
         }
-
-       
-
+        
         UpdateOnGround();
 
         Vector3 dir = moveDirection;
 
-        if (!m_bOnGround)
+        if (!IsOnGround())
             power = m_MovePower * m_ForceMultiplierGas;
        //else
          //  dir += m_GroundEntityData.normal;
@@ -169,26 +214,20 @@ public class Player : MonoBehaviour {
 
         dir.y = 0;
 
+        Debug.DrawLine(transform.localPosition, transform.localPosition + dir * 20);
+
         // Otherwise add force in the move direction.
         m_Rigidbody.AddForce(dir * power);
-
-        if (m_bOnGround)
-            Debug.Log("Ground Normal is " + m_GroundEntityData.normal);
+        
+        if (IsOnGround())
+            Debug.Log("On Ground." );
+        else
+            Debug.Log("Not on ground.");
 
         m_Rigidbody.AddForce(-Vector3.up * gravity);
-
         
-        
-       // Debug.DrawRay(transform.position, -Vector3.up * k_GroundRayLength, Color.red, 1.0f, false);
-
-        Vector3 vecStart = transform.position + Vector3.up * 2;
-
-        bool bJump = Physics.Raycast(vecStart, -Vector3.up, k_GroundRayLength);
-
-        //Debug.Log("bJump = " + bJump.ToString());
-
         // If on the ground and jump is pressed...
-        if ( bJump && jump )
+        if ( IsOnGround() && jump )
         {
             // ... add force in upwards.
             m_Rigidbody.AddForce(Vector3.up * m_JumpPower, ForceMode.Impulse);
@@ -268,6 +307,9 @@ public class Player : MonoBehaviour {
         m_SphereCollider.enabled = true;
 
         m_PlayerModel.SetState(m_State);
+
+        // PeterM - Reset collision count since Unity seems to do this when we change physics material
+        m_nCollisionCount = 0;
 
         SetupLayer();
 

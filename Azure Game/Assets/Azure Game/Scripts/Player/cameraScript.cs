@@ -22,7 +22,7 @@ public class cameraScript : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         newPos.x = Player.transform.position.x + cameraOffset.x;
         newPos.y = Player.transform.position.y + cameraOffset.y;
-        newPos.z = Player.transform.position.z + 10; //fourthWall.transform.position.z + cameraOffset.z + 2;
+        newPos.z = Player.transform.position.z + 5; //fourthWall.transform.position.z + cameraOffset.z + 2;
         transform.position = newPos;
     }
 }
