@@ -87,23 +87,33 @@ public class StateChanger : MonoBehaviour {
         }
     }
 
-    public void ChangeState(int state)
+    public void ChangeState(State state)
     {
+
+        if (state < State.Solid)
+            state = State.Solid;
+
+        if (state > State.Gas)
+            state = State.Gas;
+
+
         switch (state)
         {
-            case 0:
-                SetMesh(m_pSolidMesh);
-                SetMaterial(m_SolidMaterial);
+            case State.Solid:
+
+                //SetMesh(m_pSolidMesh);
+                //SetMaterial(m_SolidMaterial);
                 m_State = State.Solid;
+                // Set the maximum angular velocity.
                 break;
-            case 1:
-                SetMesh(m_pLiquidMesh);
-                SetMaterial(m_LiquidMaterial);
+            case State.Liquid:
+                //SetMesh(m_pLiquidMesh);
+                //SetMaterial(m_LiquidMaterial);
                 m_State = State.Liquid;
                 break;
-            case 2:
-                SetMesh(m_pGasMesh);
-                SetMaterial(m_GasMaterial);
+            case State.Gas:
+                // SetMesh(m_pGasMesh);
+                //SetMaterial(m_GasMaterial);
                 m_State = State.Gas;
                 break;
 
@@ -111,7 +121,19 @@ public class StateChanger : MonoBehaviour {
                 break;
         }
 
+        //m_PlayerModel.SetState(m_State);
+
         SetupLayer();
+
+    }
+    public void SetState(State state)
+    {
+
+        GetComponent<MeshFilter>().mesh = m_pMeshes[(int)state];
+        GetComponent<MeshRenderer>().material = m_pMaterials[(int)state];
+
+        Debug.Log("State = " + (int)state);
+
     }
 
     public State GetState()

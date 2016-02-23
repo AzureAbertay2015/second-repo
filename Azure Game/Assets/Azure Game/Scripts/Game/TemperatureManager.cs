@@ -24,7 +24,7 @@ public class TemperatureManager : MonoBehaviour {
         m_Playertemp = -10.0f;
         m_Prevplayertemp = m_Playertemp;
         m_LiqGascutoff = 40.0f;
-        m_SolidLiqcutoff = 10.0f;
+        m_SolidLiqcutoff = 30.0f;
         m_TemperatureChange = 2.0f;
         m_Abilitytempchange = 20.0f;
 
@@ -71,19 +71,19 @@ public class TemperatureManager : MonoBehaviour {
         if (m_Playertemp >= m_LiqGascutoff && m_Prevplayertemp < m_LiqGascutoff)
         {
             //Debug.Log("GAS");
-            GameManager.GetPlayer().ChangeState(2);
+            GameManager.GetPlayer().ChangeState(Player.State.Gas);
         }
 
         if (m_Playertemp >= m_SolidLiqcutoff && m_Playertemp < m_LiqGascutoff && (m_Prevplayertemp >= m_LiqGascutoff || m_Prevplayertemp < m_SolidLiqcutoff))
         {
             //Debug.Log("LIQUID");
-            GameManager.GetPlayer().ChangeState(1);
+            GameManager.GetPlayer().ChangeState(Player.State.Liquid);
         }
 
         if (m_Playertemp < m_SolidLiqcutoff && m_Prevplayertemp >= m_SolidLiqcutoff)
         {
             //Debug.Log("SOLID");
-            GameManager.GetPlayer().ChangeState(0);
+            GameManager.GetPlayer().ChangeState(Player.State.Solid);
         }
 
         m_Prevplayertemp = m_Playertemp;
@@ -103,19 +103,19 @@ public class TemperatureManager : MonoBehaviour {
             if (stateChanger.m_Temperature >= stateChanger.m_LiquidGasCutoff && stateChanger.m_PrevTemperature < stateChanger.m_LiquidGasCutoff)
             {
                 //Debug.Log("GAS");
-                //GameManager.GetPlayer().ChangeState(2);
+                stateChanger.ChangeState(StateChanger.State.Gas);
             }
 
             if (stateChanger.m_Temperature >= stateChanger.m_SolidLiquidCutoff && stateChanger.m_Temperature < m_LiqGascutoff && (stateChanger.m_PrevTemperature >= stateChanger.m_LiquidGasCutoff || stateChanger.m_PrevTemperature < stateChanger.m_SolidLiquidCutoff))
             {
                 //Debug.Log("LIQUID");
-                //GameManager.GetPlayer().ChangeState(1);
+                stateChanger.ChangeState(StateChanger.State.Liquid);
             }
 
             if (stateChanger.m_Temperature < stateChanger.m_SolidLiquidCutoff && stateChanger.m_PrevTemperature >= stateChanger.m_SolidLiquidCutoff)
             {
                 //Debug.Log("SOLID");
-                //GameManager.GetPlayer().ChangeState(0);
+                stateChanger.ChangeState(StateChanger.State.Solid);
             }
 
             stateChanger.m_PrevTemperature = stateChanger.m_Temperature;

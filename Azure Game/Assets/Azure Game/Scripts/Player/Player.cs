@@ -5,17 +5,9 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
     // Defines
-<<<<<<< HEAD
-    [SerializeField]
-    const string SOLID_MODEL = "CubePrototype02x02x02";
-    const string LIQUID_MODEL = "CubePrototype02x02x02";
-    const string GAS_MODEL = "CubePrototype02x02x02";
-=======
-
     const string SOLID_MODEL = "RollerBall"; //"CubePrototype02x02x02";
     const string LIQUID_MODEL = "RollerBall";
     const string GAS_MODEL = "RollerBall";
->>>>>>> refs/remotes/origin/master
 
     const string SOLID_MATERIAL = "Black Grid";
     const string LIQUID_MATERIAL = "Blue";
@@ -69,21 +61,6 @@ public class Player : MonoBehaviour {
     private float m_MaxAngularVelocityLiquid = 25f;
     [SerializeField]
     private float m_MaxAngularVelocityGas = 15f;
-
-<<<<<<< HEAD
-        /*o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
-        m_pSolidMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);
-=======
->>>>>>> refs/remotes/origin/master
-
-
-<<<<<<< HEAD
-        o = Instantiate(Resources.Load(GAS_MODEL)) as GameObject;
-        m_pGasMesh = o.GetComponent<MeshFilter>().mesh;
-        o.SetActive(false);*/
-=======
->>>>>>> refs/remotes/origin/master
 
     public float m_JumpPower = 20; // The force added to the ball when it jumps.
 
