@@ -28,6 +28,7 @@ public class TemperatureManager : MonoBehaviour {
         m_Tempchange = 2.0f;
         m_Abilitytempchange = 20.0f;
 
+        //Get the energy script from it's tag
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
         
     }
@@ -35,10 +36,11 @@ public class TemperatureManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        bool upArrow = Input.GetKeyDown(KeyCode.Q);
-        bool downArrow = Input.GetKeyDown(KeyCode.E);
+        //Check if Q or E is down
+        bool Qkey = Input.GetKeyDown(KeyCode.Q);
+        bool Ekey = Input.GetKeyDown(KeyCode.E);
 
-        if (upArrow)
+        if (Qkey)
         {
             if (m_Energyscript.TempUp())
             {
@@ -48,7 +50,7 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
-        if (downArrow)
+        if (Ekey)
         {
             if (m_Energyscript.TempDown())
             {
@@ -71,19 +73,19 @@ public class TemperatureManager : MonoBehaviour {
         if (m_Playertemp >= m_LiqGascutoff && m_Prevplayertemp < m_LiqGascutoff)
         {
             //Debug.Log("GAS");
-            GameManager.GetPlayer().ChangeState(2);
+            GameManager.GetPlayer().ChangeState(Player.State.Gas);
         }
 
         if (m_Playertemp >= m_SolidLiqcutoff &&  m_Playertemp < m_LiqGascutoff && (m_Prevplayertemp >= m_LiqGascutoff || m_Prevplayertemp < m_SolidLiqcutoff))
         {
             //Debug.Log("LIQUID");
-            GameManager.GetPlayer().ChangeState(1);
+            GameManager.GetPlayer().ChangeState(Player.State.Liquid);
         }
 
         if (m_Playertemp < m_SolidLiqcutoff && m_Prevplayertemp >= m_SolidLiqcutoff)
         {
             //Debug.Log("SOLID");
-            GameManager.GetPlayer().ChangeState(0);
+            GameManager.GetPlayer().ChangeState(Player.State.Solid);
         }
 
         m_Prevplayertemp = m_Playertemp;

@@ -47,8 +47,8 @@ public class PlayerControls : MonoBehaviour {
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
         jump = CrossPlatformInputManager.GetButton("Jump");
-        bool e = Input.GetKey(KeyCode.E);
-        bool q = Input.GetKey(KeyCode.Q);
+        bool e = Input.GetKey(KeyCode.P);
+        bool q = Input.GetKey(KeyCode.O);
 
 
         if (!jump)
