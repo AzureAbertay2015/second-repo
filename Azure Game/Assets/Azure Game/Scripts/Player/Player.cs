@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour {
     private RaycastHit m_GroundEntityData;
     private bool m_bOnGround;
     private int m_nCollisionCount;
+    private Dictionary<int, Collision> m_CollisionTable;
 
     private void LoadPlayerResources()
     {
@@ -109,6 +111,8 @@ public class Player : MonoBehaviour {
 
         // Ensure our tag is always Player!
         gameObject.tag = "Player";
+
+        m_CollisionTable = new Dictionary<int, Collision>();
     }
        
 
@@ -126,30 +130,51 @@ public class Player : MonoBehaviour {
     {
     }   
 
-    private bool IsValidCollision( Collision collision )
+    private bool IsValidCollision( Collision collision, int hash = -1 )
     {
         // Only flag a valid collision for objects with a z normal that isn't 0.
         // This filters out walls and other stuff that doesn't count as the ground entity.
-        
-        return (collision.contacts[0].normal.z != 0);
+
+        //Vector3 normal;
+
+        if ( hash != -1 )
+        {
+            // Get from hashtable (probably exit).
+            m_CollisionTable.TryGetValue(hash, out collision);
+                 //Debug.LogError("Failed to get collision table entry! (hash = " + hash + ")");
+
+            //m_CollisionTable.Remove(hash);
+            Debug.Assert(collision.contacts.Length > 0, "Contact length 0, hash = " + hash + ".");
+        }
+        else
+        {
+            //normal = collision.contacts[0].normal;
+        }
+
+        return (collision.contacts[0].normal.y != 0);
 
     }
 
     public void OnCollisionEnter( Collision collision )
     {
 
-       // Debug.Assert(collision.contacts.GetLength(0) == 1);
+        // Debug.Assert(collision.contacts.GetLength(0) == 1);
 
-        //if (IsValidCollision(collision)) 
-         //   m_nCollisionCount++;
+        m_CollisionTable[collision.gameObject.GetInstanceID()] = collision;
+
+        if (IsValidCollision(collision))
+        {
+            m_nCollisionCount++;
+            //m_CollisionTable.Add(collision.gameObject.GetInstanceID(), collision);
+        }
     }
 
     public void OnCollisionExit(Collision collision )
     {
        // Debug.Assert(collision.contacts.GetLength(0) == 1, "count = " + collision.contacts.GetLength(0));
 
-       // if ( IsValidCollision(collision))
-        // m_nCollisionCount--;
+        if ( IsValidCollision(collision, collision.gameObject.GetInstanceID()) )
+            m_nCollisionCount--;
     }
 
     private void UpdateOnGround()
@@ -163,7 +188,7 @@ public class Player : MonoBehaviour {
         m_bOnGround = Physics.Raycast(ray, out m_GroundEntityData, k_GroundRayLength, 1 );
         */
 
-        m_bOnGround = Physics.CheckSphere(transform.localPosition, 0.75f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore); //Physics.SphereCast(transform.localPosition, 0.75f, -Vector3.up, out m_GroundEntityData, 1f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore);
+        //m_bOnGround = Physics.CheckSphere(transform.localPosition, 0.75f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore); //Physics.SphereCast(transform.localPosition, 0.75f, -Vector3.up, out m_GroundEntityData, 1f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore);
         
         //if ( m_bOnGround )
          //Debug.DrawLine(transform.localPosition, m_GroundEntityData.transform.localPosition);
@@ -174,7 +199,7 @@ public class Player : MonoBehaviour {
 
     public bool IsOnGround()
     {
-        return m_bOnGround;
+        return (m_nCollisionCount > 0); //m_bOnGround;
     }
 
     public void Move(Vector3 moveDirection, bool jump)
@@ -220,7 +245,7 @@ public class Player : MonoBehaviour {
         m_Rigidbody.AddForce(dir * power);
         
         if (IsOnGround())
-            Debug.Log("On Ground." );
+            Debug.Log("On Ground. (n=" + m_nCollisionCount +")" );
         else
             Debug.Log("Not on ground.");
 
