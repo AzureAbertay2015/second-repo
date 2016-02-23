@@ -1258,8 +1258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfc7b5af8c9da940974c19141b9623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OtherVent: {fileID: 1479227136}
-  m_ApparitionDistance: 1.25
+  m_OtherVent: {fileID: 0}
+  m_ApparitionDistance: 0
 --- !u!65 &778310490
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1395,7 +1395,11 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 799539055}
   serializedVersion: 2
+<<<<<<< HEAD
   m_Mass: 1
+=======
+  m_Mass: 20
+>>>>>>> origin/master
   m_Drag: 1
   m_AngularDrag: .400000006
   m_UseGravity: 1
@@ -2618,12 +2622,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_PrefabInternal: {fileID: 1262129844}
---- !u!114 &1479227136 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11447318, guid: 7f0b48eb3986f21409bd0298c3708f2a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1716183456}
-  m_Script: {fileID: 11500000, guid: 2cfc7b5af8c9da940974c19141b9623f, type: 3}
 --- !u!1001 &1507429647
 Prefab:
   m_ObjectHideFlags: 0
@@ -2935,14 +2933,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11447318, guid: 7f0b48eb3986f21409bd0298c3708f2a, type: 2}
-      propertyPath: m_OtherVent
-      value: 
-      objectReference: {fileID: 778310489}
     - target: {fileID: 147090, guid: 7f0b48eb3986f21409bd0298c3708f2a, type: 2}
       propertyPath: m_Name
       value: Vent
       objectReference: {fileID: 0}
+    - target: {fileID: 11447318, guid: 7f0b48eb3986f21409bd0298c3708f2a, type: 2}
+      propertyPath: m_OtherVent
+      value: 
+      objectReference: {fileID: 778310489}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f0b48eb3986f21409bd0298c3708f2a, type: 2}
   m_IsPrefabParent: 0
