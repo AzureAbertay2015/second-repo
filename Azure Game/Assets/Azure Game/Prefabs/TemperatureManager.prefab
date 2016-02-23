@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11440704}
   m_Layer: 0
   m_Name: TemperatureManager
-  m_TagString: Untagged
+  m_TagString: TemperatureManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Roomtemp: 0
   m_Playertemp: 0
+  m_Prevplayertemp: 0
   m_Tempchange: 0
+  m_LiqGascutoff: 0
+  m_SolidLiqcutoff: 0
+  m_Abilitytempchange: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
