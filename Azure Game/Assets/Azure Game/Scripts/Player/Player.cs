@@ -238,12 +238,12 @@ public class Player : MonoBehaviour {
 
         // Otherwise add force in the move direction.
         m_Rigidbody.AddForce(dir * power);
-        
+        /*
         if (IsOnGround())
             Debug.Log("On Ground. (n=" + m_nCollisionCount +")" );
         else
             Debug.Log("Not on ground.");
-
+			*/
         m_Rigidbody.AddForce(-Vector3.up * gravity);
         
         // If on the ground and jump is pressed...

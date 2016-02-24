@@ -62,7 +62,7 @@ public class PlayerModel : MonoBehaviour {
        GetComponent<MeshFilter>().mesh = m_pMeshes[(int)state];
        GetComponent<MeshRenderer>().material = m_pMaterials[(int)state];
 
-        Debug.Log("State = " + (int)state);
+       // Debug.Log("State = " + (int)state);
 
     }
 
