@@ -42,20 +42,20 @@ public class TemperatureManager : MonoBehaviour {
 
         if (Qkey)
         {
-            if (m_Energyscript.TempUp())
+            if (m_Energyscript.TempDown())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Playertemp += m_Abilitytempchange;
+                m_Playertemp -= m_Abilitytempchange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
 
         if (Ekey)
         {
-            if (m_Energyscript.TempDown())
+            if (m_Energyscript.TempUp())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Playertemp -= m_Abilitytempchange;
+                m_Playertemp += m_Abilitytempchange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
