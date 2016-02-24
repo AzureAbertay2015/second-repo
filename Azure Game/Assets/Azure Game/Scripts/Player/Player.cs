@@ -5,14 +5,6 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
     // Defines
-    const string SOLID_MODEL = "RollerBall"; //"CubePrototype02x02x02";
-    const string LIQUID_MODEL = "RollerBall";
-    const string GAS_MODEL = "RollerBall";
-
-    const string SOLID_MATERIAL = "Black Grid";
-    const string LIQUID_MATERIAL = "Blue";
-    const string GAS_MATERIAL = "Green";
-
     const string SOLID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerSolidPhysics";
     const string LIQUID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerLiquidPhysics";
     const string GAS_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerGasPhysics";
@@ -26,12 +18,7 @@ public class Player : MonoBehaviour {
     public State m_State;
     private State m_PreviousState;
 
-    public Mesh m_pSolidMesh;
-    public Mesh m_pLiquidMesh;
-    public Mesh m_pGasMesh;
-
     private PhysicMaterial[] m_pPhysicMaterials;
-
 
     [SerializeField]
     private float m_MovePower = 1.5f; // The force added to the player to move it.

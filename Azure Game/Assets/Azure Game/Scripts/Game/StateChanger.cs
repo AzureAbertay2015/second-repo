@@ -21,14 +21,25 @@ public class StateChanger : MonoBehaviour {
     public Material m_LiquidMaterial;
     public Material m_GasMaterial;
 
+    public Mesh[] m_pMeshes;
+    private Material[] m_pMaterials;
+
     private void LoadResources()
     {
-        GameObject o;
         m_State = State.Solid;
         m_PreviousState = State.Solid;
 
         SetMesh(m_pSolidMesh);
         SetMaterial(m_SolidMaterial);
+    }
+
+    public void InitModel()
+    {
+        // Initialise arrays (3 states currently)
+        m_pMeshes = new Mesh[3];
+        m_pMaterials = new Material[3];
+
+
     }
 
     private void SetMesh(Mesh target_mesh)
