@@ -96,12 +96,12 @@ public class GameRules : MonoBehaviour {
     
     public void HeatUpRoom()
     {
-        m_Tempmanager.ChangeRoomTemp(25.0f);
+        m_Tempmanager.ChangeRoomTemp(22.0f);
     }
 
     public void CoolDownRoom()
     {
-        m_Tempmanager.ChangeRoomTemp(-25.0f);
+        m_Tempmanager.ChangeRoomTemp(-22.0f);
     }
 
     public void RestartLevel()
@@ -121,12 +121,21 @@ public class GameRules : MonoBehaviour {
 
     public void HeatUpPlayer()
     {
-        m_Tempmanager.ChangePlayerTemp(20.0f);
+        if((m_Tempmanager.m_Playertemp - m_Tempmanager.m_Roomtemp) < 30)
+        {
+            //m_Tempmanager.ChangePlayerTemp(40.0f * Time.deltaTime);
+            m_Tempmanager.ChangePlayerTemp((m_Tempmanager.m_Roomtemp + 30) - m_Tempmanager.m_Playertemp);
+        }
     }
 
     public void CoolDownPlayer()
     {
-        m_Tempmanager.ChangePlayerTemp(-20.0f);
+        if((m_Tempmanager.m_Playertemp + m_Tempmanager.m_Roomtemp) > -30)
+        {
+            //m_Tempmanager.ChangePlayerTemp(-40.0f * Time.deltaTime);
+            m_Tempmanager.ChangePlayerTemp(-(m_Tempmanager.m_Roomtemp + 30) - m_Tempmanager.m_Playertemp);
+        }
+       
     }
        
 }
