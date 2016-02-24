@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class TrapScript : MonoBehaviour {
-
 	// Use this for initialization
 	void Start () {
 	
@@ -17,7 +16,7 @@ public class TrapScript : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player")
 		{
-			Debug.Log("Player collided with trap!");
+			//Debug.Log("Player collided with trap!");
 			GameManager.GetGameRules().KillPlayer();
 		}
 	}

@@ -47,9 +47,7 @@ public class PlayerControls : MonoBehaviour {
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
         jump = CrossPlatformInputManager.GetButton("Jump");
-        bool e = Input.GetKey(KeyCode.E);
-        bool q = Input.GetKey(KeyCode.Q);
-
+        
 
         if (!jump)
             jump_debounce = false; 
@@ -59,26 +57,9 @@ public class PlayerControls : MonoBehaviour {
              //   jump = false;
         }
 
-        if (!e)
-            e_up = false;
-
-        if (!q)
-            q_up = false;
-
         if ( jump && !jump_debounce )
             jump_debounce = true;
         
-        if (e && !e_up)
-        {
-            e_up = true;
-			m_pPlayer.RaiseState();
-        }
-
-        if (q && !q_up)
-        {
-            q_up = true;
-			m_pPlayer.LowerState();
-        }
         
         // calculate move direction
         if (cam != null)
