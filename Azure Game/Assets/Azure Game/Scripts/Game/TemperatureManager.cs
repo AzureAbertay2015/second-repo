@@ -110,6 +110,11 @@ public class TemperatureManager : MonoBehaviour
         m_Playertemp += t;
     }
 
+    public void SetPlayerTemp(float t)
+    {
+        m_Playertemp = t;
+    }
+
     public void HeaterCooler(bool trigger)
     {
         m_Trigger = trigger;
