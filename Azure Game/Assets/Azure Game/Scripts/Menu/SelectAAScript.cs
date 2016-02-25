@@ -15,6 +15,6 @@ public class SelectAAScript : MonoBehaviour {
 
     void SetAntiAliasing()
     {
-        QualitySettings.antiAliasing = m_Dropdown.value * 2;
+        QualitySettings.antiAliasing = (m_Dropdown.value - 1)* 2;
     }
 }
