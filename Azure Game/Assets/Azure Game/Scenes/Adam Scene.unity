@@ -1629,7 +1629,7 @@ Transform:
   - {fileID: 1360867398}
   - {fileID: 1444228314}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!65 &875254379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3080,7 +3080,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: .150000006}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 12
 --- !u!1 &1412347478
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,6 +3354,10 @@ Prefab:
     - target: {fileID: 116762, guid: dcbdd8c72240b5348b80fdd281776fdb, type: 2}
       propertyPath: m_Name
       value: Fan2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440810, guid: dcbdd8c72240b5348b80fdd281776fdb, type: 2}
+      propertyPath: m_FanForce
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcbdd8c72240b5348b80fdd281776fdb, type: 2}
@@ -3717,7 +3721,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1578457239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.8899994, y: 12.9499998, z: -3.37899995}
+  m_LocalPosition: {x: 21.7299995, y: 25.7099991, z: -3.37899995}
   m_LocalScale: {x: 2, y: 2, z: .150000006}
   m_Children: []
   m_Father: {fileID: 0}
