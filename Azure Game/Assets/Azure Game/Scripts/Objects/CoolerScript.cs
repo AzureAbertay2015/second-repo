@@ -7,35 +7,52 @@ public class CoolerScript : MonoBehaviour {
 	private bool m_Triggered;
 	private bool m_CoolerTurnedOn;
 	private CoolerEmissionScript m_CoolerEmissionScript;
+    private TemperatureManager m_Tempmanager;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		m_Triggered = false;
 		m_CoolerTurnedOn = true;
 		m_CoolerEmissionScript = gameObject.GetComponent<CoolerEmissionScript>();
+
+        m_Tempmanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
     }
-	
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.tag == "Player")
-		{
-			if (!m_Triggered && m_CoolerTurnedOn)
-			{
-				GameManager.GetGameRules().CoolDownPlayer();
-				m_Triggered = true;
-			}
-		}
-	}
 
-	void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.tag == "Player")
-		{
-			m_Triggered = false;
-		}
-	}
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (m_CoolerTurnedOn)
+            {
+                GameManager.GetGameRules().CoolDownPlayer();
+            }
+        }
+    }
 
-	void SwitchOn()
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (m_CoolerTurnedOn)
+            {
+                m_Tempmanager.HeaterCooler(true);
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (m_CoolerTurnedOn)
+            {
+                m_Tempmanager.HeaterCooler(false);
+            }
+        }
+    }
+
+
+    void SwitchOn()
 	{
 		m_CoolerTurnedOn = true;
 		m_CoolerEmissionScript.EmissionSwitchOn();
