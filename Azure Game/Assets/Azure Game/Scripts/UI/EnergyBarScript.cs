@@ -17,7 +17,7 @@ public class EnergyBarScript : MonoBehaviour
     {
 
         m_Fillamount = 0;
-        m_Chargeamount = 0.05f;
+        m_Chargeamount = 0.01f;
 
     }
 
@@ -34,6 +34,9 @@ public class EnergyBarScript : MonoBehaviour
 
         //Debug.Log("fill amount " + m_Fillamount);
 
+
+        m_Chargeamount += (0.01f * Time.deltaTime);
+       
     }
 
     private void UpdateFiller()
@@ -43,9 +46,12 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempUp()
     {
-        if (m_Fillamount > 0.3f)
+        if (m_Fillamount > 0.6f)
         {
-            m_Fillamount -= 0.3f;
+            m_Fillamount -= 0.6f;
+
+            m_Chargeamount = 0.01f;
+
             return true;
         }
         else
@@ -56,9 +62,11 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempDown()
     {
-        if (m_Fillamount > 0.3f)
+        if (m_Fillamount > 0.6f)
         {
-            m_Fillamount -= 0.3f;
+            m_Fillamount -= 0.6f;
+
+            m_Chargeamount = 0.01f;
 
             return true;
         }
