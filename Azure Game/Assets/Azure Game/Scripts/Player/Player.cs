@@ -155,7 +155,7 @@ public class Player : MonoBehaviour {
             //normal = collision.contacts[0].normal;
         }
 
-        return (collision.contacts[0].normal.y != 0);
+        return (collision.contacts[0].normal.y > 0);
 
     }
 
