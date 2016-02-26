@@ -46,9 +46,9 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempUp()
     {
-        if (m_Fillamount > 0.6f)
+        if (m_Fillamount > 0.5f)
         {
-            m_Fillamount -= 0.6f;
+            m_Fillamount -= 0.5f;
 
             m_Chargeamount = 0.01f;
 
@@ -62,9 +62,9 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempDown()
     {
-        if (m_Fillamount > 0.6f)
+        if (m_Fillamount > 0.5f)
         {
-            m_Fillamount -= 0.6f;
+            m_Fillamount -= 0.5f;
 
             m_Chargeamount = 0.01f;
 
