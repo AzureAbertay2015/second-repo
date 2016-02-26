@@ -7,7 +7,6 @@ public class ButtonScript : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-		Debug.Log("sdfg");
 		if (collision.collider.gameObject.tag == "Player" && GameManager.GetPlayer().GetState() == Player.State.Solid)
 		{
 			StartCoroutine(Door.GetComponent<DoorScript>().OpenUp());
