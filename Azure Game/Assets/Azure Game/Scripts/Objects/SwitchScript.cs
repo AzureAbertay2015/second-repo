@@ -12,10 +12,10 @@ public class SwitchScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        SwitchOff();
+        //SwitchOff();
 
 		transform.GetChild(0).gameObject.transform.Rotate(6, 0, 0, Space.Self);
-		m_SwitchState = true;
+        m_SwitchState = false;
 		if (m_SwitchType == SwitchType.Heater)
 			m_HeaterEmissionScript = gameObject.transform.GetChild(1).GetComponent<HeaterEmissionScript>();
 		else

@@ -90,8 +90,6 @@ public class GameRules : MonoBehaviour {
     {
         return GameManager.GetPlayer().GetState();
     }
-
-
     
     public void HeatUpRoom()
     {

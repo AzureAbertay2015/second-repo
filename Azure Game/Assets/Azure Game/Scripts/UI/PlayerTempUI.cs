@@ -17,9 +17,8 @@ public class PlayerTempUI : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        
-        m_Playertemptext.text = ((int)m_Tempmanager.m_Playertemp).ToString() + "C";
-
+	void Update ()
+    {        
+        m_Playertemptext.text = ((int)m_Tempmanager.m_PlayerTemperature).ToString() + "C";
     }
 }

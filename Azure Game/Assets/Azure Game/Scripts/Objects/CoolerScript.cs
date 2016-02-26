@@ -7,7 +7,7 @@ public class CoolerScript : MonoBehaviour {
 	private bool m_Triggered;
 	private bool m_CoolerTurnedOn;
 	private CoolerEmissionScript m_CoolerEmissionScript;
-    private TemperatureManager m_Tempmanager;
+    private TemperatureManager m_Temperaturemanager;
 
     // Use this for initialization
     void Start () {
@@ -15,7 +15,7 @@ public class CoolerScript : MonoBehaviour {
 		m_CoolerTurnedOn = true;
 		m_CoolerEmissionScript = gameObject.GetComponent<CoolerEmissionScript>();
 
-        m_Tempmanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
+        m_Temperaturemanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
     }
 
     void OnTriggerStay(Collider other)
@@ -35,7 +35,7 @@ public class CoolerScript : MonoBehaviour {
         {
             if (m_CoolerTurnedOn)
             {
-                m_Tempmanager.HeaterCooler(true);
+                //m_Temperaturemanager.HeaterCooler(true);
             }
         }
     }
@@ -46,7 +46,7 @@ public class CoolerScript : MonoBehaviour {
         {
             if (m_CoolerTurnedOn)
             {
-                m_Tempmanager.HeaterCooler(false);
+                //m_Temperaturemanager.HeaterCooler(false);
             }
         }
     }

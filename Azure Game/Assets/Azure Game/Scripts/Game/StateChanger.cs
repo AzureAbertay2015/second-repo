@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// General purpose state changing class that can be inherited by any object
+// Based upon Peter M's Player and PlayerModel Classes
+
 public class StateChanger : MonoBehaviour {
 
     public float m_SolidLiquidCutoff, m_LiquidGasCutoff, m_Temperature;
@@ -21,57 +24,13 @@ public class StateChanger : MonoBehaviour {
     public Material m_LiquidMaterial;
     public Material m_GasMaterial;
 
-    public Mesh[] m_pMeshes;
-    private Material[] m_pMaterials;
-
     private void LoadResources()
     {
         m_State = State.Solid;
         m_PreviousState = State.Solid;
 
-        SetMesh(m_pSolidMesh);
-        SetMaterial(m_SolidMaterial);
-    }
-
-    public void InitModel()
-    {
-        // Initialise arrays (3 states currently)
-        m_pMeshes = new Mesh[3];
-        m_pMaterials = new Material[3];
-
-
-    }
-
-    private void SetMesh(Mesh target_mesh)
-    {
-        GetComponent<MeshFilter>().mesh = target_mesh;
-        // switch the collider
-        if (target_mesh == m_pSolidMesh)
-        {
-            GetComponents<BoxCollider>()[0].enabled = true;
-            GetComponents<BoxCollider>()[1].enabled = false;
-            GetComponents<BoxCollider>()[2].enabled = false;
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-        if (target_mesh == m_pLiquidMesh)
-        {
-            GetComponents<BoxCollider>()[0].enabled = false;
-            GetComponents<BoxCollider>()[1].enabled = true;
-            GetComponents<BoxCollider>()[2].enabled = false;
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-        if (target_mesh == m_pGasMesh)
-        {
-            GetComponents<BoxCollider>()[0].enabled = false;
-            GetComponents<BoxCollider>()[1].enabled = false;
-            GetComponents<BoxCollider>()[2].enabled = true;
-            GetComponent<Rigidbody>().useGravity = false;
-        }
-    }
-
-    private void SetMaterial(Material target_material)
-    {
-        GetComponent<MeshRenderer>().material = target_material;
+        GetComponent<MeshFilter>().mesh = m_pSolidMesh;
+        GetComponent<MeshRenderer>().material = m_SolidMaterial;
     }
 
     private void Start()
@@ -100,7 +59,6 @@ public class StateChanger : MonoBehaviour {
 
     public void ChangeState(State state)
     {
-
         if (state < State.Solid)
             state = State.Solid;
 
@@ -111,20 +69,18 @@ public class StateChanger : MonoBehaviour {
         switch (state)
         {
             case State.Solid:
-
-                //SetMesh(m_pSolidMesh);
-                //SetMaterial(m_SolidMaterial);
+                GetComponent<MeshFilter>().mesh = m_pSolidMesh;
+                GetComponent<MeshRenderer>().material = m_SolidMaterial;
                 m_State = State.Solid;
-                // Set the maximum angular velocity.
                 break;
             case State.Liquid:
-                //SetMesh(m_pLiquidMesh);
-                //SetMaterial(m_LiquidMaterial);
+                GetComponent<MeshFilter>().mesh = m_pLiquidMesh;
+                GetComponent<MeshRenderer>().material = m_LiquidMaterial;
                 m_State = State.Liquid;
                 break;
             case State.Gas:
-                // SetMesh(m_pGasMesh);
-                //SetMaterial(m_GasMaterial);
+                GetComponent<MeshFilter>().mesh = m_pGasMesh;
+                GetComponent<MeshRenderer>().material = m_GasMaterial;
                 m_State = State.Gas;
                 break;
 
@@ -132,18 +88,12 @@ public class StateChanger : MonoBehaviour {
                 break;
         }
 
-        //m_PlayerModel.SetState(m_State);
-
         SetupLayer();
-
+        OnChangeState(state);
     }
-    public void SetState(State state)
+
+    public virtual void OnChangeState(State state)
     {
-
-        GetComponent<MeshFilter>().mesh = m_pMeshes[(int)state];
-        GetComponent<MeshRenderer>().material = m_pMaterials[(int)state];
-
-        Debug.Log("State = " + (int)state);
 
     }
 

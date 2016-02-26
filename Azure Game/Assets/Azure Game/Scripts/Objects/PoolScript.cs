@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PoolScript : StateChanger {
+public class PoolScript : StateChanger
+{
 
     TrapScript m_TrapScript;
     BoxCollider m_BoxCollider;
+
     // Use this for initialization
     void Start ()
     {
