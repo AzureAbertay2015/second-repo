@@ -28,6 +28,7 @@ GameObject:
   - 33: {fileID: 3305560}
   - 65: {fileID: 6510756}
   - 23: {fileID: 2324002}
+  - 114: {fileID: 11418052}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -60,7 +61,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.64099979, y: .930000007, z: -3.1099999}
+  m_LocalPosition: {x: -1.08197832, y: -7.10993481, z: -21.028698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447104}
@@ -73,7 +74,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139066}
-  m_LocalRotation: {x: -.0523359627, y: 0, z: 0, w: .99862951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .271749169, y: 1, z: .324072301}
   m_Children: []
@@ -175,8 +176,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: .600000024}
+  m_Size: {x: 1, y: 2, z: 3}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!65 &6567666
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -189,6 +190,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11418052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59e5bce8b958ff48a546835010fbbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SwitchedOnMaterial: {fileID: 2100000, guid: d4502dc4bd502a441b56f7a3de777c5b,
+    type: 2}
+  m_SwitchedOffMaterial: {fileID: 2100000, guid: fb9d26bf368a50143a7cae13c13e6c03,
+    type: 2}
 --- !u!114 &11425422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,11 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957210ae47035a1479f0ea11bdc63089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OpenRotation: {x: 6, y: 0, z: 0, w: 0}
-  m_ClosedRotation: {x: 354, y: 0, z: 0, w: 0}
   m_SwitchState: 0
   m_SwitchType: 1
-  m_GameManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -214,6 +227,14 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_SwitchType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

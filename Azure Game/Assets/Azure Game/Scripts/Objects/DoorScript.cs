@@ -4,6 +4,7 @@ using System.Collections;
 public class DoorScript : MonoBehaviour {
 
 	public Vector3 MoveAmount;
+	public float m_MoveSpeed;
 	private Vector3 OpenPosition;
 	private Vector3 ClosePosition;
 	//private Vector3 StartPosition;
@@ -50,7 +51,7 @@ public class DoorScript : MonoBehaviour {
         {
             while(transform.position!=OpenPosition)
             {
-                transform.position = Vector3.MoveTowards(transform.position, OpenPosition, 0.1f);
+                transform.position = Vector3.MoveTowards(transform.position, OpenPosition, m_MoveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, OpenPosition) <= 0.01f)
                 {
                     transform.position = OpenPosition;
@@ -67,7 +68,7 @@ public class DoorScript : MonoBehaviour {
         {
             while(transform.position!=ClosePosition)
             {
-                transform.position = Vector3.MoveTowards(transform.position, ClosePosition, 0.1f);
+                transform.position = Vector3.MoveTowards(transform.position, ClosePosition, m_MoveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, ClosePosition) <= 0.01f)
                 {
                     transform.position = ClosePosition;
