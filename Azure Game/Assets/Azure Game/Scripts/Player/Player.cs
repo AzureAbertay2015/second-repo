@@ -81,6 +81,8 @@ public class Player : MonoBehaviour {
     private int m_nCollisionCount;
     private Dictionary<int, Collision> m_CollisionTable;
 
+    private Vector3 m_vecGroundNormal;
+
     private void LoadPlayerResources()
     {
         GameObject o;
@@ -113,6 +115,8 @@ public class Player : MonoBehaviour {
         gameObject.tag = "Player";
 
         m_CollisionTable = new Dictionary<int, Collision>();
+
+        m_vecGroundNormal.Set(0, 0, 0);
     }
        
 
@@ -165,16 +169,27 @@ public class Player : MonoBehaviour {
         if (IsValidCollision(collision))
         {
             m_nCollisionCount++;
+
+            if ( m_vecGroundNormal.sqrMagnitude == 0 )
+            {
+                m_vecGroundNormal = collision.contacts[0].normal;
+            }
+
             //m_CollisionTable.Add(collision.gameObject.GetInstanceID(), collision);
         }
     }
 
     public void OnCollisionExit(Collision collision )
     {
-       // Debug.Assert(collision.contacts.GetLength(0) == 1, "count = " + collision.contacts.GetLength(0));
+        // Debug.Assert(collision.contacts.GetLength(0) == 1, "count = " + collision.contacts.GetLength(0));
 
-        if ( IsValidCollision(collision, collision.gameObject.GetInstanceID()) )
+        if (IsValidCollision(collision, collision.gameObject.GetInstanceID()))
+        {
             m_nCollisionCount--;
+
+            if (m_nCollisionCount == 0)
+                m_vecGroundNormal.Set(0, 0, 0);
+        }
     }
 
     private void UpdateOnGround()
@@ -244,18 +259,23 @@ public class Player : MonoBehaviour {
         // Otherwise add force in the move direction.
         m_Rigidbody.AddForce(dir * power);
         
+        /*
         if (IsOnGround())
             Debug.Log("On Ground. (n=" + m_nCollisionCount +")" );
         else
             Debug.Log("Not on ground.");
+            */
 
         m_Rigidbody.AddForce(-Vector3.up * gravity);
         
         // If on the ground and jump is pressed...
         if ( IsOnGround() && jump )
         {
+            Debug.Assert(m_vecGroundNormal.sqrMagnitude != 0);
+
             // ... add force in upwards.
-            m_Rigidbody.AddForce(Vector3.up * m_JumpPower, ForceMode.Impulse);
+            m_Rigidbody.AddForce(m_vecGroundNormal * m_JumpPower, ForceMode.Impulse);
+            Debug.Log("Jump vector is " + m_vecGroundNormal.ToString() + ". (n=" + m_nCollisionCount + ").");
            // Debug.Log("Jumping! " + m_Rigidbody.velocity.y );
             
         }
