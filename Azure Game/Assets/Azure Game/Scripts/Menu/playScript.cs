@@ -4,8 +4,8 @@ using System.Collections;
 
 public class playScript : MonoBehaviour
 {
-    public void nextScene()
+    public void NextScene(string nextScene)
     {
-		Application.LoadLevel("Game Scene");
+		Application.LoadLevel(nextScene);
     }
 }

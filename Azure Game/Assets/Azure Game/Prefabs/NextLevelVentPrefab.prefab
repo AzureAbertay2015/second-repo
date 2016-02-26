@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 158118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e28fe76fd25d40449fbe7295d3f96ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f1d07dd579e7a3408e65bf96741dcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_sNextLevel: Game Scene
@@ -120,7 +120,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_sNextLevel
+      value: Game Scene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 158118}
