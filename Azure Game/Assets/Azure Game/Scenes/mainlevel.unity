@@ -1910,6 +1910,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 11423080, guid: db3d635e62883cc4aba9d8ac177801ea, type: 2}
+      propertyPath: m_SwitchState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477138, guid: db3d635e62883cc4aba9d8ac177801ea, type: 2}
+      propertyPath: m_SwitchState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db3d635e62883cc4aba9d8ac177801ea, type: 2}
   m_IsPrefabParent: 0

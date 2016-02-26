@@ -12,7 +12,7 @@ public class SwitchScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        SwitchOff();
+        //SwitchOff();
 
 		transform.GetChild(0).gameObject.transform.Rotate(6, 0, 0, Space.Self);
 		m_SwitchState = true;
