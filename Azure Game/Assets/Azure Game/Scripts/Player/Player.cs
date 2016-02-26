@@ -217,6 +217,23 @@ public class Player : MonoBehaviour {
         return (m_nCollisionCount > 0); //m_bOnGround;
     }
 
+    private void Friction()
+    {
+        Vector3 vecVelocity = m_Rigidbody.velocity;
+
+        if (vecVelocity.magnitude < 1.0f)
+            return;
+
+
+        float force = vecVelocity.magnitude * 10.0f;
+        Vector3 vecFriction = -m_Rigidbody.velocity.normalized * force;
+
+        m_Rigidbody.AddForce( vecFriction, ForceMode.Acceleration );
+
+        //Debug.Log("Friction: " + vecFriction.ToString());
+
+    }
+
     public void Move(Vector3 moveDirection, bool jump)
     {
 
@@ -258,7 +275,11 @@ public class Player : MonoBehaviour {
 
         // Otherwise add force in the move direction.
         m_Rigidbody.AddForce(dir * power);
-        
+              
+
+        if ( IsOnGround() && dir.magnitude == 0 )
+            Friction();
+
         /*
         if (IsOnGround())
             Debug.Log("On Ground. (n=" + m_nCollisionCount +")" );
@@ -268,6 +289,8 @@ public class Player : MonoBehaviour {
 
         m_Rigidbody.AddForce(-Vector3.up * gravity);
         
+
+
         // If on the ground and jump is pressed...
         if ( IsOnGround() && jump )
         {

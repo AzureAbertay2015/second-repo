@@ -79,7 +79,9 @@ public class PlayerControls : MonoBehaviour {
             q_up = true;
 			m_pPlayer.LowerState();
         }
-        
+
+        Debug.Log("h = " + h + ".");
+
         // calculate move direction
         if (cam != null)
         {
