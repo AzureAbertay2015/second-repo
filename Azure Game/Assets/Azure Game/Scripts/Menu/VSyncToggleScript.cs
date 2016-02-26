@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 public class VSyncToggleScript : MonoBehaviour
 {
-    Toggle toggle;
+    Toggle m_Toggle;
 
     public void Start()
     {
-        toggle = GetComponent<Toggle>();
-        toggle.onValueChanged.AddListener(delegate { ToggleVSync(); });
+        m_Toggle = GetComponent<Toggle>();
+        m_Toggle.onValueChanged.AddListener(delegate { ToggleVSync(); });
     }
 
 	public void ToggleVSync()
     {
-        if (toggle.isOn)
+        if (m_Toggle.isOn)
         {
             QualitySettings.vSyncCount = 1;
         }

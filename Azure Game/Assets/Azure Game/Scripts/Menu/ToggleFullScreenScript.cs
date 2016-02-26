@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 public class ToggleFullScreenScript : MonoBehaviour
 {
-    Toggle toggle;
+    Toggle m_Toggle;
 
     // Use this for initialization
     public void Start()
     {
-        toggle = GetComponent<Toggle>();
-        toggle.onValueChanged.AddListener(delegate { ToggleFullScreen(); });
+        m_Toggle = GetComponent<Toggle>();
+        m_Toggle.onValueChanged.AddListener(delegate { ToggleFullScreen(); });
     }
 
     public void ToggleFullScreen()
     {
-        Screen.fullScreen = toggle.isOn;
+        Screen.fullScreen = m_Toggle.isOn;
     }
 }

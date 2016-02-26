@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 public class SelectAAScript : MonoBehaviour {
 
-    Dropdown dropdown;
+    Dropdown m_Dropdown;
     // Use this for initialization
     void Start()
     {
-        dropdown = GetComponent<Dropdown>();
+        m_Dropdown = GetComponent<Dropdown>();
 
-        dropdown.onValueChanged.AddListener(delegate { SetAntiAliasing(); });
+        m_Dropdown.onValueChanged.AddListener(delegate { SetAntiAliasing(); });
     }
 
     void SetAntiAliasing()
     {
-        QualitySettings.antiAliasing = dropdown.value * 2;
+        QualitySettings.antiAliasing = (m_Dropdown.value - 1)* 2;
     }
 }

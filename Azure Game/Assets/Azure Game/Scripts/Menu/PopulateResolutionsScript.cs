@@ -5,19 +5,19 @@ using UnityEngine.UI;
 public class PopulateResolutionsScript : MonoBehaviour
 {
 
-    Dropdown dropdown;
+    Dropdown m_Dropdown;
     // Use this for initialization
     void Start ()
     {
-        dropdown = GetComponent<Dropdown>();
+        m_Dropdown = GetComponent<Dropdown>();
         Resolution[] resolutions = Screen.resolutions;
 
         foreach (Resolution resolution in resolutions)
         {
-            dropdown.options.Add(new Dropdown.OptionData(ResToString(resolution)));
+            m_Dropdown.options.Add(new Dropdown.OptionData(ResToString(resolution)));
         }
 
-        dropdown.onValueChanged.AddListener(delegate { Screen.SetResolution(resolutions[dropdown.value].width, resolutions[dropdown.value].height, true); });
+        m_Dropdown.onValueChanged.AddListener(delegate { Screen.SetResolution(resolutions[m_Dropdown.value].width, resolutions[m_Dropdown.value].height, true); });
     }
 
     string ResToString(Resolution res)
