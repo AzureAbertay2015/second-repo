@@ -38,5 +38,38 @@ public class HeaterSwitchScript : SwitchScript {
 			}
 		}
 	}
-	
+
+	new public void SwitchOn()
+	{
+		m_SwitchState = true;
+		GameObject o = this.transform.GetChild(0).gameObject;
+		o.transform.Rotate(12, 0, 0, Space.Self);
+		if (m_SwitchType == SwitchType.AirConditioner)
+		{
+			//GameManager.GetGameRules().CoolDownRoom();
+			m_CoolerEmissionScript.EmissionSwitchOn();
+		}
+		else if (m_SwitchType == SwitchType.Heater)
+		{
+			//GameManager.GetGameRules().HeatUpRoom();
+			m_HeaterEmissionScript.EmissionSwitchOn();
+		}
+	}
+
+	new public void SwitchOff()
+	{
+		m_SwitchState = false;
+		GameObject o = this.transform.GetChild(0).gameObject;
+		o.transform.Rotate(348, 0, 0, Space.Self);
+		if (m_SwitchType == SwitchType.AirConditioner)
+		{
+			//GameManager.GetGameRules().HeatUpRoom();
+			m_CoolerEmissionScript.EmissionSwitchOff();
+		}
+		else if (m_SwitchType == SwitchType.Heater)
+		{
+			//GameManager.GetGameRules().CoolDownRoom();
+			m_HeaterEmissionScript.EmissionSwitchOff();
+		}
+	}
 }
