@@ -17,9 +17,13 @@ public class SwitchScript : MonoBehaviour {
 		{
 			m_HeaterEmissionScript = gameObject.transform.GetChild(1).GetComponent<HeaterEmissionScript>();
 		}
-		else
+		else if (m_SwitchType == SwitchType.AirConditioner)
 		{
 			m_CoolerEmissionScript = gameObject.transform.GetChild(1).GetComponent<CoolerEmissionScript>();
+		}
+		else
+		{
+			Debug.LogError("Switch Type neither a cooler nor a heater. Check the Inspector.");
 		}
 	}
 
