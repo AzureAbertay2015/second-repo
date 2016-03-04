@@ -21,11 +21,15 @@ class GameManager
     private const string PLAYER_NAME = "Player"; // Player tag name
     private const string UIMANAGER_NAME = "UIManager"; // UI Manager prefab name.
     private const string GAMERULES_NAME = "GameRules"; // GameRules prefab name.
+    private const string TEMPERATUREMANAGER_NAME = "TemperatureManager"; //Temperature Manager prefab name.
+
+    public static float[] temperatureValues = new float[4];
 
     // Static references
     private static Player g_pPlayer = null;
     private static UIManager g_pUIManager = null;
     private static GameRules g_pGameRules = null;
+    private static TemperatureManager g_pTemperatureManager = null;
 
     public static Player GetPlayer()
     {
@@ -61,11 +65,26 @@ class GameManager
         return g_pGameRules;
     }
 
+    public static TemperatureManager GetTemperatureManager()
+    {
+        if(g_pTemperatureManager == null)
+        {
+            Debug.LogError("No Temperature Manager found, did you forget to add a GameManager to the scene?");
+        }
+
+        return g_pTemperatureManager;
+    }
+
 
     // This is called by GameManagerObject's Awake() - No scene objects are available at this time.
-    public static void LevelLoadBegin()
+    public static void LevelLoadBegin(float m_Roomtemperature, float m_Playertemperature, float m_Temperaturechange, float m_Abilitytemperaturechange)
     {
         // Initialise managers.
+
+        temperatureValues[0] = m_Roomtemperature;
+        temperatureValues[1] = m_Playertemperature;
+        temperatureValues[2] = m_Temperaturechange;
+        temperatureValues[3] = m_Abilitytemperaturechange;
 
         GameObject o;
         o = Object.Instantiate(Resources.Load(UIMANAGER_NAME)) as GameObject;
@@ -74,6 +93,8 @@ class GameManager
         o = Object.Instantiate(Resources.Load(GAMERULES_NAME)) as GameObject;
         g_pGameRules = o.GetComponent<GameRules>();
 
+        o = Object.Instantiate(Resources.Load(TEMPERATUREMANAGER_NAME)) as GameObject;
+        g_pTemperatureManager = o.GetComponent<TemperatureManager>();
     }
 
     // This is called by GameManagerObject's Start() - Scene objects are available.

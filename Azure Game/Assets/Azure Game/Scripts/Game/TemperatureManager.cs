@@ -6,11 +6,11 @@ using System.Collections;
 
 public class TemperatureManager : MonoBehaviour {
     
-    public float m_Roomtemp;
+    public float m_RoomTemperature;
 
     public float m_TemperatureChange;
 
-    public float m_Abilitytempchange;
+    public float m_Abilitytemperaturechange;
 
     private EnergyBarScript m_Energyscript;
     private StateChanger[] m_stateChangers;
@@ -23,7 +23,7 @@ public class TemperatureManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {        
-        m_Roomtemp = 20.0f;
+        m_RoomTemperature= 20.0f;
         m_TemperatureChange = 2.0f;
         m_Abilitytempchange = 20.0f;
         m_Player = GameManager.GetPlayer();
@@ -34,8 +34,9 @@ public class TemperatureManager : MonoBehaviour {
         m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[]; 
     }
 
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         bool upArrow = Input.GetKeyDown(KeyCode.E);
         bool downArrow = Input.GetKeyDown(KeyCode.Q);
@@ -44,7 +45,9 @@ public class TemperatureManager : MonoBehaviour {
         {
             if (m_Energyscript.TempUp())
             {
-               m_Player.m_Temperature += m_Abilitytempchange;
+                //Debug.Log("temp before: " + m_Playertemp);
+                m_Playertemperature += m_Abilitytemperaturechange;
+                //Debug.Log("temp after: " + m_Playertemp);
             }
         }
 
@@ -52,18 +55,20 @@ public class TemperatureManager : MonoBehaviour {
         {
             if (m_Energyscript.TempDown())
             {
-               m_Player.m_Temperature -= m_Abilitytempchange;
+                //Debug.Log("temp before: " + m_Playertemp);
+                m_Playertemperature -= m_Abilitytemperaturechange;
+                //Debug.Log("temp after: " + m_Playertemp);
             }
         }
 
         if (!m_Trigger)
         {
-            if (m_Player.m_Temperature > m_Roomtemp)
+            if (m_Player.m_Temperature > m_RoomTemperature)
             {
                 m_Player.m_Temperature -= m_TemperatureChange * Time.deltaTime;
             }
 
-            if (m_Player.m_Temperature < m_Roomtemp)
+            if (m_Player.m_Temperature < m_RoomTemperature)
             {
                 m_Player.m_Temperature += m_TemperatureChange * Time.deltaTime;
             }
@@ -79,25 +84,25 @@ public class TemperatureManager : MonoBehaviour {
             m_Playertemp += m_TemperatureChange * Time.deltaTime; 
         }
 
-        if (m_Playertemp >= m_LiqGascutoff && m_Prevplayertemp < m_LiqGascutoff)
+        if (m_Playertemperature >= m_LiqGascutoff && m_Prevplayertemperature < m_LiqGascutoff)
         {
             //Debug.Log("GAS");
             GameManager.GetPlayer().ChangeState(Player.State.Gas);
         }
 
-        if (m_Playertemp >= m_SolidLiqcutoff && m_Playertemp < m_LiqGascutoff && (m_Prevplayertemp >= m_LiqGascutoff || m_Prevplayertemp < m_SolidLiqcutoff))
+        if (m_Playertemperature >= m_SolidLiqcutoff && m_Playertemperature < m_LiqGascutoff && (m_Prevplayertemperature >= m_LiqGascutoff || m_Prevplayertemperature < m_SolidLiqcutoff))
         {
             //Debug.Log("LIQUID");
             GameManager.GetPlayer().ChangeState(Player.State.Liquid);
         }
 
-        if (m_Playertemp < m_SolidLiqcutoff && m_Prevplayertemp >= m_SolidLiqcutoff)
+        if (m_Playertemperature < m_SolidLiqcutoff && m_Prevplayertemperature >= m_SolidLiqcutoff)
         {
             //Debug.Log("SOLID");
             GameManager.GetPlayer().ChangeState(Player.State.Solid);
         }
 
-        m_Prevplayertemp = m_Playertemp;*/
+       /* m_Prevplayertemp = m_Playertemp;*/
 
         foreach (StateChanger stateChanger in m_stateChangers)
         {
@@ -135,7 +140,7 @@ public class TemperatureManager : MonoBehaviour {
 
     public void ChangeRoomTemp(float t)
     {
-        m_Roomtemp += t;
+        m_RoomTemperature += t;
     }
 
     public void ChangePlayerTemp(float t)
