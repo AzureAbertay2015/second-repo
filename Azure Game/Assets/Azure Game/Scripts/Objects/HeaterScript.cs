@@ -7,15 +7,12 @@ public class HeaterScript : MonoBehaviour {
 	private bool m_Triggered;
 	private bool m_HeaterTurnedOn;
 	private HeaterEmissionScript m_HeaterEmissionScript;
-    private TemperatureManager m_Tempmanager;
 
 	// Use this for initialization
 	void Start () {
 		m_Triggered = false;
 		m_HeaterTurnedOn = true;
 		m_HeaterEmissionScript = gameObject.GetComponent<HeaterEmissionScript>();
-
-        m_Tempmanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -24,7 +21,7 @@ public class HeaterScript : MonoBehaviour {
         {
             if (m_HeaterTurnedOn)
             {
-                m_Tempmanager.HeaterCooler(true);
+                GameManager.GetTemperatureManager().HeaterCooler(true);
             }
         }
     }
@@ -46,7 +43,7 @@ public class HeaterScript : MonoBehaviour {
         {
             if (m_HeaterTurnedOn)
             {
-                m_Tempmanager.HeaterCooler(false);
+                GameManager.GetTemperatureManager().HeaterCooler(false);
             }
         }
     }

@@ -20,7 +20,7 @@ public class SwitchScript : MonoBehaviour {
 			m_HeaterEmissionScript = gameObject.transform.GetChild(1).GetComponent<HeaterEmissionScript>();
 		else
 			m_CoolerEmissionScript = gameObject.transform.GetChild(1).GetComponent<CoolerEmissionScript>();
-	}
+    }
 
 	public void SwitchOn()
 	{
