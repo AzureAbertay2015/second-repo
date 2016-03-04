@@ -140,12 +140,12 @@ public class TemperatureManager : MonoBehaviour {
 
     public void ChangePlayerTemp(float t)
     {
-        m_PlayerTemperature += t;
+        GameManager.GetPlayer().m_Temperature += t;
     }
 
     public void SetPlayerTemp(float t)
     {
-        m_PlayerTemperature = t;
+        GameManager.GetPlayer().m_Temperature = t;
     }
 
     public void HeaterCooler(bool trigger)
