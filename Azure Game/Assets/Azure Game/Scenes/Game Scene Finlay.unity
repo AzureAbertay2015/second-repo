@@ -1039,7 +1039,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3.8499999}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 25
 --- !u!1 &497122329
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,7 +5690,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 3.85968041}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
 --- !u!114 &1919398728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5707,9 +5707,9 @@ MonoBehaviour:
   m_Temperature: 20
   m_PrevTemperature: 0
   m_State: 1
-  m_pSolidMesh: {fileID: 4300002, guid: 622a87b3379022740be7e2efea3ebd33, type: 3}
-  m_pLiquidMesh: {fileID: 4300002, guid: 622a87b3379022740be7e2efea3ebd33, type: 3}
-  m_pGasMesh: {fileID: 4300002, guid: 622a87b3379022740be7e2efea3ebd33, type: 3}
+  m_pSolidMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_pLiquidMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_pGasMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   m_SolidMaterial: {fileID: 2100000, guid: 05548cc24a48d434b8e94db6ce1384e4, type: 2}
   m_LiquidMaterial: {fileID: 2100000, guid: 6b010771d4f53c14d896d4443f050afd, type: 2}
   m_GasMaterial: {fileID: 2100000, guid: d93794d36d9d3f14eab5de6dafd9e091, type: 2}
@@ -5907,7 +5907,11 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ab33e6080ae416b4d899f39fa8951b98, type: 2}
   m_PrefabInternal: {fileID: 2135124499}
---- !u!1001 &2020225211
+--- !u!4 &2038687672 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
+  m_PrefabInternal: {fileID: 972772451}
+--- !u!1001 &2044312648
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5944,15 +5948,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463960, guid: b21159120f13b89419963cfb87c65016, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b21159120f13b89419963cfb87c65016, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &2038687672 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
-  m_PrefabInternal: {fileID: 972772451}
 --- !u!1001 &2089141999
 Prefab:
   m_ObjectHideFlags: 0
