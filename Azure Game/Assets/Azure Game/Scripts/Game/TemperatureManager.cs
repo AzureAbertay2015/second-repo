@@ -16,7 +16,7 @@ public class TemperatureManager : MonoBehaviour {
     private StateChanger[] m_stateChangers;
 
     [HideInInspector]
-    public float m_PlayerTemperature;
+    public Player m_Player;
 
     private bool m_Trigger;
 
@@ -26,11 +26,11 @@ public class TemperatureManager : MonoBehaviour {
         m_Roomtemp = 20.0f;
         m_TemperatureChange = 2.0f;
         m_Abilitytempchange = 20.0f;
-        m_PlayerTemperature = GameManager.GetPlayer().m_Temperature;
+        m_Player = GameManager.GetPlayer();
         m_Trigger = false;
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
-        m_PlayerTemperature = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().m_Temperature;
+        m_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[]; 
     }
 
@@ -44,7 +44,7 @@ public class TemperatureManager : MonoBehaviour {
         {
             if (m_Energyscript.TempUp())
             {
-               m_PlayerTemperature += m_Abilitytempchange;
+               m_Player.m_Temperature += m_Abilitytempchange;
             }
         }
 
@@ -52,20 +52,20 @@ public class TemperatureManager : MonoBehaviour {
         {
             if (m_Energyscript.TempDown())
             {
-               m_PlayerTemperature -= m_Abilitytempchange;
+               m_Player.m_Temperature -= m_Abilitytempchange;
             }
         }
 
         if (!m_Trigger)
         {
-            if (m_PlayerTemperature > m_Roomtemp)
+            if (m_Player.m_Temperature > m_Roomtemp)
             {
-                m_PlayerTemperature -= m_TemperatureChange * Time.deltaTime * 2;
+                m_Player.m_Temperature -= m_TemperatureChange * Time.deltaTime;
             }
 
-            if (m_PlayerTemperature < m_Roomtemp)
+            if (m_Player.m_Temperature < m_Roomtemp)
             {
-                m_PlayerTemperature += m_TemperatureChange * Time.deltaTime * 2;
+                m_Player.m_Temperature += m_TemperatureChange * Time.deltaTime;
             }
         }
 
@@ -140,12 +140,12 @@ public class TemperatureManager : MonoBehaviour {
 
     public void ChangePlayerTemp(float t)
     {
-        GameManager.GetPlayer().m_Temperature += t;
+        m_Player.m_Temperature += t;
     }
 
     public void SetPlayerTemp(float t)
     {
-        GameManager.GetPlayer().m_Temperature = t;
+        m_Player.m_Temperature = t;
     }
 
     public void HeaterCooler(bool trigger)

@@ -24,7 +24,7 @@ public class StateChanger : MonoBehaviour {
     public Material m_LiquidMaterial;
     public Material m_GasMaterial;
 
-    private void LoadResources()
+    protected void LoadResources()
     {
         m_State = State.Solid;
         m_PreviousState = State.Solid;
@@ -93,6 +93,7 @@ public class StateChanger : MonoBehaviour {
         OnChangeState(state);
     }
 
+    //virtual function that enacts child specific state changing code
     public virtual void OnChangeState(State state)
     {
 

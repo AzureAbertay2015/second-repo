@@ -8,31 +8,31 @@ public class PoolScript : StateChanger
     BoxCollider m_BoxCollider;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        m_TrapScript = GetComponentInParent<TrapScript>();
-        m_BoxCollider = GetComponentInParent<BoxCollider>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	    if (m_State == State.Liquid)
-        {
-            m_TrapScript.enabled = true;
-        }
-        else
-        {
-            m_TrapScript.enabled = false;
-        }
+        LoadResources();
+        m_TrapScript = GetComponent<TrapScript>();
+        m_BoxCollider = GetComponent<BoxCollider>();
+    }
 
-        if (m_State == State.Gas)
+    public override void OnChangeState(State state)
+    {
+        if (state == State.Solid)
         {
-            m_BoxCollider.isTrigger = true;
-        }
-        else
-        {
+            m_TrapScript.on = false;
             m_BoxCollider.isTrigger = false;
         }
-	}
+
+        if (state == State.Liquid)
+        {
+            m_TrapScript.on = true;
+            m_BoxCollider.isTrigger = false;
+        }
+
+        if (state == State.Gas)
+        {
+            m_TrapScript.on = false;
+            m_BoxCollider.isTrigger = true;
+        }
+    }
 }

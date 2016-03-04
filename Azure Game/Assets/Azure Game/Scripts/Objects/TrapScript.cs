@@ -2,25 +2,22 @@
 using System.Collections;
 
 public class TrapScript : MonoBehaviour {
-    
-	// Use this for initialization
-	void Start () {
+    public bool on;
 
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    void Start()
     {
-	
-	}
+        on = true;
+    }
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.tag == "Player")
-		{
-			Debug.Log("Player collided with trap!");
-			GameManager.GetGameRules().KillPlayer();
-		}
+        if (on)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                Debug.Log("Player collided with trap!");
+                GameManager.GetGameRules().KillPlayer();
+            }
+        }
 	}
 }
