@@ -10,7 +10,7 @@ public class TemperatureManager : MonoBehaviour {
 
     public float m_TemperatureChange;
 
-    public float m_Abilitytemperaturechange;
+    public float m_AbilityTemperaturechange;
 
     private EnergyBarScript m_Energyscript;
     private StateChanger[] m_stateChangers;
@@ -25,7 +25,7 @@ public class TemperatureManager : MonoBehaviour {
     {        
         m_RoomTemperature= 20.0f;
         m_TemperatureChange = 2.0f;
-        m_Abilitytempchange = 20.0f;
+        m_AbilityTemperaturechange = 20.0f;
         m_Player = GameManager.GetPlayer();
         m_Trigger = false;
 
@@ -46,7 +46,7 @@ public class TemperatureManager : MonoBehaviour {
             if (m_Energyscript.TempUp())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Playertemperature += m_Abilitytemperaturechange;
+                m_Player.m_Temperature += m_AbilityTemperaturechange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
@@ -56,7 +56,7 @@ public class TemperatureManager : MonoBehaviour {
             if (m_Energyscript.TempDown())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Playertemperature -= m_Abilitytemperaturechange;
+                m_Player.m_Temperature -= m_AbilityTemperaturechange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
@@ -106,12 +106,12 @@ public class TemperatureManager : MonoBehaviour {
 
         foreach (StateChanger stateChanger in m_stateChangers)
         {
-            if (stateChanger.m_Temperature > m_Roomtemp)
+            if (stateChanger.m_Temperature > m_RoomTemperature)
             {
                 stateChanger.m_Temperature -= m_TemperatureChange * Time.deltaTime;
             }
 
-            if (stateChanger.m_Temperature < m_Roomtemp)
+            if (stateChanger.m_Temperature < m_RoomTemperature)
             {
                 stateChanger.m_Temperature += m_TemperatureChange * Time.deltaTime;
             }

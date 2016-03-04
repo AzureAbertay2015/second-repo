@@ -9,8 +9,7 @@ public class GameRules : MonoBehaviour {
     public TemperatureManager m_Tempmanager;
             
     //----------------------------------------
-    // handles
- 
+    // handles 
     //-----------------------------------------
     // function definitions
     void Start()
