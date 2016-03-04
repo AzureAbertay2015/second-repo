@@ -24,7 +24,7 @@ public class HeaterScript : MonoBehaviour {
         {
             if (m_HeaterTurnedOn)
             {
-                //m_Tempmanager.HeaterCooler(true);
+                m_Tempmanager.HeaterCooler(true);
             }
         }
     }
@@ -46,7 +46,7 @@ public class HeaterScript : MonoBehaviour {
         {
             if (m_HeaterTurnedOn)
             {
-                //m_Tempmanager.HeaterCooler(false);
+                m_Tempmanager.HeaterCooler(false);
             }
         }
     }

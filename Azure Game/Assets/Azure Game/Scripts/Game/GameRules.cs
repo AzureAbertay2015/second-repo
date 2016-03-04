@@ -118,11 +118,26 @@ public class GameRules : MonoBehaviour {
 
     public void HeatUpPlayer()
     {
-        m_Tempmanager.ChangePlayerTemp(20.0f);
+        if (m_Tempmanager.m_PlayerTemperature < 50)
+        {
+            m_Tempmanager.SetPlayerTemp(50);
+        }
+        else if (m_Tempmanager.m_PlayerTemperature > 50)
+        {
+            m_Tempmanager.ChangePlayerTemp(-1.0f * Time.deltaTime);
+        }
     }
 
     public void CoolDownPlayer()
     {
-        m_Tempmanager.ChangePlayerTemp(-20.0f);
-    }       
+        if (m_Tempmanager.m_PlayerTemperature > -30)
+        {
+            m_Tempmanager.SetPlayerTemp(-30);
+        }
+        else if (m_Tempmanager.m_PlayerTemperature < -30)
+        {
+            m_Tempmanager.ChangePlayerTemp(1.0f * Time.deltaTime);
+        }
+
+    }
 }

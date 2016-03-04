@@ -84,10 +84,13 @@ public class Player : StateChanger {
 
         m_CollisionTable = new Dictionary<int, Collision>();
 
-
+       // m_SolidLiquidCutoff = -10.0f;
+       // m_LiquidGasCutoff = 40.0f;
+       // m_Temperature = 0.0f;
+       // m_PrevTemperature = 0.0f;
     }       
 
-    private void Awake()
+    void Awake()
     {
         InitPlayer();
     }
@@ -229,7 +232,6 @@ public class Player : StateChanger {
         {
             case State.Solid:               
                 m_GasParticleSystem.enableEmission = false;
-                // Set the maximum angular velocity.
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
                 break;
             case State.Liquid:

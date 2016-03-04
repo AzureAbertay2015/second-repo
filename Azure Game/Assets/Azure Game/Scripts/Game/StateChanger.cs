@@ -33,7 +33,7 @@ public class StateChanger : MonoBehaviour {
         GetComponent<MeshRenderer>().material = m_SolidMaterial;
     }
 
-    private void Start()
+    void Start()
     {
         LoadResources();
     }
@@ -65,7 +65,6 @@ public class StateChanger : MonoBehaviour {
         if (state > State.Gas)
             state = State.Gas;
 
-
         switch (state)
         {
             case State.Solid:
@@ -89,6 +88,8 @@ public class StateChanger : MonoBehaviour {
         }
 
         SetupLayer();
+
+        //call any instance specific code
         OnChangeState(state);
     }
 

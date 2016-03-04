@@ -35,7 +35,7 @@ public class CoolerScript : MonoBehaviour {
         {
             if (m_CoolerTurnedOn)
             {
-                //m_Temperaturemanager.HeaterCooler(true);
+                m_Temperaturemanager.HeaterCooler(true);
             }
         }
     }
@@ -46,7 +46,7 @@ public class CoolerScript : MonoBehaviour {
         {
             if (m_CoolerTurnedOn)
             {
-                //m_Temperaturemanager.HeaterCooler(false);
+                m_Temperaturemanager.HeaterCooler(false);
             }
         }
     }

@@ -18,12 +18,16 @@ public class TemperatureManager : MonoBehaviour {
     [HideInInspector]
     public float m_PlayerTemperature;
 
+    private bool m_Trigger;
+
 	// Use this for initialization
 	void Start ()
     {        
         m_Roomtemp = 20.0f;
         m_TemperatureChange = 2.0f;
         m_Abilitytempchange = 20.0f;
+        m_PlayerTemperature = GameManager.GetPlayer().m_Temperature;
+        m_Trigger = false;
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
         m_PlayerTemperature = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().m_Temperature;
@@ -52,12 +56,25 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
+        if (!m_Trigger)
+        {
+            if (m_PlayerTemperature > m_Roomtemp)
+            {
+                m_PlayerTemperature -= m_TemperatureChange * Time.deltaTime * 2;
+            }
+
+            if (m_PlayerTemperature < m_Roomtemp)
+            {
+                m_PlayerTemperature += m_TemperatureChange * Time.deltaTime * 2;
+            }
+        }
+
         /*if (m_Playertemp > m_Roomtemp)
         {
             m_Playertemp -= m_TemperatureChange * Time.deltaTime;
         }
 
-        if (m_Playertemp < m_Roomtemp)
+        if (m_Playertemp < m_Roomtemp) bv
         {
             m_Playertemp += m_TemperatureChange * Time.deltaTime; 
         }
@@ -123,16 +140,16 @@ public class TemperatureManager : MonoBehaviour {
 
     public void ChangePlayerTemp(float t)
     {
-       m_PlayerTemperature += t;
+        m_PlayerTemperature += t;
+    }
 
-        if(t > 0 &&m_PlayerTemperature > (m_Roomtemp + t))
-        {
-           m_PlayerTemperature = m_Roomtemp + t;
-        }
+    public void SetPlayerTemp(float t)
+    {
+        m_PlayerTemperature = t;
+    }
 
-        else if (t < 0 &&m_PlayerTemperature < (m_Roomtemp + t))
-        {
-           m_PlayerTemperature = m_Roomtemp + t;
-        }
+    public void HeaterCooler(bool trigger)
+    {
+        m_Trigger = trigger;
     }
 }
