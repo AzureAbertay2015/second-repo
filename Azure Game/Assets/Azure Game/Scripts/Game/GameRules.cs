@@ -118,15 +118,17 @@ public class GameRules : MonoBehaviour {
     {
         m_PlayerAlive = false;
     }
-
+	/*
     public void HeatUpPlayer()
     {
-        m_Tempmanager.ChangePlayerTemp(20.0f);
+		//m_Tempmanager.ChangePlayerTemp(20.0f);
+		//StartCoroutine(m_Tempmanager.HeatUpPlayer());
     }
 
     public void CoolDownPlayer()
     {
-        m_Tempmanager.ChangePlayerTemp(-20.0f);
-    }
-       
+		//m_Tempmanager.ChangePlayerTemp(-20.0f);
+		//StartCoroutine(m_Tempmanager.CoolDownPlayer());
+	}
+       */
 }

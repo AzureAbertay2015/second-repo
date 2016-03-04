@@ -6,6 +6,11 @@ public class TemperatureManager : MonoBehaviour {
     public float m_Roomtemp;
     public float m_Playertemp;
     public float m_Prevplayertemp;
+	public float m_MinPlayerTemp;
+	public float m_MaxPlayerTemp;
+	private float m_TempChangeSpeed;
+	public float m_MaxTempChangeSpeed;
+	public float m_MinTempChangeSpeed;
 
     public float m_Tempchange;
 
@@ -27,6 +32,12 @@ public class TemperatureManager : MonoBehaviour {
         m_SolidLiqcutoff = 10.0f;
         m_Tempchange = 2.0f;
         m_Abilitytempchange = 20.0f;
+		m_MinPlayerTemp = -100.0f;
+		m_MaxPlayerTemp = 100.0f;
+		m_TempChangeSpeed = 5.0f;
+		m_MaxTempChangeSpeed = 20;
+		m_MinTempChangeSpeed = 5.0f;
+
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
         
@@ -109,4 +120,57 @@ public class TemperatureManager : MonoBehaviour {
             m_Playertemp = m_Roomtemp + t;
         }
     }
+
+	public IEnumerator HeatUpPlayer()
+	{
+		if (m_Playertemp <= m_MaxPlayerTemp)
+		{
+			while (m_Playertemp <= m_MaxPlayerTemp)
+			{
+				AccelerateTempChange();
+				m_Playertemp = Mathf.MoveTowards(m_Playertemp, m_MaxPlayerTemp, m_TempChangeSpeed * Time.deltaTime);
+				if (m_MaxPlayerTemp - m_Playertemp <= 0.01f)
+				{
+					m_Playertemp = m_MaxPlayerTemp;
+				}
+				yield return null;
+			}
+		}
+	}
+
+	public IEnumerator CoolDownPlayer()
+	{
+		if (m_Playertemp >= m_MinPlayerTemp)
+		{
+			while (m_Playertemp >= m_MinPlayerTemp)
+			{
+				AccelerateTempChange();
+				m_Playertemp = Mathf.MoveTowards(m_Playertemp, m_MinPlayerTemp, m_TempChangeSpeed * Time.deltaTime);
+				if (-m_MinPlayerTemp + m_Playertemp <= 0.01f)
+				{
+					m_Playertemp = m_MinPlayerTemp;
+				}
+				yield return null;
+			}			
+		}
+	}
+
+	public void ResetTempChangeSpeed()
+	{
+		m_TempChangeSpeed = m_MinTempChangeSpeed;
+	}
+
+	private void AccelerateTempChange()
+	{
+		m_TempChangeSpeed = Mathf.Pow(m_TempChangeSpeed, 1.005f);
+		if (m_TempChangeSpeed >= m_MaxTempChangeSpeed)
+			m_TempChangeSpeed = m_MaxTempChangeSpeed;
+	}
+
+	private void DecelerateTempChange()
+	{
+		m_TempChangeSpeed = Mathf.Pow(m_TempChangeSpeed, 0.99f);
+		if (m_TempChangeSpeed <= m_MinTempChangeSpeed)
+			m_TempChangeSpeed = m_MinTempChangeSpeed;
+	}
 }

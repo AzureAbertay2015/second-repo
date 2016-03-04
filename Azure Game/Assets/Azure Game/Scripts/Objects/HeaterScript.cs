@@ -7,21 +7,25 @@ public class HeaterScript : MonoBehaviour {
 	private bool m_Triggered;
 	private bool m_HeaterTurnedOn;
 	private HeaterEmissionScript m_HeaterEmissionScript;
+	private TemperatureManager m_TemperatureManager;
 
 	// Use this for initialization
 	void Start () {
 		m_Triggered = false;
 		m_HeaterTurnedOn = true;
 		m_HeaterEmissionScript = gameObject.GetComponent<HeaterEmissionScript>();
+		m_TemperatureManager = FindObjectOfType<TemperatureManager>();
 	}
 	
-	void OnTriggerEnter(Collider other)
+	void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject.tag == "Player")
 		{
 			if (!m_Triggered && m_HeaterTurnedOn)
 			{
-				GameManager.GetGameRules().HeatUpPlayer();
+				//GameManager.GetGameRules().HeatUpPlayer();
+				//StartCoroutine(m_TemperatureManager.HeatUpPlayer());
+				m_TemperatureManager.StartCoroutine("HeatUpPlayer");
 				m_Triggered = true;
 			}
 		}
@@ -32,6 +36,9 @@ public class HeaterScript : MonoBehaviour {
 		if (other.gameObject.tag == "Player")
 		{
 			m_Triggered = false;
+			//StopCoroutine(m_TemperatureManager.HeatUpPlayer());
+			m_TemperatureManager.StopCoroutine("HeatUpPlayer");
+			m_TemperatureManager.ResetTempChangeSpeed();
 		}
 	}
 
