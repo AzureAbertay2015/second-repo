@@ -10,7 +10,7 @@ public class TemperatureManager : MonoBehaviour {
 
     public float m_TemperatureChange;
 
-    public float m_AbilityTemperaturechange;
+    public float m_AbilityTemperatureChange;
 
     private EnergyBarScript m_Energyscript;
     private StateChanger[] m_stateChangers;
@@ -23,11 +23,14 @@ public class TemperatureManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {        
-        m_RoomTemperature= 20.0f;
         m_TemperatureChange = 2.0f;
-        m_AbilityTemperaturechange = 20.0f;
+        m_AbilityTemperatureChange = 20.0f;
         m_Player = GameManager.GetPlayer();
         m_Trigger = false;
+
+        m_RoomTemperature = GameManager.temperatureValues[0];
+        m_TemperatureChange = GameManager.temperatureValues[1];
+        m_AbilityTemperatureChange = GameManager.temperatureValues[2];
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
         m_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -46,7 +49,7 @@ public class TemperatureManager : MonoBehaviour {
             if (m_Energyscript.TempUp())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Player.m_Temperature += m_AbilityTemperaturechange;
+                m_Player.m_Temperature += m_AbilityTemperatureChange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
@@ -56,7 +59,7 @@ public class TemperatureManager : MonoBehaviour {
             if (m_Energyscript.TempDown())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Player.m_Temperature -= m_AbilityTemperaturechange;
+                m_Player.m_Temperature -= m_AbilityTemperatureChange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
