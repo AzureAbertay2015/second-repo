@@ -8,6 +8,8 @@ TagManager:
   - Interactive
   - EnergyBar
   - TemperatureManager
+  - Fade
+  - Menu
   layers:
   - Default
   - TransparentFX
@@ -47,4 +49,7 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 4001346661
+    locked: 0
+  - name: HUD
+    uniqueID: 1790664259
     locked: 0

@@ -26,7 +26,7 @@ public class TemperatureManager : MonoBehaviour {
 	void Start () {
         
         m_Roomtemp = 20.0f;
-        m_Playertemp = -10.0f;
+        m_Playertemp = 37.1f;
         m_Prevplayertemp = m_Playertemp;
         m_LiqGascutoff = 40.0f;
         m_SolidLiqcutoff = 10.0f;
@@ -34,9 +34,9 @@ public class TemperatureManager : MonoBehaviour {
         m_Abilitytempchange = 20.0f;
 		m_MinPlayerTemp = -100.0f;
 		m_MaxPlayerTemp = 100.0f;
-		m_TempChangeSpeed = 5.0f;
+		m_TempChangeSpeed = 15.0f;
 		m_MaxTempChangeSpeed = 20;
-		m_MinTempChangeSpeed = 5.0f;
+		m_MinTempChangeSpeed = 15.0f;
 
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
@@ -162,7 +162,7 @@ public class TemperatureManager : MonoBehaviour {
 
 	private void AccelerateTempChange()
 	{
-		m_TempChangeSpeed = Mathf.Pow(m_TempChangeSpeed, 1.005f);
+		m_TempChangeSpeed = Mathf.Pow(m_TempChangeSpeed, 1.01f);
 		if (m_TempChangeSpeed >= m_MaxTempChangeSpeed)
 			m_TempChangeSpeed = m_MaxTempChangeSpeed;
 	}
