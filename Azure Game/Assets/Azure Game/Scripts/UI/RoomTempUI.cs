@@ -5,21 +5,19 @@ using UnityEngine.UI;
 public class RoomTempUI : MonoBehaviour {
 
     private Text m_Roomtemptext;
-    public TemperatureManager m_Tempmanager;
     int m_Roomtemp;
 
 	// Use this for initialization
 	void Start () {
 
         m_Roomtemptext = GetComponent<Text>();
-        m_Tempmanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        m_Roomtemp = (int)m_Tempmanager.m_Roomtemp;
+        m_Roomtemp = (int)GameManager.GetTemperatureManager().m_RoomTemperature;
         m_Roomtemptext.text = m_Roomtemp.ToString() + "C";
 	
 	}
