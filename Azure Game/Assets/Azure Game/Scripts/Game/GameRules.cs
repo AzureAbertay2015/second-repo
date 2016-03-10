@@ -6,7 +6,6 @@ public class GameRules : MonoBehaviour {
 
     
     private bool m_PlayerAlive;
-    public TemperatureManager m_Tempmanager;
             
     //----------------------------------------
     // handles 
@@ -15,8 +14,6 @@ public class GameRules : MonoBehaviour {
     void Start()
     {
         m_PlayerAlive = true;
-
-        m_Tempmanager = GameObject.FindGameObjectWithTag("TemperatureManager").GetComponent<TemperatureManager>();
     }
 
     public void TogglePauseMenu()
@@ -92,12 +89,12 @@ public class GameRules : MonoBehaviour {
     
     public void HeatUpRoom()
     {
-        m_Tempmanager.ChangeRoomTemp(25.0f);
+        GameManager.GetTemperatureManager().ChangeRoomTemp(25.0f);
     }
 
     public void CoolDownRoom()
     {
-        m_Tempmanager.ChangeRoomTemp(-25.0f);
+        GameManager.GetTemperatureManager().ChangeRoomTemp(-25.0f);
     }
 
     public void RestartLevel()
@@ -117,25 +114,25 @@ public class GameRules : MonoBehaviour {
 
     public void HeatUpPlayer()
     {
-        if (m_Tempmanager.m_Player.m_Temperature < 50)
+        if (GameManager.GetPlayer().m_Temperature < 50)
         {
-            m_Tempmanager.SetPlayerTemp(50);
+            GameManager.GetTemperatureManager().SetPlayerTemp(50);
         }
-        else if (m_Tempmanager.m_Player.m_Temperature > 50)
+        else if (GameManager.GetPlayer().m_Temperature > 50)
         {
-            m_Tempmanager.ChangePlayerTemp(-1.0f * Time.deltaTime);
+            GameManager.GetTemperatureManager().ChangePlayerTemp(-1.0f * Time.deltaTime);
         }
     }
 
     public void CoolDownPlayer()
     {
-        if (m_Tempmanager.m_Player.m_Temperature > -30)
+        if (GameManager.GetPlayer().m_Temperature > -30)
         {
-            m_Tempmanager.SetPlayerTemp(-30);
+            GameManager.GetTemperatureManager().SetPlayerTemp(-30);
         }
-        else if (m_Tempmanager.m_Player.m_Temperature < -30)
+        else if (GameManager.GetPlayer().m_Temperature < -30)
         {
-            m_Tempmanager.ChangePlayerTemp(1.0f * Time.deltaTime);
+            GameManager.GetTemperatureManager().ChangePlayerTemp(1.0f * Time.deltaTime);
         }
 
     }

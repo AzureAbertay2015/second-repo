@@ -39,13 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe13ac7a76eb67f4995e6c03aba6df12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Roomtemp: 0
-  m_Playertemp: 0
-  m_Prevplayertemp: 0
-  m_Tempchange: 0
-  m_LiqGascutoff: 0
-  m_SolidLiqcutoff: 0
-  m_Abilitytempchange: 0
+  m_RoomTemperature: 0
+  m_TemperatureChange: 0
+  m_AbilityTemperatureChange: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

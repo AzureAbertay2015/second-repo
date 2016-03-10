@@ -14,9 +14,8 @@ public class TemperatureManager : MonoBehaviour {
 
     private EnergyBarScript m_Energyscript;
     private StateChanger[] m_stateChangers;
-
-    [HideInInspector]
-    public Player m_Player;
+   
+    private Player m_Player;
 
     private bool m_Trigger;
 
