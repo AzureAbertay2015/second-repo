@@ -128,6 +128,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11441962, guid: e0d211e3c62efaa4babbf8018a76d2ed, type: 2}
+      propertyPath: m_Roomtemperature
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0d211e3c62efaa4babbf8018a76d2ed, type: 2}
   m_IsPrefabParent: 0
@@ -2502,6 +2506,10 @@ Prefab:
     - target: {fileID: 463960, guid: b21159120f13b89419963cfb87c65016, type: 2}
       propertyPath: m_RootOrder
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403088, guid: b21159120f13b89419963cfb87c65016, type: 2}
+      propertyPath: m_Roomtemperature
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b21159120f13b89419963cfb87c65016, type: 2}

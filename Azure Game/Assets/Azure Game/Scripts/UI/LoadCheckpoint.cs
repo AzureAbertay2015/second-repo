@@ -15,6 +15,6 @@ public class LoadCheckpoint : MonoBehaviour {
 
     public void LoadLastCheckpoint()
     {
-        GameManager.GetPlayer().Checkpoint();
+        //GameManager.GetPlayer().Checkpoint();
     }
 }
