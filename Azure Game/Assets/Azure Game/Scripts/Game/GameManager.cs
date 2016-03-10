@@ -77,14 +77,13 @@ class GameManager
 
 
     // This is called by GameManagerObject's Awake() - No scene objects are available at this time.
-    public static void LevelLoadBegin(float m_Roomtemperature, float m_Playertemperature, float m_Temperaturechange, float m_Abilitytemperaturechange)
+    public static void LevelLoadBegin(float m_Roomtemperature, float m_Temperaturechange, float m_Abilitytemperaturechange)
     {
         // Initialise managers.
 
         temperatureValues[0] = m_Roomtemperature;
-        temperatureValues[1] = m_Playertemperature;
-        temperatureValues[2] = m_Temperaturechange;
-        temperatureValues[3] = m_Abilitytemperaturechange;
+        temperatureValues[1] = m_Temperaturechange;
+        temperatureValues[2] = m_Abilitytemperaturechange;
 
         GameObject o;
         o = Object.Instantiate(Resources.Load(UIMANAGER_NAME)) as GameObject;

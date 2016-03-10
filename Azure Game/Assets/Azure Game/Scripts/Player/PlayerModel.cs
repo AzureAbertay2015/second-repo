@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerModel : MonoBehaviour {
-
+    
     const string SOLID_MODEL = "RollerBall"; //"CubePrototype02x02x02";
     const string LIQUID_MODEL = "RollerBall";
     const string GAS_MODEL = "RollerBall";
@@ -83,6 +83,5 @@ public class PlayerModel : MonoBehaviour {
         {
             transform.position = m_pHostPlayer.transform.position;
         }
-
 	}
 }
