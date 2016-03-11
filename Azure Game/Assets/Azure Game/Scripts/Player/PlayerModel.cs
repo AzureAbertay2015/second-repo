@@ -1,71 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Purpose: The visual representation of the player.
+// We do this so the player's visual rotation can be made independent of the physics model in Player.
 public class PlayerModel : MonoBehaviour {
-    
-    const string SOLID_MODEL = "RollerBall"; //"CubePrototype02x02x02";
-    const string LIQUID_MODEL = "RollerBall";
-    const string GAS_MODEL = "RollerBall";
-
-    const string SOLID_MATERIAL = "Black Grid";
-    const string LIQUID_MATERIAL = "Blue";
-    const string GAS_MATERIAL = "Green";
-
-    const string SOLID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerSolidPhysics";
-    const string LIQUID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerLiquidPhysics";
-    const string GAS_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerGasPhysics";
-
-    const string PLAYER_MODEL_PREFAB = "PlayerModel";
-
-    const string PLAYER_TAG = "Player";
-    
+        
     private Player m_pHostPlayer;
+    private ParticleSystem m_GasParticleSystem;
 
-    private Mesh[] m_pMeshes;
-    private Material[] m_pMaterials;
-    
     public void InitPlayerModel()
     {
-        GameObject o;
-
-        // Initialise arrays (3 states currently)
-        m_pMeshes = new Mesh[3];
-        m_pMaterials = new Material[3];
-
-        o = Instantiate(Resources.Load(SOLID_MODEL)) as GameObject;
-        m_pMeshes[0] = o.GetComponent<MeshFilter>().mesh;
-        m_pMaterials[0] = Resources.Load(SOLID_MATERIAL) as Material;
-
-        o = Instantiate(Resources.Load(LIQUID_MODEL)) as GameObject;
-        m_pMeshes[1] = o.GetComponent<MeshFilter>().mesh;
-        m_pMaterials[1] = Resources.Load(LIQUID_MATERIAL) as Material;
-       
-        o = Instantiate(Resources.Load(GAS_MODEL)) as GameObject;
-        // m_pMeshes[2] = o.GetComponent<MeshFilter>().mesh;
-        m_pMaterials[2] = Resources.Load(GAS_MATERIAL) as Material;
-       
+        m_GasParticleSystem = GetComponent<ParticleSystem>();
     }
 
-    private void SetMesh(Mesh target_mesh)
+    // This will change the mesh and material of the player to the parameters.
+    // Specifying null for one will not change it.
+    public void UpdateRenderableData(Mesh target_mesh, Material target_material)
     {
+        if ( target_mesh != null )
+            GetComponent<MeshFilter>().mesh = target_mesh;
 
+        if ( target_material != null )
+             GetComponent<MeshRenderer>().material = target_material;
     }
 
-    private void SetMaterial(Material target_material)
+    // I was thinking about this for a while, we don't want too much logic for this
+    // in the PlayerModel because doing special things will cause us to have to go back
+    // and forth too much. The PlayerModel does what we say!
+    public void SetEnableGasParticles( bool bEnabled )
     {
-        GetComponent<MeshRenderer>().material = target_material;
+        m_GasParticleSystem.enableEmission = bEnabled;
     }
-
-    public void SetState(Player.State state)
-    {
-
-       GetComponent<MeshFilter>().mesh = m_pMeshes[(int)state];
-       GetComponent<MeshRenderer>().material = m_pMaterials[(int)state];
-
-       // Debug.Log("State = " + (int)state);
-
-    }
-
+    
     public void SetHostPlayer( Player pPlayer )
     {
         m_pHostPlayer = pPlayer;
