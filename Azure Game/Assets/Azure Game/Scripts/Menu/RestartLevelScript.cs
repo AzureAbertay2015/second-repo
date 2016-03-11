@@ -10,7 +10,7 @@ public class RestartLevelScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
+        //m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
 
     }
 

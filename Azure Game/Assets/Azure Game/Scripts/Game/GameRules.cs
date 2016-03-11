@@ -18,9 +18,9 @@ public class GameRules : MonoBehaviour {
     void Start()
     {
         m_PlayerAlive = true;
-        m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
+        //m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
 
-        GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
+       // GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
     }
 
     public void TogglePauseMenu()
