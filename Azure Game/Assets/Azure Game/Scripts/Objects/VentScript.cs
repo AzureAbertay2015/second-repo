@@ -4,7 +4,6 @@ using System.Collections;
 public class VentScript : MonoBehaviour {
 
 	public VentScript m_OtherVent;
-
 	private Vector3 m_ApparitionPosition;
 	public float m_ApparitionDistance;
 
@@ -18,7 +17,6 @@ public class VentScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-
 			if (GameManager.GetPlayer().GetState() == Player.State.Gas)
 				TeleportToOtherVent();
 		}

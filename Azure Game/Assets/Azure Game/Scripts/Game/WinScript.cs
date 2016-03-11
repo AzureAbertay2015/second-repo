@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WinScript : MonoBehaviour {
-
+	
 	private bool m_Toggled;
 	// Use this for initialization
 	void Start () {

@@ -26,14 +26,12 @@ public class UIManager : MonoBehaviour
 
     void ScanForKeyStroke()
     {
-        if (Input.GetKeyDown("escape") && !Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("escape")&& !Input.GetKeyDown("space"))
             m_GameRules.TogglePauseMenu();
-
     }
-
-    void ScanForDeath()
+	
+	void ScanForDeath()
 	{
-
 		if (!m_GameRules.IsPlayerAlive() && m_GameRestarted)
 		{
 			m_GameRules.ToggleDeathMenu();
