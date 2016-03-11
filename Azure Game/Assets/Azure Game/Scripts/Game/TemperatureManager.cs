@@ -63,6 +63,7 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
+<<<<<<< HEAD
         if (!m_Trigger)
         {
             if (m_Player.m_Temperature > m_RoomTemperature)
@@ -105,19 +106,41 @@ public class TemperatureManager : MonoBehaviour {
         }
 
        /* m_Prevplayertemp = m_Playertemp;*/
+=======
+       
+>>>>>>> refs/remotes/origin/master
 
         foreach (StateChanger stateChanger in m_stateChangers)
         {
-            if (stateChanger.m_Temperature > m_RoomTemperature)
+            if(stateChanger.tag == "Player")
             {
-                stateChanger.m_Temperature -= m_TemperatureChange * Time.deltaTime;
+                if (!m_Trigger)
+                {
+                    if (m_Player.m_Temperature > m_RoomTemperature)
+                    {
+                        m_Player.m_Temperature -= m_TemperatureChange * Time.deltaTime;
+                    }
+
+                    if (m_Player.m_Temperature < m_RoomTemperature)
+                    {
+                        m_Player.m_Temperature += m_TemperatureChange * Time.deltaTime;
+                    }
+                }
             }
 
-            if (stateChanger.m_Temperature < m_RoomTemperature)
+            else
             {
-                stateChanger.m_Temperature += m_TemperatureChange * Time.deltaTime;
-            }
+                if (stateChanger.m_Temperature > m_RoomTemperature)
+                {
+                    stateChanger.m_Temperature -= m_TemperatureChange * Time.deltaTime;
+                }
 
+                if (stateChanger.m_Temperature < m_RoomTemperature)
+                {
+                    stateChanger.m_Temperature += m_TemperatureChange * Time.deltaTime;
+                }
+            }
+            
             if (stateChanger.m_Temperature >= stateChanger.m_LiquidGasCutoff && stateChanger.m_PrevTemperature < stateChanger.m_LiquidGasCutoff)
             {
                 //Debug.Log("GAS");
