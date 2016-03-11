@@ -63,61 +63,39 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
-        if (!m_Trigger)
-        {
-            if (m_Player.m_Temperature > m_RoomTemperature)
-            {
-                m_Player.m_Temperature -= m_TemperatureChange * Time.deltaTime;
-            }
-
-            if (m_Player.m_Temperature < m_RoomTemperature)
-            {
-                m_Player.m_Temperature += m_TemperatureChange * Time.deltaTime;
-            }
-        }
-
-        /*if (m_Playertemp > m_Roomtemp)
-        {
-            m_Playertemp -= m_TemperatureChange * Time.deltaTime;
-        }
-
-        if (m_Playertemp < m_Roomtemp) bv
-        {
-            m_Playertemp += m_TemperatureChange * Time.deltaTime; 
-        }
-
-        if (m_Playertemperature >= m_LiqGascutoff && m_Prevplayertemperature < m_LiqGascutoff)
-        {
-            //Debug.Log("GAS");
-            GameManager.GetPlayer().ChangeState(Player.State.Gas);
-        }
-
-        if (m_Playertemperature >= m_SolidLiqcutoff && m_Playertemperature < m_LiqGascutoff && (m_Prevplayertemperature >= m_LiqGascutoff || m_Prevplayertemperature < m_SolidLiqcutoff))
-        {
-            //Debug.Log("LIQUID");
-            GameManager.GetPlayer().ChangeState(Player.State.Liquid);
-        }
-
-        if (m_Playertemperature < m_SolidLiqcutoff && m_Prevplayertemperature >= m_SolidLiqcutoff)
-        {
-            //Debug.Log("SOLID");
-            GameManager.GetPlayer().ChangeState(Player.State.Solid);
-        }
-
-       /* m_Prevplayertemp = m_Playertemp;*/
+       
 
         foreach (StateChanger stateChanger in m_stateChangers)
         {
-            if (stateChanger.m_Temperature > m_RoomTemperature)
+            if(stateChanger.tag == "Player")
             {
-                stateChanger.m_Temperature -= m_TemperatureChange * Time.deltaTime;
+                if (!m_Trigger)
+                {
+                    if (m_Player.m_Temperature > m_RoomTemperature)
+                    {
+                        m_Player.m_Temperature -= m_TemperatureChange * Time.deltaTime;
+                    }
+
+                    if (m_Player.m_Temperature < m_RoomTemperature)
+                    {
+                        m_Player.m_Temperature += m_TemperatureChange * Time.deltaTime;
+                    }
+                }
             }
 
-            if (stateChanger.m_Temperature < m_RoomTemperature)
+            else
             {
-                stateChanger.m_Temperature += m_TemperatureChange * Time.deltaTime;
-            }
+                if (stateChanger.m_Temperature > m_RoomTemperature)
+                {
+                    stateChanger.m_Temperature -= m_TemperatureChange * Time.deltaTime;
+                }
 
+                if (stateChanger.m_Temperature < m_RoomTemperature)
+                {
+                    stateChanger.m_Temperature += m_TemperatureChange * Time.deltaTime;
+                }
+            }
+            
             if (stateChanger.m_Temperature >= stateChanger.m_LiquidGasCutoff && stateChanger.m_PrevTemperature < stateChanger.m_LiquidGasCutoff)
             {
                 //Debug.Log("GAS");
