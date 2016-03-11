@@ -10,9 +10,7 @@ public class Player : StateChanger {
     const string GAS_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerGasPhysics";
 
     const string PLAYER_MODEL_PREFAB = "PlayerModel";
-
-    const string PLAYER_TAG = "Player";
-
+    
     // Temperature states 
     private PhysicMaterial[] m_pPhysicMaterials;
 
@@ -51,12 +49,15 @@ public class Player : StateChanger {
 
     private Rigidbody m_Rigidbody;
     private SphereCollider m_SphereCollider;
-    private ParticleSystem m_GasParticleSystem;
-
+   
     private RaycastHit m_GroundEntityData;
     private bool m_bOnGround;
     private int m_nCollisionCount;
     private Dictionary<int, Collision> m_CollisionTable;
+
+    private Vector3 m_vecGroundNormal;
+
+    private PlayerModel m_PlayerModel;
 
     private void LoadPlayerResources()
     {    
@@ -64,6 +65,13 @@ public class Player : StateChanger {
         m_pPhysicMaterials[0] = Resources.Load(SOLID_PHYSIC_MATERIAL) as PhysicMaterial;
         m_pPhysicMaterials[1] = Resources.Load(LIQUID_PHYSIC_MATERIAL) as PhysicMaterial;
         m_pPhysicMaterials[2] = Resources.Load(GAS_PHYSIC_MATERIAL) as PhysicMaterial;
+
+        GameObject o;
+
+        o = Instantiate(Resources.Load(PLAYER_MODEL_PREFAB)) as GameObject;
+        m_PlayerModel = o.GetComponent<PlayerModel>();
+        m_PlayerModel.SetHostPlayer(this);
+        m_PlayerModel.InitPlayerModel();
     }
 
     private void InitPlayer()
@@ -72,23 +80,22 @@ public class Player : StateChanger {
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_SphereCollider = GetComponent<SphereCollider>();
-        m_GasParticleSystem = GetComponent<ParticleSystem>();
-        
-        ChangeState(State.Solid);
-              
+               
         // Don't use gravity, use our own force.
         m_Rigidbody.useGravity = false;
 
         // Ensure our tag is always Player!
-        gameObject.tag = "Player";
+        gameObject.tag = GameManager.PLAYER_TAG;
 
         m_CollisionTable = new Dictionary<int, Collision>();
 
-       // m_SolidLiquidCutoff = -10.0f;
-       // m_LiquidGasCutoff = 40.0f;
-       // m_Temperature = 0.0f;
-       // m_PrevTemperature = 0.0f;
-    }       
+        m_vecGroundNormal.Set(0, 0, 0);
+
+        GetComponent<MeshRenderer>().enabled = false;
+
+        ChangeState(State.Solid);
+    }
+       
 
     void Awake()
     {
@@ -100,23 +107,15 @@ public class Player : StateChanger {
         // Only flag a valid collision for objects with a z normal that isn't 0.
         // This filters out walls and other stuff that doesn't count as the ground entity.
 
-        //Vector3 normal;
-
         if ( hash != -1 )
         {
             // Get from hashtable (probably exit).
             m_CollisionTable.TryGetValue(hash, out collision);
-                 //Debug.LogError("Failed to get collision table entry! (hash = " + hash + ")");
-
-            //m_CollisionTable.Remove(hash);
+                      
             Debug.Assert(collision.contacts.Length > 0, "Contact length 0, hash = " + hash + ".");
         }
-        else
-        {
-            //normal = collision.contacts[0].normal;
-        }
-
-        return (collision.contacts[0].normal.y != 0);
+     
+        return (collision.contacts[0].normal.y > 0);
 
     }
 
@@ -130,41 +129,47 @@ public class Player : StateChanger {
         if (IsValidCollision(collision))
         {
             m_nCollisionCount++;
+
+            if ( m_vecGroundNormal.sqrMagnitude == 0 )
+            {
+                m_vecGroundNormal = collision.contacts[0].normal;
+            }
+
             //m_CollisionTable.Add(collision.gameObject.GetInstanceID(), collision);
         }
     }
 
     public void OnCollisionExit(Collision collision )
     {
-       // Debug.Assert(collision.contacts.GetLength(0) == 1, "count = " + collision.contacts.GetLength(0));
+        // Debug.Assert(collision.contacts.GetLength(0) == 1, "count = " + collision.contacts.GetLength(0));
 
-        if ( IsValidCollision(collision, collision.gameObject.GetInstanceID()) )
+        if (IsValidCollision(collision, collision.gameObject.GetInstanceID()))
+        {
             m_nCollisionCount--;
+
+            if (m_nCollisionCount == 0)
+                m_vecGroundNormal.Set(0, 0, 0);
+        }
     }
 
-    private void UpdateOnGround()
-    {
-        /*
-        Vector3 startPosition = transform.localPosition;
-        startPosition.z+=2;
-
-        Ray ray = new Ray(startPosition, -Vector3.up);
-       
-        m_bOnGround = Physics.Raycast(ray, out m_GroundEntityData, k_GroundRayLength, 1 );
-        */
-
-        //m_bOnGround = Physics.CheckSphere(transform.localPosition, 0.75f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore); //Physics.SphereCast(transform.localPosition, 0.75f, -Vector3.up, out m_GroundEntityData, 1f, GetLayerForState(GetState()), QueryTriggerInteraction.Ignore);
-        
-        //if ( m_bOnGround )
-         //Debug.DrawLine(transform.localPosition, m_GroundEntityData.transform.localPosition);
-
-        //Debug.Assert(m_nCollisionCount >= 0);
-
-    }
-
+    
     public bool IsOnGround()
     {
         return (m_nCollisionCount > 0); //m_bOnGround;
+    }
+
+    private void Friction()
+    {
+        Vector3 vecVelocity = m_Rigidbody.velocity;
+
+        if (vecVelocity.magnitude < 1.0f)
+            return;
+
+
+        float force = vecVelocity.magnitude * 10.0f;
+        Vector3 vecFriction = -m_Rigidbody.velocity.normalized * force;
+
+        m_Rigidbody.AddForce( vecFriction, ForceMode.Acceleration );
     }
 
     public void Move(Vector3 moveDirection, bool jump)
@@ -189,38 +194,29 @@ public class Player : StateChanger {
             power *= m_ForceMultiplierGas;
             gravity = m_GravityForceGas;
         }
-        
-        UpdateOnGround();
-
-        Vector3 dir = moveDirection;
+     
+        Vector3 dir = moveDirection.normalized;
+        dir.y = 0;
 
         if (!IsOnGround())
             power = m_MovePower * m_ForceMultiplierGas;
-       //else
-         //  dir += m_GroundEntityData.normal;
-
-
-        dir.Normalize();
-
-        dir.y = 0;
-
-        Debug.DrawLine(transform.localPosition, transform.localPosition + dir * 20);
-
+     
         // Otherwise add force in the move direction.
         m_Rigidbody.AddForce(dir * power);
-        /*
-        if (IsOnGround())
-            Debug.Log("On Ground. (n=" + m_nCollisionCount +")" );
-        else
-            Debug.Log("Not on ground.");
-			*/
+        
+        if ( IsOnGround() && dir.magnitude == 0 )
+            Friction();
+
         m_Rigidbody.AddForce(-Vector3.up * gravity);
         
         // If on the ground and jump is pressed...
         if ( IsOnGround() && jump )
         {
+            Debug.Assert(m_vecGroundNormal.sqrMagnitude != 0);
+
             // ... add force in upwards.
-            m_Rigidbody.AddForce(Vector3.up * m_JumpPower, ForceMode.Impulse);
+            m_Rigidbody.AddForce(m_vecGroundNormal * m_JumpPower, ForceMode.Impulse);
+            Debug.Log("Jump vector is " + m_vecGroundNormal.ToString() + ". (n=" + m_nCollisionCount + ").");
            // Debug.Log("Jumping! " + m_Rigidbody.velocity.y );
             
         }
@@ -230,16 +226,16 @@ public class Player : StateChanger {
 	{      
         switch (state)
         {
-            case State.Solid:               
-                m_GasParticleSystem.enableEmission = false;
+            case State.Solid:
+                m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
                 break;
             case State.Liquid:
-                m_GasParticleSystem.enableEmission = false;
+                m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
                 break;
             case State.Gas:
-                m_GasParticleSystem.enableEmission = true;
+                m_PlayerModel.SetEnableGasParticles(true);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
                 break;
 
@@ -253,6 +249,9 @@ public class Player : StateChanger {
 
         // PeterM - Reset collision count since Unity seems to do this when we change physics material
         m_nCollisionCount = 0;
+
+        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().material);        
+
     }
 
     public void RaiseState()
