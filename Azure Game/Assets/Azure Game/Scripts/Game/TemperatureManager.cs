@@ -63,52 +63,6 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
-<<<<<<< HEAD
-        if (!m_Trigger)
-        {
-            if (m_Player.m_Temperature > m_RoomTemperature)
-            {
-                m_Player.m_Temperature -= m_TemperatureChange * Time.deltaTime;
-            }
-
-            if (m_Player.m_Temperature < m_RoomTemperature)
-            {
-                m_Player.m_Temperature += m_TemperatureChange * Time.deltaTime;
-            }
-        }
-
-        /*if (m_Playertemp > m_Roomtemp)
-        {
-            m_Playertemp -= m_TemperatureChange * Time.deltaTime;
-        }
-
-        if (m_Playertemp < m_Roomtemp) 
-        {
-            m_Playertemp += m_TemperatureChange * Time.deltaTime; 
-        }
-
-        if (m_Playertemperature >= m_LiqGascutoff && m_Prevplayertemperature < m_LiqGascutoff)
-        {
-            //Debug.Log("GAS");
-            GameManager.GetPlayer().ChangeState(Player.State.Gas);
-        }
-
-        if (m_Playertemperature >= m_SolidLiqcutoff && m_Playertemperature < m_LiqGascutoff && (m_Prevplayertemperature >= m_LiqGascutoff || m_Prevplayertemperature < m_SolidLiqcutoff))
-        {
-            //Debug.Log("LIQUID");
-            GameManager.GetPlayer().ChangeState(Player.State.Liquid);
-        }
-
-        if (m_Playertemperature < m_SolidLiqcutoff && m_Prevplayertemperature >= m_SolidLiqcutoff)
-        {
-            //Debug.Log("SOLID");
-            GameManager.GetPlayer().ChangeState(Player.State.Solid);
-        }
-
-       /* m_Prevplayertemp = m_Playertemp;*/
-=======
-       
->>>>>>> refs/remotes/origin/master
 
         foreach (StateChanger stateChanger in m_stateChangers)
         {
