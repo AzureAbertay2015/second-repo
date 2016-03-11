@@ -14,8 +14,6 @@ public class TemperatureManager : MonoBehaviour {
 
     private EnergyBarScript m_Energyscript;
     private StateChanger[] m_stateChangers;
-   
-    private Player m_Player;
 
     private bool m_Trigger;
 
@@ -24,7 +22,6 @@ public class TemperatureManager : MonoBehaviour {
     {        
         m_TemperatureChange = 2.0f;
         m_AbilityTemperatureChange = 20.0f;
-        m_Player = GameManager.GetPlayer();
         m_Trigger = false;
 
         m_RoomTemperature = GameManager.temperatureValues[0];
@@ -32,10 +29,8 @@ public class TemperatureManager : MonoBehaviour {
         m_AbilityTemperatureChange = GameManager.temperatureValues[2];
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
-        m_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[]; 
     }
-
 
     // Update is called once per frame
     void Update()
@@ -48,7 +43,7 @@ public class TemperatureManager : MonoBehaviour {
             if (m_Energyscript.TempUp())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Player.m_Temperature += m_AbilityTemperatureChange;
+                GameManager.GetPlayer().m_Temperature += m_AbilityTemperatureChange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
@@ -58,7 +53,7 @@ public class TemperatureManager : MonoBehaviour {
             if (m_Energyscript.TempDown())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
-                m_Player.m_Temperature -= m_AbilityTemperatureChange;
+                GameManager.GetPlayer().m_Temperature -= m_AbilityTemperatureChange;
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
@@ -70,18 +65,17 @@ public class TemperatureManager : MonoBehaviour {
             {
                 if (!m_Trigger)
                 {
-                    if (m_Player.m_Temperature > m_RoomTemperature)
+                    if (GameManager.GetPlayer().m_Temperature > m_RoomTemperature)
                     {
-                        m_Player.m_Temperature -= m_TemperatureChange * Time.deltaTime;
+                        GameManager.GetPlayer().m_Temperature -= m_TemperatureChange * Time.deltaTime;
                     }
 
-                    if (m_Player.m_Temperature < m_RoomTemperature)
+                    if (GameManager.GetPlayer().m_Temperature < m_RoomTemperature)
                     {
-                        m_Player.m_Temperature += m_TemperatureChange * Time.deltaTime;
+                        GameManager.GetPlayer().m_Temperature += m_TemperatureChange * Time.deltaTime;
                     }
                 }
             }
-
             else
             {
                 if (stateChanger.m_Temperature > m_RoomTemperature)
@@ -124,12 +118,12 @@ public class TemperatureManager : MonoBehaviour {
 
     public void ChangePlayerTemp(float t)
     {
-        m_Player.m_Temperature += t;
+        GameManager.GetPlayer().m_Temperature += t;
     }
 
     public void SetPlayerTemp(float t)
     {
-        m_Player.m_Temperature = t;
+        GameManager.GetPlayer().m_Temperature = t;
     }
 
     public void HeaterCooler(bool trigger)

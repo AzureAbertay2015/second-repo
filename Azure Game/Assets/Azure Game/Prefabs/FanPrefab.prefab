@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.42000008, z: -.0215039998}
+  m_LocalPosition: {x: 0, y: 5.44999981, z: -.0215039998}
   m_LocalScale: {x: 6.43598032, y: 10.9320135, z: 6.60248947}
   m_Children: []
   m_Father: {fileID: 482632}
@@ -129,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.1700001, y: 48.5299988, z: 28.2600002}
+  m_LocalPosition: {x: 8.1480217, y: -8.22993469, z: -19.4186974}
   m_LocalScale: {x: .25, y: 1, z: .5}
   m_Children:
   - {fileID: 458678}
@@ -311,7 +311,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_FanForce
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116762}

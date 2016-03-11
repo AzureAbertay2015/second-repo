@@ -48,6 +48,7 @@ GameObject:
   - 4: {fileID: 468584}
   - 114: {fileID: 11488314}
   - 114: {fileID: 11450126}
+  - 114: {fileID: 11476404}
   m_Layer: 0
   m_Name: RotatingTrapPrefab
   m_TagString: Untagged
@@ -219,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.2000008, y: 77.9100037, z: 27.5699997}
+  m_LocalPosition: {x: -82.2722778, y: 63.2299995, z: 29.3999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444122}
@@ -715,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11424314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -726,6 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11438450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,6 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11450126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,6 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11458630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -759,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11460690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -770,6 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11473058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -781,6 +788,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
+--- !u!114 &11476404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathName: Rotating Trap Path
+  pathColor: {r: 0, g: 1, b: 1, a: 1}
+  nodes:
+  - {x: -80.3855591, y: 59.9702454, z: 27.738018}
+  - {x: -87.4426498, y: 60.9054909, z: 30.2562428}
+  nodeCount: 2
+  initialized: 1
+  initialName: New Path 1
+  pathVisible: 1
 --- !u!114 &11486996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11488314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -800,10 +829,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 116292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d471123db6e183b4198f17943830f474, type: 3}
+  m_Script: {fileID: 11500000, guid: ef409a1640837734588cdbd781c9694f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationSpeed: 5
+  m_PathName: Rotating Trap Path
+  m_LoopType: 2
+  m_EaseType: 0
+  m_MoveToPath: 1
+  m_Time: 2
+  m_Delay: 0
+  m_IsRunning: 1
+  m_isPaused: 0
 --- !u!114 &11491662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -815,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11498816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -826,6 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
