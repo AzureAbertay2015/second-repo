@@ -10,4 +10,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Azure Game/Scenes/Menu Scene.unity
   - enabled: 1
-    path: Assets/Azure Game/Scenes/mainlevel.unity
+    path: Assets/Azure Game/Scenes/tutorial.unity
+  - enabled: 1
+    path: Assets/Azure Game/Scenes/Tims final level.unity
+  - enabled: 1
+    path: Assets/Azure Game/Scenes/tutorial.unity

@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 /* The GameManager is a global accessor to the worker units of the game.
 
@@ -15,13 +13,14 @@ using UnityEngine.UI;
     Refactored from the original GameManager (now GameRules) by Peter McKeown on 12/02/2016.
 
 */
-
+ 
 class GameManager
 {
     private const string PLAYER_NAME = "Player"; // Player tag name
     private const string UIMANAGER_NAME = "UIManager"; // UI Manager prefab name.
     private const string GAMERULES_NAME = "GameRules"; // GameRules prefab name.
     private const string TEMPERATUREMANAGER_NAME = "TemperatureManager"; //Temperature Manager prefab name.
+    public const string PLAYER_TAG = "Player";
 
     public static float[] temperatureValues = new float[4];
 
@@ -76,7 +75,7 @@ class GameManager
     }
 
 
-    // This is called by GameManagerObject's Awake() - No scene objects are available at this time.
+    // This is called by GameManagerObject's Awake() - Scene objects are initialised for pointers
     public static void LevelLoadBegin(float m_Roomtemperature, float m_Temperaturechange, float m_Abilitytemperaturechange)
     {
         // Initialise managers.
@@ -94,19 +93,22 @@ class GameManager
 
         o = Object.Instantiate(Resources.Load(TEMPERATUREMANAGER_NAME)) as GameObject;
         g_pTemperatureManager = o.GetComponent<TemperatureManager>();
+
+        // Grab the player from the scene.
+
+        g_pPlayer = GameObject.FindGameObjectWithTag(PLAYER_NAME).GetComponent<Player>();
+
     }
 
     // This is called by GameManagerObject's Start() - Scene objects are available.
     public static void LevelLoadFinish()
     {
-        // Grab the player from the scene.
-
-        g_pPlayer = GameObject.FindGameObjectWithTag(PLAYER_NAME).GetComponent<Player>();
-
+       
         // Is this critical? We might not have a player on a main menu scene for example.
         // LogWarning it for now in case a designer forgets in an actual level. - PeterM
 
         if (g_pPlayer == null)
             Debug.LogWarning("No player found in scene!");
     }
+  
 }
