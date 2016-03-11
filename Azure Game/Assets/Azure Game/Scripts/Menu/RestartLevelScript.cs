@@ -28,7 +28,7 @@ public class RestartLevelScript : MonoBehaviour {
 	{
         m_Checkpoints = m_Checkpoint.GetCheckpoints();
 
-        Application.LoadLevel(scene_string);
+        Application.LoadLevel(Application.loadedLevelName);
 
         m_Checkpoint.SetCheckpoints(m_Checkpoints);
 

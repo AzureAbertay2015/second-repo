@@ -48,7 +48,7 @@ public class Checkpoint : MonoBehaviour {
     {
         Vector3 result = GameManager.GetPlayer().transform.localPosition;
 
-        if(m_Checkpoints != null)
+        if (m_Checkpoints != null)
         {
             foreach(GameObject checkpt in m_Checkpoints)
             {
