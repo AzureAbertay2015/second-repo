@@ -7,20 +7,30 @@ public class SwitchScript : MonoBehaviour {
 	public enum SwitchType { AirConditioner, Heater };
 	public SwitchType m_SwitchType;
 	protected HeaterEmissionScript m_HeaterEmissionScript;
-	protected CoolerEmissionScript m_CoolerEmissionScript;
-	
+    protected CoolerEmissionScript m_CoolerEmissionScript;
+
 	// Use this for initialization
 	void Start () {
 
-        SwitchOff();
+        m_SwitchState = false;
 
 		transform.GetChild(0).gameObject.transform.Rotate(6, 0, 0, Space.Self);
-		m_SwitchState = true;
 		if (m_SwitchType == SwitchType.Heater)
+		{
 			m_HeaterEmissionScript = gameObject.transform.GetChild(1).GetComponent<HeaterEmissionScript>();
-		else
+		}
+		else if (m_SwitchType == SwitchType.AirConditioner)
+		{
 			m_CoolerEmissionScript = gameObject.transform.GetChild(1).GetComponent<CoolerEmissionScript>();
-	}
+		}
+		else
+		{
+			Debug.LogError("Switch Type neither a cooler nor a heater. Check the Inspector.");
+        }
+
+        GameObject o = this.transform.GetChild(0).gameObject;
+        o.transform.Rotate(348, 0, 0, Space.Self);
+    }
 
 	public void SwitchOn()
 	{

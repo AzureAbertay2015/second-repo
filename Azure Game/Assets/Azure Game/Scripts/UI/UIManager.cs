@@ -9,9 +9,12 @@ public class UIManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		///
+		
 		m_GameRules = GameManager.GetGameRules();
-	  
+        foreach (Canvas canvas in GetComponentsInChildren<Canvas>())
+        {
+            canvas.worldCamera = Camera.main;
+        }
     }
 
     // Update is called once per frame

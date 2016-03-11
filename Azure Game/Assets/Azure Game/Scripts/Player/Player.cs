@@ -2,18 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-public class Player : MonoBehaviour {
+public class Player : StateChanger {
 
     // Defines
-
-    const string SOLID_MODEL = "RollerBall"; //"CubePrototype02x02x02";
-    const string LIQUID_MODEL = "RollerBall";
-    const string GAS_MODEL = "RollerBall";
-
-    const string SOLID_MATERIAL = "Black Grid";
-    const string LIQUID_MATERIAL = "Blue";
-    const string GAS_MATERIAL = "Green";
-
     const string SOLID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerSolidPhysics";
     const string LIQUID_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerLiquidPhysics";
     const string GAS_PHYSIC_MATERIAL = "PhysicsMaterials/PlayerGasPhysics";
@@ -22,18 +13,8 @@ public class Player : MonoBehaviour {
 
     const string PLAYER_TAG = "Player";
 
-    // Temperature states
-    
-    public enum State { Solid, Liquid, Gas };
-    public State m_State;
-    private State m_PreviousState;
-
-    private Mesh m_pSolidMesh;
-    private Mesh m_pLiquidMesh;
-    private Mesh m_pGasMesh;
-
+    // Temperature states 
     private PhysicMaterial[] m_pPhysicMaterials;
-
 
     [SerializeField]
     private float m_MovePower = 1.5f; // The force added to the player to move it.
@@ -64,9 +45,6 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float m_MaxAngularVelocityGas = 15f;
 
-
-
-
     public float m_JumpPower = 20; // The force added to the ball when it jumps.
 
     private const float k_GroundRayLength = 2.5f; // The length of the ray to check if the ball is grounded.
@@ -74,7 +52,6 @@ public class Player : MonoBehaviour {
     private Rigidbody m_Rigidbody;
     private SphereCollider m_SphereCollider;
     private ParticleSystem m_GasParticleSystem;
-    private PlayerModel m_PlayerModel;
 
     private RaycastHit m_GroundEntityData;
     private bool m_bOnGround;
@@ -84,18 +61,11 @@ public class Player : MonoBehaviour {
     private Vector3 m_vecGroundNormal;
 
     private void LoadPlayerResources()
-    {
-        GameObject o;
-    
+    {    
         m_pPhysicMaterials = new PhysicMaterial[3];
         m_pPhysicMaterials[0] = Resources.Load(SOLID_PHYSIC_MATERIAL) as PhysicMaterial;
         m_pPhysicMaterials[1] = Resources.Load(LIQUID_PHYSIC_MATERIAL) as PhysicMaterial;
         m_pPhysicMaterials[2] = Resources.Load(GAS_PHYSIC_MATERIAL) as PhysicMaterial;
-
-        o = Instantiate(Resources.Load(PLAYER_MODEL_PREFAB)) as GameObject;
-        m_PlayerModel = o.GetComponent<PlayerModel>();
-        m_PlayerModel.SetHostPlayer(this);
-        m_PlayerModel.InitPlayerModel();
     }
 
     private void InitPlayer()
@@ -120,19 +90,10 @@ public class Player : MonoBehaviour {
     }
        
 
-    private void Awake()
+    void Awake()
     {
         InitPlayer();
     }
-
-    private void Start()
-    {
-          //InitPlayer();
-    }
-    
-    private void Update()
-    {
-    }   
 
     private bool IsValidCollision( Collision collision, int hash = -1 )
     {
@@ -304,64 +265,19 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public int GetLayerForState( Player.State state )
-    {
-        switch (m_State)
-        {
-            case State.Solid:
-               return 9;
-                //Debug.Log("Layer changed to: " + player.gameObject.layer);
-            case State.Liquid:
-               return 10;// water
-                                      //Debug.Log("Layer changed to: " + player.gameObject.layer);
-            case State.Gas:
-                return 11;
-                //Debug.Log("Layer changed to: " + player.gameObject.layer);
-            default:
-                Debug.Assert(false); // This should never happen!
-                break;
-        }
-
-        return 0;
-    }
-
-    private void SetupLayer()
-    {
-        gameObject.layer = GetLayerForState(m_State);
-    }
-
-    public void ChangeState(State state)
-	{
-
-        if (state < State.Solid)
-            state = State.Solid;
-
-        if (state > State.Gas)
-            state = State.Gas;
-            
-
+    public override void OnChangeState(State state)
+	{      
         switch (state)
         {
-            case State.Solid:
-
-                //SetMesh(m_pSolidMesh);
-                //SetMaterial(m_SolidMaterial);
-                m_State = State.Solid;
+            case State.Solid:               
                 m_GasParticleSystem.enableEmission = false;
-                // Set the maximum angular velocity.
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
                 break;
             case State.Liquid:
-                //SetMesh(m_pLiquidMesh);
-                //SetMaterial(m_LiquidMaterial);
-                m_State = State.Liquid;
                 m_GasParticleSystem.enableEmission = false;
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
                 break;
             case State.Gas:
-               // SetMesh(m_pGasMesh);
-                //SetMaterial(m_GasMaterial);
-                m_State = State.Gas;
                 m_GasParticleSystem.enableEmission = true;
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
                 break;
@@ -374,18 +290,8 @@ public class Player : MonoBehaviour {
         m_SphereCollider.enabled = false;
         m_SphereCollider.enabled = true;
 
-        m_PlayerModel.SetState(m_State);
-
         // PeterM - Reset collision count since Unity seems to do this when we change physics material
         m_nCollisionCount = 0;
-
-        SetupLayer();
-
-    }
-
-    public State GetState()
-    {
-        return m_State;
     }
 
     public void RaiseState()
