@@ -4,16 +4,23 @@ using UnityEngine.UI;
 
 public class GameRules : MonoBehaviour {
 
+    public enum PlayerState { Solid, Liquid, Gas };
     
     private bool m_PlayerAlive;
+
+    private Checkpoint m_Checkpoint;
             
     //----------------------------------------
-    // handles 
+    // handles
+ 
     //-----------------------------------------
     // function definitions
     void Start()
     {
         m_PlayerAlive = true;
+        m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
+
+        GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
     }
 
     public void TogglePauseMenu()
@@ -86,6 +93,8 @@ public class GameRules : MonoBehaviour {
     {
         return GameManager.GetPlayer().GetState();
     }
+
+
     
     public void HeatUpRoom()
     {
@@ -100,6 +109,7 @@ public class GameRules : MonoBehaviour {
     public void RestartLevel()
     {
         Application.LoadLevel("Game Scene");
+        GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
     }
 
     public bool IsPlayerAlive()
@@ -114,11 +124,11 @@ public class GameRules : MonoBehaviour {
 
     public void HeatUpPlayer()
     {
-        if (GameManager.GetPlayer().m_Temperature < 50)
+        if(GameManager.GetPlayer().m_Temperature < 50)
         {
             GameManager.GetTemperatureManager().SetPlayerTemp(50);
         }
-        else if (GameManager.GetPlayer().m_Temperature > 50)
+        else if(GameManager.GetPlayer().m_Temperature > 50)
         {
             GameManager.GetTemperatureManager().ChangePlayerTemp(-1.0f * Time.deltaTime);
         }
@@ -126,14 +136,15 @@ public class GameRules : MonoBehaviour {
 
     public void CoolDownPlayer()
     {
-        if (GameManager.GetPlayer().m_Temperature > -30)
+        if(GameManager.GetPlayer().m_Temperature > -30)
         {
             GameManager.GetTemperatureManager().SetPlayerTemp(-30);
         }
-        else if (GameManager.GetPlayer().m_Temperature < -30)
+        else if(GameManager.GetPlayer().m_Temperature < -30)
         {
             GameManager.GetTemperatureManager().ChangePlayerTemp(1.0f * Time.deltaTime);
         }
-
+       
     }
+       
 }
