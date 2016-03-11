@@ -13,6 +13,11 @@ public class Checkpoint : MonoBehaviour {
         m_Checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
 	
 	}
+
+    void Awake()
+    {
+      DontDestroyOnLoad(this);    
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,7 +46,7 @@ public class Checkpoint : MonoBehaviour {
 
     public Vector3 GetActiveCheckPoints()
     {
-        Vector3 result = new Vector3(0, 0, 0);
+        Vector3 result = new Vector3(-3.5f, 26.29f, -1.11f);
 
         if(m_Checkpoints != null)
         {
@@ -54,7 +59,17 @@ public class Checkpoint : MonoBehaviour {
                 }
             }
         }
-
+  
         return result;
+    }
+
+    public GameObject[] GetCheckpoints()
+    {
+        return m_Checkpoints;
+    }
+
+    public void SetCheckpoints(GameObject[] m_Checkpointlist)
+    {
+        m_Checkpoints = m_Checkpointlist;
     }
 }

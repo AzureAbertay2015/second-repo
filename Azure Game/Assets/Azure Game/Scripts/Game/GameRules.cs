@@ -7,6 +7,8 @@ public class GameRules : MonoBehaviour {
     public enum PlayerState { Solid, Liquid, Gas };
     
     private bool m_PlayerAlive;
+
+    private Checkpoint m_Checkpoint;
             
     //----------------------------------------
     // handles
@@ -16,6 +18,9 @@ public class GameRules : MonoBehaviour {
     void Start()
     {
         m_PlayerAlive = true;
+        m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
+
+        GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
     }
 
     public void TogglePauseMenu()
@@ -103,7 +108,8 @@ public class GameRules : MonoBehaviour {
 
     public void RestartLevel()
     {
-        Application.LoadLevel("Game Scene");
+        //Application.LoadLevel("Adam Scene");
+        //GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
     }
 
     public bool IsPlayerAlive()
