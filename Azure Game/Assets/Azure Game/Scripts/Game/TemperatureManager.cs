@@ -81,7 +81,7 @@ public class TemperatureManager : MonoBehaviour {
             m_Playertemp -= m_TemperatureChange * Time.deltaTime;
         }
 
-        if (m_Playertemp < m_Roomtemp) bv
+        if (m_Playertemp < m_Roomtemp) 
         {
             m_Playertemp += m_TemperatureChange * Time.deltaTime; 
         }

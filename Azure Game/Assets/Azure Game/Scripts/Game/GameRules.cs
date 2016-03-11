@@ -118,11 +118,11 @@ public class GameRules : MonoBehaviour {
 
     public void HeatUpPlayer()
     {
-        if(GameManager.GetTemperatureManager().m_Playertemperature < 50)
+        if(GameManager.GetPlayer().m_Temperature < 50)
         {
             GameManager.GetTemperatureManager().SetPlayerTemp(50);
         }
-        else if(GameManager.GetTemperatureManager().m_Playertemperature > 50)
+        else if(GameManager.GetPlayer().m_Temperature > 50)
         {
             GameManager.GetTemperatureManager().ChangePlayerTemp(-1.0f * Time.deltaTime);
         }
@@ -130,11 +130,11 @@ public class GameRules : MonoBehaviour {
 
     public void CoolDownPlayer()
     {
-        if(GameManager.GetTemperatureManager().m_Playertemperature > -30)
+        if(GameManager.GetPlayer().m_Temperature > -30)
         {
             GameManager.GetTemperatureManager().SetPlayerTemp(-30);
         }
-        else if(GameManager.GetTemperatureManager().m_Playertemperature < -30)
+        else if(GameManager.GetPlayer().m_Temperature < -30)
         {
             GameManager.GetTemperatureManager().ChangePlayerTemp(1.0f * Time.deltaTime);
         }

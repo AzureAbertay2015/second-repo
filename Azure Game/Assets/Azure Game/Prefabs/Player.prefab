@@ -107,12 +107,12 @@ MonoBehaviour:
   m_Temperature: 0
   m_PrevTemperature: 0
   m_State: 0
-  m_pSolidMesh: {fileID: 4300000, guid: 9f1e12191ad1b1b45ba4ba56926a8b77, type: 3}
-  m_pLiquidMesh: {fileID: 4300000, guid: 9f1e12191ad1b1b45ba4ba56926a8b77, type: 3}
+  m_pSolidMesh: {fileID: 4300052, guid: d05d496cb4f43c14e80630addd23652e, type: 3}
+  m_pLiquidMesh: {fileID: 4300052, guid: d05d496cb4f43c14e80630addd23652e, type: 3}
   m_pGasMesh: {fileID: 0}
-  m_SolidMaterial: {fileID: 2100000, guid: 64337ca47bfa66448b440172b3ea68b5, type: 2}
-  m_LiquidMaterial: {fileID: 2100000, guid: 97a360b9413f04c49ae498eabe997baa, type: 2}
-  m_GasMaterial: {fileID: 2100000, guid: d93794d36d9d3f14eab5de6dafd9e091, type: 2}
+  m_SolidMaterial: {fileID: 2100000, guid: 54f4735c0882e453084a1d6be02306be, type: 2}
+  m_LiquidMaterial: {fileID: 2100000, guid: 9081094ecb56d478d9acd63ab758eb51, type: 2}
+  m_GasMaterial: {fileID: 0}
   m_MovePower: 2.5
   m_MaxAngularVelocity: 25
   m_ForceMultiplierSolid: 1
@@ -1233,7 +1233,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_pSolidMesh
+      value: 
+      objectReference: {fileID: 4300052, guid: d05d496cb4f43c14e80630addd23652e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_pLiquidMesh
+      value: 
+      objectReference: {fileID: 4300052, guid: d05d496cb4f43c14e80630addd23652e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_SolidMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 54f4735c0882e453084a1d6be02306be, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LiquidMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9081094ecb56d478d9acd63ab758eb51, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128936}
