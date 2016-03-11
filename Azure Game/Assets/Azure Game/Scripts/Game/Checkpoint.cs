@@ -46,7 +46,7 @@ public class Checkpoint : MonoBehaviour {
 
     public Vector3 GetActiveCheckPoints()
     {
-        Vector3 result = new Vector3(-3.5f, 26.29f, -1.11f);
+        Vector3 result = GameManager.GetPlayer().transform.localPosition;
 
         if(m_Checkpoints != null)
         {
