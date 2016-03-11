@@ -220,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34, y: 23, z: -1}
+  m_LocalPosition: {x: -82.2722778, y: 63.2299995, z: 29.3999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444122}
@@ -716,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11424314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,6 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11438450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -738,6 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11450126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -749,6 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11458630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -760,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11460690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -771,6 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11473058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -782,6 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11476404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -796,8 +803,8 @@ MonoBehaviour:
   pathName: Rotating Trap Path
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: 34, y: 23, z: -1}
-  - {x: 0, y: 23, z: -1}
+  - {x: -80.3855591, y: 59.9702454, z: 27.738018}
+  - {x: -87.4426498, y: 60.9054909, z: 30.2562428}
   nodeCount: 2
   initialized: 1
   initialName: New Path 1
@@ -813,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11488314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -843,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &11498816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -854,6 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5859640e68afd74fa20ba76d22a4716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
