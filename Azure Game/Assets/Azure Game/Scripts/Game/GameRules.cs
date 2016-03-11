@@ -108,8 +108,8 @@ public class GameRules : MonoBehaviour {
 
     public void RestartLevel()
     {
-        //Application.LoadLevel("Adam Scene");
-        //GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
+        Application.LoadLevel("Game Scene");
+        GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
     }
 
     public bool IsPlayerAlive()
