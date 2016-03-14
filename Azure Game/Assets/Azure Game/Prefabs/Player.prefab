@@ -8,12 +8,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427434}
-  - 23: {fileID: 2356630}
   - 33: {fileID: 3333150}
   - 54: {fileID: 5407334}
   - 114: {fileID: 11420476}
   - 114: {fileID: 11449068}
   - 135: {fileID: 13518192}
+  - 23: {fileID: 2383328}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28,12 +28,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.79999995, y: 49.0999985, z: 28.7399998}
+  m_LocalPosition: {x: -1.42999995, y: 49.0499992, z: 28.6000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2356630
+--- !u!23 &2383328
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -43,7 +43,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 64337ca47bfa66448b440172b3ea68b5, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -63,7 +63,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128936}
-  m_Mesh: {fileID: 4300052, guid: d05d496cb4f43c14e80630addd23652e, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &5407334
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Temperature: 0
   m_PrevTemperature: 0
   m_State: 0
-  m_pSolidMesh: {fileID: 4300000, guid: 9f1e12191ad1b1b45ba4ba56926a8b77, type: 3}
-  m_pLiquidMesh: {fileID: 4300000, guid: 9f1e12191ad1b1b45ba4ba56926a8b77, type: 3}
+  m_pSolidMesh: {fileID: 0}
+  m_pLiquidMesh: {fileID: 0}
   m_pGasMesh: {fileID: 0}
   m_SolidMaterial: {fileID: 2100000, guid: 64337ca47bfa66448b440172b3ea68b5, type: 2}
   m_LiquidMaterial: {fileID: 2100000, guid: 97a360b9413f04c49ae498eabe997baa, type: 2}
