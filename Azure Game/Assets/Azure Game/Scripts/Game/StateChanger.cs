@@ -24,13 +24,25 @@ public class StateChanger : MonoBehaviour {
     public Material m_LiquidMaterial;
     public Material m_GasMaterial;
 
+    protected Renderer m_Renderer;
+
     protected void LoadResources()
     {
         m_State = State.Solid;
         m_PreviousState = State.Solid;
 
         GetComponent<MeshFilter>().mesh = m_pSolidMesh;
-        GetComponent<MeshRenderer>().material = m_SolidMaterial;
+
+        //check if the mesh renderer is skinned or not
+        if (GetComponent<MeshRenderer>() != null)
+        {
+            m_Renderer = GetComponent<MeshRenderer>();
+        }
+        else if (GetComponent<SkinnedMeshRenderer>() != null)
+        {
+            m_Renderer = GetComponent<SkinnedMeshRenderer>();
+        }
+        m_Renderer.material = m_SolidMaterial;
     }
 
     void Start()
@@ -69,17 +81,17 @@ public class StateChanger : MonoBehaviour {
         {
             case State.Solid:
                 GetComponent<MeshFilter>().mesh = m_pSolidMesh;
-                GetComponent<MeshRenderer>().material = m_SolidMaterial;
+                m_Renderer.material = m_SolidMaterial;
                 m_State = State.Solid;
                 break;
             case State.Liquid:
                 GetComponent<MeshFilter>().mesh = m_pLiquidMesh;
-                GetComponent<MeshRenderer>().material = m_LiquidMaterial;
+                m_Renderer.material = m_LiquidMaterial;
                 m_State = State.Liquid;
                 break;
             case State.Gas:
                 GetComponent<MeshFilter>().mesh = m_pGasMesh;
-                GetComponent<MeshRenderer>().material = m_GasMaterial;
+                m_Renderer.material = m_GasMaterial;
                 m_State = State.Gas;
                 break;
 

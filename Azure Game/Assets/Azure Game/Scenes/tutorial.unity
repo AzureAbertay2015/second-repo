@@ -131,6 +131,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab33e6080ae416b4d899f39fa8951b98, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &33694842 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 198882, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+  m_PrefabInternal: {fileID: 1277376027}
+--- !u!54 &33694843
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 33694842}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &44892646
 Prefab:
   m_ObjectHideFlags: 0
@@ -899,7 +918,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
 --- !u!1001 &310197560
 Prefab:
   m_ObjectHideFlags: 0
@@ -1643,7 +1662,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 427434, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.42999995
+      value: -2.00999999
       objectReference: {fileID: 0}
     - target: {fileID: 427434, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1651,7 +1670,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 427434, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 28.6000004
+      value: 29.2800007
       objectReference: {fileID: 0}
     - target: {fileID: 427434, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1673,8 +1692,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2383328, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+    - target: {fileID: 2383328, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7653efb9342a3dd41b2c7941aaa1a6af, type: 2}
+    - target: {fileID: 5407334, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2383328, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &623306169
@@ -3537,13 +3567,17 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.size
+      value: 386
+      objectReference: {fileID: 0}
     - target: {fileID: 484326, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.84000015
+      value: -4.26000023
       objectReference: {fileID: 0}
     - target: {fileID: 484326, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 48.8672791
+      value: 48.9099998
       objectReference: {fileID: 0}
     - target: {fileID: 484326, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3605,7 +3639,393 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 198882, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13598042, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3aeb7dadc0c69d54d9e5777e9d5631f1,
+        type: 2}
+    - target: {fileID: 5499658, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_SphereColliders.Array.data[0].first
+      value: 
+      objectReference: {fileID: 1062399774}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[48].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[84].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[94].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[95].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[96].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[99].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[100].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[103].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[110].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[111].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 13757234, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[121].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[123].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[130].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[133].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[135].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[136].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[141].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[154].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[156].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[157].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[161].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[168].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[202].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[203].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[213].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[222].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[231].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[236].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[237].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[245].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[256].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[258].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[261].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[266].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[267].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[270].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[273].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[281].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[282].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[286].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[290].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[292].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[297].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[298].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[299].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[302].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[306].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[307].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[311].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[313].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[315].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[323].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[324].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[326].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[327].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[336].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[349].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[350].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[351].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[351].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[352].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[352].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[353].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[357].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[358].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[360].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[362].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[362].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[364].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[365].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[366].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[367].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[369].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[370].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[371].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[372].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[373].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[374].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[375].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[376].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[376].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[377].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[380].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[381].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[382].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[383].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[384].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[385].maxDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_Coefficients.Array.data[385].collisionSphereDistance
+      value: 3.40282347e+38
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 18332694, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
+      propertyPath: m_UseTethers
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5499658, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 000dce304906ba24289f89bd9decaf52, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1289668962
@@ -6208,844 +6628,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab33e6080ae416b4d899f39fa8951b98, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2119826639 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 128936, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
-  m_PrefabInternal: {fileID: 608605834}
---- !u!183 &2119826647
-Cloth:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2119826639}
-  m_Enabled: 1
-  m_StretchingStiffness: 1
-  m_BendingStiffness: 0
-  m_UseTethers: 0
-  m_UseGravity: 1
-  m_Damping: 0
-  m_ExternalAcceleration: {x: 0, y: 0, z: .5}
-  m_RandomAcceleration: {x: 0, y: 0, z: 0}
-  m_WorldVelocityScale: .5
-  m_WorldAccelerationScale: 1
-  m_Friction: .5
-  m_CollisionMassScale: 1
-  m_UseContinuousCollision: 1
-  m_UseVirtualParticles: 1
-  m_SolverFrequency: 189
-  m_SleepThreshold: 26.2900009
-  m_Coefficients:
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: .200000003
-    collisionSphereDistance: 0
-  - maxDistance: .200000003
-    collisionSphereDistance: 0
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: .200000003
-    collisionSphereDistance: 0
-  - maxDistance: .200000003
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 3.40282347e+38
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: 3.40282347e+38
-    collisionSphereDistance: 0
-  - maxDistance: .200000003
-    collisionSphereDistance: 0
-  m_CapsuleColliders: []
-  m_SphereColliders:
-  - first: {fileID: 1062399774}
-    second: {fileID: 0}
---- !u!137 &2119826648
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2119826639}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 7653efb9342a3dd41b2c7941aaa1a6af, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 0}
-  m_Bones: []
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
-  m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
 --- !u!1001 &2121660436
 Prefab:
   m_ObjectHideFlags: 0

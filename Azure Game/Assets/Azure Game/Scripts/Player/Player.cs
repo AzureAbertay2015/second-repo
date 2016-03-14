@@ -72,6 +72,8 @@ public class Player : StateChanger {
         m_PlayerModel = o.GetComponent<PlayerModel>();
         m_PlayerModel.SetHostPlayer(this);
         m_PlayerModel.InitPlayerModel();
+
+        LoadResources();
     }
 
     private void InitPlayer()
@@ -80,7 +82,11 @@ public class Player : StateChanger {
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_SphereCollider = GetComponent<SphereCollider>();
-               
+        Cloth cloth = m_PlayerModel.GetComponent<Cloth>();
+
+        cloth.sphereColliders[0].first = m_SphereCollider;
+        cloth.sphereColliders[0].second = m_SphereCollider;
+        //m_PlayerModel.GetComponent<Cloth>().sphereColliders[0].first = m_SphereCollider;
         // Don't use gravity, use our own force.
         m_Rigidbody.useGravity = false;
 
@@ -91,7 +97,7 @@ public class Player : StateChanger {
 
         m_vecGroundNormal.Set(0, 0, 0);
 
-        GetComponent<MeshRenderer>().enabled = false;
+        m_Renderer.enabled = false;
 
         ChangeState(State.Solid);
     }
@@ -229,14 +235,17 @@ public class Player : StateChanger {
             case State.Solid:
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
+                m_Renderer.enabled = true;
                 break;
             case State.Liquid:
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
+                m_Renderer.enabled = true;
                 break;
             case State.Gas:
                 m_PlayerModel.SetEnableGasParticles(true);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
+                m_Renderer.enabled = false;
                 break;
 
             default:
