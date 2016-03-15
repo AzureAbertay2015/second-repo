@@ -33,15 +33,7 @@ public class StateChanger : MonoBehaviour {
 
         GetComponent<MeshFilter>().mesh = m_pSolidMesh;
 
-        //check if the mesh renderer is skinned or not
-        if (GetComponent<MeshRenderer>() != null)
-        {
-            m_Renderer = GetComponent<MeshRenderer>();
-        }
-        else if (GetComponent<SkinnedMeshRenderer>() != null)
-        {
-            m_Renderer = GetComponent<SkinnedMeshRenderer>();
-        }
+        m_Renderer = GetComponent<Renderer>();
         m_Renderer.material = m_SolidMaterial;
     }
 

@@ -82,10 +82,8 @@ public class Player : StateChanger {
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_SphereCollider = GetComponent<SphereCollider>();
-        Cloth cloth = m_PlayerModel.GetComponent<Cloth>();
-
-        cloth.sphereColliders[0].first = m_SphereCollider;
-        cloth.sphereColliders[0].second = m_SphereCollider;
+        //Cloth cloth = m_PlayerModel.GetComponent<Cloth>();
+        
         //m_PlayerModel.GetComponent<Cloth>().sphereColliders[0].first = m_SphereCollider;
         // Don't use gravity, use our own force.
         m_Rigidbody.useGravity = false;
@@ -222,7 +220,6 @@ public class Player : StateChanger {
 
             // ... add force in upwards.
             m_Rigidbody.AddForce(m_vecGroundNormal * m_JumpPower, ForceMode.Impulse);
-            Debug.Log("Jump vector is " + m_vecGroundNormal.ToString() + ". (n=" + m_nCollisionCount + ").");
            // Debug.Log("Jumping! " + m_Rigidbody.velocity.y );
             
         }
@@ -259,7 +256,7 @@ public class Player : StateChanger {
         // PeterM - Reset collision count since Unity seems to do this when we change physics material
         m_nCollisionCount = 0;
 
-        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().material);        
+        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<Renderer>().material);        
 
     }
 
