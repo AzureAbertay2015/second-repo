@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 // Modified version of Adam's Temperature manager
 // Now can handle any number of state changing objects and not just player
@@ -29,7 +30,8 @@ public class TemperatureManager : MonoBehaviour {
         m_AbilityTemperatureChange = GameManager.temperatureValues[2];
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
-        m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[]; 
+        //m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as List<StateChanger>;
+        m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[];
     }
 
     // Update is called once per frame
@@ -130,5 +132,16 @@ public class TemperatureManager : MonoBehaviour {
     public void HeaterCooler(bool trigger)
     {
         m_Trigger = trigger;
+    }
+
+    public int GetNumberStateChangers()
+    {
+        //return m_stateChangers.Count;
+        return 0;
+    }
+
+    public void AddStateChanger(StateChanger statechanger)
+    {
+       // m_stateChangers.Add(statechanger);
     }
 }

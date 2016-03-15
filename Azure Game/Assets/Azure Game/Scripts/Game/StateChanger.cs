@@ -35,11 +35,22 @@ public class StateChanger : MonoBehaviour {
 
         m_Renderer = GetComponent<Renderer>();
         m_Renderer.material = m_SolidMaterial;
+
+        if (tag == "Untagged")
+        {
+            tag = "State Changer";
+        }
+
     }
 
     void Start()
     {
         LoadResources();
+    }
+
+    void Awake()
+    {
+        //GameManager.GetTemperatureManager().AddStateChanger(this);
     }
 
     private void SetupLayer()

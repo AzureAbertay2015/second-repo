@@ -17,7 +17,7 @@ public class CoolerScript : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_CoolerTurnedOn)
             {
@@ -28,7 +28,7 @@ public class CoolerScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_CoolerTurnedOn)
             {
@@ -39,7 +39,7 @@ public class CoolerScript : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_CoolerTurnedOn)
             {

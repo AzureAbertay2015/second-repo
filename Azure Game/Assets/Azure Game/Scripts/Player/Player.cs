@@ -74,6 +74,8 @@ public class Player : StateChanger {
         m_PlayerModel.InitPlayerModel();
 
         LoadResources();
+        // Ensure our tag is always Player!
+        tag = "Player";
     }
 
     private void InitPlayer()
@@ -82,14 +84,10 @@ public class Player : StateChanger {
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_SphereCollider = GetComponent<SphereCollider>();
-        //Cloth cloth = m_PlayerModel.GetComponent<Cloth>();
-        
-        //m_PlayerModel.GetComponent<Cloth>().sphereColliders[0].first = m_SphereCollider;
+
         // Don't use gravity, use our own force.
         m_Rigidbody.useGravity = false;
-
-        // Ensure our tag is always Player!
-        gameObject.tag = GameManager.PLAYER_TAG;
+        
 
         m_CollisionTable = new Dictionary<int, Collision>();
 

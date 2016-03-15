@@ -8,7 +8,7 @@ public class PullScript : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
 		{
 			switch (m_PullerType)
 			{

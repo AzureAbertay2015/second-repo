@@ -17,7 +17,7 @@ public class HeaterScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_HeaterTurnedOn)
             {
@@ -28,7 +28,7 @@ public class HeaterScript : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if(m_HeaterTurnedOn)
             {
@@ -39,7 +39,7 @@ public class HeaterScript : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_HeaterTurnedOn)
             {
