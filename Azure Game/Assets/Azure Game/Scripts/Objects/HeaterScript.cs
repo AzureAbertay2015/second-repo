@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HeaterScript : MonoBehaviour {
 
@@ -9,7 +10,8 @@ public class HeaterScript : MonoBehaviour {
 	private HeaterEmissionScript m_HeaterEmissionScript;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		m_Triggered = false;
 		m_HeaterTurnedOn = true;
 		m_HeaterEmissionScript = gameObject.GetComponent<HeaterEmissionScript>();
@@ -17,33 +19,33 @@ public class HeaterScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_HeaterTurnedOn)
             {
-                GameManager.GetTemperatureManager().HeaterCooler(true);
+                other.gameObject.GetComponent<StateChanger>().m_Triggered = true;
             }
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Player")
-        {
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
+        {            
             if(m_HeaterTurnedOn)
             {
-                GameManager.GetGameRules().HeatUpPlayer();
+                GameManager.GetGameRules().HeatUpObject(other.gameObject.GetComponent<StateChanger>());
             }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_HeaterTurnedOn)
             {
-                GameManager.GetTemperatureManager().HeaterCooler(false);
+                other.gameObject.GetComponent<StateChanger>().m_Triggered = false;
             }
         }
     }

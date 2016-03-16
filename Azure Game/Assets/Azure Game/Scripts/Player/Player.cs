@@ -72,6 +72,10 @@ public class Player : StateChanger {
         m_PlayerModel = o.GetComponent<PlayerModel>();
         m_PlayerModel.SetHostPlayer(this);
         m_PlayerModel.InitPlayerModel();
+
+        LoadResources();
+        // Ensure our tag is always Player!
+        tag = "Player";
     }
 
     private void InitPlayer()
@@ -80,18 +84,16 @@ public class Player : StateChanger {
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_SphereCollider = GetComponent<SphereCollider>();
-               
+
         // Don't use gravity, use our own force.
         m_Rigidbody.useGravity = false;
-
-        // Ensure our tag is always Player!
-        gameObject.tag = GameManager.PLAYER_TAG;
+        
 
         m_CollisionTable = new Dictionary<int, Collision>();
 
         m_vecGroundNormal.Set(0, 0, 0);
 
-        GetComponent<MeshRenderer>().enabled = false;
+        m_Renderer.enabled = false;
 
         ChangeState(State.Solid);
     }
@@ -216,7 +218,6 @@ public class Player : StateChanger {
 
             // ... add force in upwards.
             m_Rigidbody.AddForce(m_vecGroundNormal * m_JumpPower, ForceMode.Impulse);
-            Debug.Log("Jump vector is " + m_vecGroundNormal.ToString() + ". (n=" + m_nCollisionCount + ").");
            // Debug.Log("Jumping! " + m_Rigidbody.velocity.y );
             
         }
@@ -229,14 +230,17 @@ public class Player : StateChanger {
             case State.Solid:
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
+                m_Renderer.enabled = true;
                 break;
             case State.Liquid:
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
+                m_Renderer.enabled = true;
                 break;
             case State.Gas:
                 m_PlayerModel.SetEnableGasParticles(true);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
+                m_Renderer.enabled = false;
                 break;
 
             default:
@@ -250,7 +254,7 @@ public class Player : StateChanger {
         // PeterM - Reset collision count since Unity seems to do this when we change physics material
         m_nCollisionCount = 0;
 
-        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().material);        
+        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<Renderer>().material);        
 
     }
 
