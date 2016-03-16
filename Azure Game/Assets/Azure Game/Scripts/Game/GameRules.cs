@@ -122,29 +122,28 @@ public class GameRules : MonoBehaviour {
         m_PlayerAlive = false;
     }
 
-    public void HeatUpPlayer()
+    public void HeatUpObject(StateChanger statechanger)
     {
-        if(GameManager.GetPlayer().m_Temperature < 50)
+        if(statechanger.m_Temperature < 50)
         {
-            GameManager.GetTemperatureManager().SetPlayerTemp(50);
+            GameManager.GetTemperatureManager().SetObjectTemp(50, statechanger);
         }
         else if(GameManager.GetPlayer().m_Temperature > 50)
         {
-            GameManager.GetTemperatureManager().ChangePlayerTemp(-1.0f * Time.deltaTime);
+            GameManager.GetTemperatureManager().SetObjectTemp(-1.0f * Time.deltaTime, statechanger);
         }
     }
 
-    public void CoolDownPlayer()
+    public void CoolDownObject(StateChanger statechanger)
     {
         if(GameManager.GetPlayer().m_Temperature > -30)
         {
-            GameManager.GetTemperatureManager().SetPlayerTemp(-30);
+            GameManager.GetTemperatureManager().SetObjectTemp(-30, statechanger);
         }
         else if(GameManager.GetPlayer().m_Temperature < -30)
         {
-            GameManager.GetTemperatureManager().ChangePlayerTemp(1.0f * Time.deltaTime);
-        }
-       
+            GameManager.GetTemperatureManager().SetObjectTemp(1.0f * Time.deltaTime, statechanger);
+        }       
     }
        
 }

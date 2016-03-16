@@ -24,6 +24,9 @@ public class StateChanger : MonoBehaviour {
     public Material m_LiquidMaterial;
     public Material m_GasMaterial;
 
+    [HideInInspector]
+    public bool m_Triggered;
+
     protected Renderer m_Renderer;
 
     protected void LoadResources()
