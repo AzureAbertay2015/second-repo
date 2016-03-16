@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5cc66891518b048a95572e1a83040f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FanForce: 2
+  m_FanForce: 4
 --- !u!136 &13616140
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -314,7 +314,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_FanForce
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

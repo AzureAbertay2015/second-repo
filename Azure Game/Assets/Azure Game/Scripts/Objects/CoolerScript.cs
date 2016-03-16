@@ -15,35 +15,36 @@ public class CoolerScript : MonoBehaviour {
 		m_CoolerEmissionScript = gameObject.GetComponent<CoolerEmissionScript>();
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_CoolerTurnedOn)
             {
-                GameManager.GetGameRules().CoolDownPlayer();
+                other.gameObject.GetComponent<StateChanger>().m_Triggered = true;
             }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_CoolerTurnedOn)
             {
-                GameManager.GetTemperatureManager().HeaterCooler(true);
+                GameManager.GetGameRules().HeatUpObject(other.gameObject.GetComponent<StateChanger>());
             }
         }
     }
+
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
         {
             if (m_CoolerTurnedOn)
             {
-                GameManager.GetTemperatureManager().HeaterCooler(false);
+                other.gameObject.GetComponent<StateChanger>().m_Triggered = false;
             }
         }
     }
