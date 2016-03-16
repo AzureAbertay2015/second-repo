@@ -94,12 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 159044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742e4fdfb93798346a931c6943dd5032, type: 3}
+  m_Script: {fileID: 11500000, guid: d6128b00634fd114d9365b8591186080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_SwitchedOnMaterial: {fileID: 2100000, guid: 06a597ede88602b409f8d7d52aa44132,
     type: 2}
-  m_SwitchedOffMaterial: {fileID: 2100000, guid: 1849f95530700db4584ac793aa1576c1,
+  m_SwitchedOffMaterial: {fileID: 2100000, guid: ef7e6d1d06bad364eb6073866fbe29c1,
     type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -107,7 +107,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_SwitchedOnMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 06a597ede88602b409f8d7d52aa44132, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_SwitchedOffMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ef7e6d1d06bad364eb6073866fbe29c1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159044}
