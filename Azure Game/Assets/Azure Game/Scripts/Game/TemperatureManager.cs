@@ -60,20 +60,7 @@ public class TemperatureManager : MonoBehaviour {
 
         foreach (StateChanger stateChanger in m_stateChangers)
         {
-
             if (!stateChanger.m_Triggered)
-            {
-                if (GameManager.GetPlayer().m_Temperature > m_RoomTemperature)
-                {
-                    GameManager.GetPlayer().m_Temperature -= m_TemperatureChange * Time.deltaTime;
-                }
-
-                if (GameManager.GetPlayer().m_Temperature < m_RoomTemperature)
-                {
-                    GameManager.GetPlayer().m_Temperature += m_TemperatureChange * Time.deltaTime;
-                }
-            }
-            else
             {
                 if (stateChanger.m_Temperature > m_RoomTemperature)
                 {
