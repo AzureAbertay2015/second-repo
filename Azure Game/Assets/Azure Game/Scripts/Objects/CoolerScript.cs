@@ -32,7 +32,7 @@ public class CoolerScript : MonoBehaviour {
         {
             if (m_CoolerTurnedOn)
             {
-                GameManager.GetGameRules().HeatUpObject(other.gameObject.GetComponent<StateChanger>());
+                GameManager.GetGameRules().CoolDownObject(other.gameObject.GetComponent<StateChanger>());
             }
         }
     }

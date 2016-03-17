@@ -59,6 +59,8 @@ public class Player : StateChanger {
 
     private PlayerModel m_PlayerModel;
 
+    private Checkpoint m_Checkpoint;
+
     private void LoadPlayerResources()
     {    
         m_pPhysicMaterials = new PhysicMaterial[3];
@@ -102,6 +104,11 @@ public class Player : StateChanger {
     void Awake()
     {
         InitPlayer();
+
+        m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
+
+        m_Checkpoint.setResult(transform.localPosition);
+
     }
 
     private bool IsValidCollision( Collision collision, int hash = -1 )
