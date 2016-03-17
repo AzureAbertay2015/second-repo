@@ -23,6 +23,7 @@ class GameManager
     public const string PLAYER_TAG = "Player";
 
     public static float[] temperatureValues = new float[4];
+    public static float m_LevelLength;
 
     // Static references
     private static Player g_pPlayer = null;
@@ -76,13 +77,15 @@ class GameManager
 
 
     // This is called by GameManagerObject's Awake() - Scene objects are initialised for pointers
-    public static void LevelLoadBegin(float m_Roomtemperature, float m_Temperaturechange, float m_Abilitytemperaturechange)
+    public static void LevelLoadBegin(float m_Roomtemperature, float m_Temperaturechange, float m_Abilitytemperaturechange, float levelLength)
     {
         // Initialise managers.
 
         temperatureValues[0] = m_Roomtemperature;
         temperatureValues[1] = m_Temperaturechange;
         temperatureValues[2] = m_Abilitytemperaturechange;
+
+        m_LevelLength = levelLength;
 
         GameObject o;
         o = Object.Instantiate(Resources.Load(UIMANAGER_NAME)) as GameObject;
@@ -109,6 +112,5 @@ class GameManager
 
         if (g_pPlayer == null)
             Debug.LogWarning("No player found in scene!");
-    }
-  
+    }  
 }

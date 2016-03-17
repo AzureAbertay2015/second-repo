@@ -15,10 +15,10 @@ public class VentScript : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
-		{
-			if (GameManager.GetPlayer().GetState() == Player.State.Gas)
-				TeleportToOtherVent();
+		if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Gas"))
+                TeleportToOtherVent();
 		}
 	}
 

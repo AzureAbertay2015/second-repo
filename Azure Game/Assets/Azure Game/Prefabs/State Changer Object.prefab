@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11446972}
   - 23: {fileID: 2308844}
   m_Layer: 0
-  m_Name: player
+  m_Name: State Changer Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
