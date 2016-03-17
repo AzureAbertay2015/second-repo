@@ -11,13 +11,17 @@ public class Checkpoint : MonoBehaviour {
     void Start () {
 
         m_Checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
-        result = GameManager.GetPlayer().transform.localPosition;
 
     }
 
     void Awake()
     {
       DontDestroyOnLoad(this);    
+    }
+
+   public void setResult(Vector3 pos)
+    {
+        result = pos;
     }
 	
 	// Update is called once per frame
