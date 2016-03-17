@@ -14,7 +14,6 @@ public class StateChanger : MonoBehaviour {
 
     public enum State { Solid, Liquid, Gas };
     public State m_State;
-    private State m_PreviousState;
 
     public Mesh m_pSolidMesh;
     public Mesh m_pLiquidMesh;
@@ -32,7 +31,6 @@ public class StateChanger : MonoBehaviour {
     protected void LoadResources()
     {
         m_State = State.Solid;
-        m_PreviousState = State.Solid;
 
         GetComponent<MeshFilter>().mesh = m_pSolidMesh;
 
@@ -43,7 +41,6 @@ public class StateChanger : MonoBehaviour {
         {
             tag = "State Changer";
         }
-
     }
 
     void Start()

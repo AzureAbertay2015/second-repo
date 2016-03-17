@@ -4,13 +4,12 @@ using System.Collections;
 public class CoolerScript : MonoBehaviour {
 
 	//public GameManager m_GameManager;
-	private bool m_Triggered;
 	private bool m_CoolerTurnedOn;
 	private CoolerEmissionScript m_CoolerEmissionScript;
 
     // Use this for initialization
     void Start () {
-		m_Triggered = false;
+
 		m_CoolerTurnedOn = true;
 		m_CoolerEmissionScript = gameObject.GetComponent<CoolerEmissionScript>();
     }
@@ -32,7 +31,7 @@ public class CoolerScript : MonoBehaviour {
         {
             if (m_CoolerTurnedOn)
             {
-                GameManager.GetGameRules().HeatUpObject(other.gameObject.GetComponent<StateChanger>());
+                GameManager.GetGameRules().CoolDownObject(other.gameObject.GetComponent<StateChanger>());
             }
         }
     }

@@ -7,7 +7,7 @@ public class ButtonScript : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-		if (collision.collider.gameObject.tag == "Player" && GameManager.GetPlayer().GetState() == Player.State.Solid)
+		if (collision.collider.gameObject.tag == "Player" || collision.collider.gameObject.tag == "State Changer" && collision.collider.gameObject.layer == LayerMask.NameToLayer("Solid"))
 		{
 			StartCoroutine(Door.GetComponent<DoorScript>().OpenUp());
 			StartCoroutine(gameObject.GetComponent<DoorScript>().OpenUp());
@@ -16,7 +16,7 @@ public class ButtonScript : MonoBehaviour {
 
 	void OnCollisionExit(Collision collision)
 	{
-		if (collision.collider.gameObject.tag == "Player")
+		if (collision.collider.gameObject.tag == "Player" || collision.collider.gameObject.tag == "State Changer")
 		{
 			StartCoroutine(gameObject.GetComponent<DoorScript>().Close());
 		}
