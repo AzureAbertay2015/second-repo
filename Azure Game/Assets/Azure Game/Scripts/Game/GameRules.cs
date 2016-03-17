@@ -45,15 +45,30 @@ public class GameRules : MonoBehaviour {
         // not the optimal way but for the sake of readability
         if (GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[2].enabled)
         {
+
+            GameManager.GetUIManager().GetComponentsInChildren<Button>()[1].interactable = false;
             GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[2].enabled = false;
+
+            // PeterM - Let me tell you a story...
+            // So, apparently making a Canvas enabled = false doesn't make the buttons stop receiving input.
+            // This means if you click a button, it becomes "selected" and thus keyboard input can effect it whether the canvas is enabled or not.
+            // This caused a bug where pressing spacebar after pressing restart level caused the restart button to be pressed even though it's invisible.
+            // So, we set both buttons to not be interactable, disabling input for them, so this bug won't happen.
+
+            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[2].GetComponentsInChildren<Button>()[0].interactable = false;
+            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[2].GetComponentsInChildren<Button>()[1].interactable = false;
+
             Time.timeScale = 1.0f;
             RestartLevel();
         }
         else
         {
             GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[2].enabled = true;
+            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[2].GetComponentsInChildren<Button>()[0].interactable = true;
+            GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[2].GetComponentsInChildren<Button>()[1].interactable = true;
             Time.timeScale = 0f;
         }
+        Canvas.ForceUpdateCanvases();
     }
 
     public void ToggleWinMenu()
@@ -106,8 +121,8 @@ public class GameRules : MonoBehaviour {
 
     public void RestartLevel()
     {
-        Application.LoadLevel("Game Scene");
-        GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
+        //Application.LoadLevel("Game Scene");
+        //GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
     }
 
     public bool IsPlayerAlive()
@@ -120,15 +135,20 @@ public class GameRules : MonoBehaviour {
         m_PlayerAlive = false;
     }
 
+    public void RespawnPlayer()
+    {
+        m_PlayerAlive = true;
+    }
+
     public void HeatUpObject(StateChanger statechanger)
     {
-        if(statechanger.m_Temperature < 50)
+        if(GameManager.GetPlayer().m_Temperature < 50)
         {
             GameManager.GetTemperatureManager().SetObjectTemp(50, statechanger);
         }
         else if(GameManager.GetPlayer().m_Temperature > 50)
         {
-            GameManager.GetTemperatureManager().SetObjectTemp(-1.0f * Time.deltaTime, statechanger);
+            GameManager.GetTemperatureManager().ChangeObjectTemp(-1.0f * Time.deltaTime, statechanger);
         }
     }
 
@@ -140,8 +160,7 @@ public class GameRules : MonoBehaviour {
         }
         else if(GameManager.GetPlayer().m_Temperature < -30)
         {
-            GameManager.GetTemperatureManager().SetObjectTemp(1.0f * Time.deltaTime, statechanger);
+            GameManager.GetTemperatureManager().ChangeObjectTemp(1.0f * Time.deltaTime, statechanger);
         }       
-    }
-       
+    }       
 }
