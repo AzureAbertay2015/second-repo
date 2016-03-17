@@ -205,52 +205,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab33e6080ae416b4d899f39fa8951b98, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &48182210
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -51.8199997
-      objectReference: {fileID: 0}
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 105.949997
-      objectReference: {fileID: 0}
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 26.4749966
-      objectReference: {fileID: 0}
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_RootOrder
-      value: 29
-      objectReference: {fileID: 0}
-    - target: {fileID: 159044, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-      propertyPath: m_Name
-      value: CoolerPrefab (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: add2404d7a218474a855b625a48d80fa, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &61783532
 Prefab:
   m_ObjectHideFlags: 0
@@ -2201,7 +2155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: add2404d7a218474a855b625a48d80fa, type: 2}
@@ -5903,6 +5857,52 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab33e6080ae416b4d899f39fa8951b98, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2035974350
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -51.8199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 105.949997
+      objectReference: {fileID: 0}
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 26.4749966
+      objectReference: {fileID: 0}
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 462296, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 159044, guid: add2404d7a218474a855b625a48d80fa, type: 2}
+      propertyPath: m_Name
+      value: CoolerPrefab (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: add2404d7a218474a855b625a48d80fa, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2037435995
 Prefab:
