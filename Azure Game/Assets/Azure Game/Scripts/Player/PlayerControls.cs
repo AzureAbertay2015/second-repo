@@ -68,19 +68,19 @@ public class PlayerControls : MonoBehaviour {
         if ( jump && !jump_debounce )
             jump_debounce = true;
         
-        if (e && !e_up)
-        {
-            e_up = true;
-			m_pPlayer.RaiseState();
-        }
+   //     if (e && !e_up)
+   //     {
+   //         e_up = true;
+			//m_pPlayer.RaiseState();
+   //     }
 
-        if (q && !q_up)
-        {
-            q_up = true;
-			m_pPlayer.LowerState();
-        }
+   //     if (q && !q_up)
+   //     {
+   //         q_up = true;
+			//m_pPlayer.LowerState();
+   //     }
 
-        Debug.Log("h = " + h + ".");
+        //Debug.Log("h = " + h + ".");
 
         // calculate move direction
         if (cam != null)

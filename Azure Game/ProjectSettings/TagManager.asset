@@ -8,6 +8,8 @@ TagManager:
   - Interactive
   - EnergyBar
   - TemperatureManager
+  - Checkpoint
+  - State Changer
   layers:
   - Default
   - TransparentFX

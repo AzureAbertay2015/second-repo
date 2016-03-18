@@ -9,6 +9,7 @@ public class GameManagerObject : MonoBehaviour {
     public float m_Roomtemperature;
     public float m_Temperaturechange;
     public float m_Abilitytemperaturechange;
+    public float m_LevelLength; //in seconds
 
     void Awake()
     {
@@ -16,7 +17,7 @@ public class GameManagerObject : MonoBehaviour {
         m_Temperaturechange = 2.0f;
         m_Abilitytemperaturechange = 20.0f;
 
-        GameManager.LevelLoadBegin(m_Roomtemperature, m_Temperaturechange, m_Abilitytemperaturechange);
+        GameManager.LevelLoadBegin(m_Roomtemperature, m_Temperaturechange, m_Abilitytemperaturechange, m_LevelLength);
     }
 
     // Use this for initialization
