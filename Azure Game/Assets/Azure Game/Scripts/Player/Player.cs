@@ -238,16 +238,19 @@ public class Player : StateChanger {
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
                 m_Renderer.enabled = true;
+                GetComponent<Cloth>().ClearTransformMotion();
                 break;
             case State.Liquid:
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
                 m_Renderer.enabled = true;
+                GetComponent<Cloth>().ClearTransformMotion();
                 break;
             case State.Gas:
                 m_PlayerModel.SetEnableGasParticles(true);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
                 m_Renderer.enabled = false;
+                GetComponent<Cloth>().ClearTransformMotion();
                 break;
 
             default:
