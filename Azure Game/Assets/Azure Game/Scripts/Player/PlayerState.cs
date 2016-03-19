@@ -3,14 +3,12 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerState : MonoBehaviour {
-
-    public Text m_SpeedText;
+    
     public Text m_TimeText;
     public Text m_PointsText;
     public Text m_ChargeText;
     public Text m_PuzzleText;
-
-    private int m_Speed;
+    
     private int m_Time;
     private int m_Points;
     private int m_Charge;
@@ -19,7 +17,6 @@ public class PlayerState : MonoBehaviour {
 
     void Start()
     {
-        m_Speed = 50;
         m_Time = 50;
         m_Points = 0;
         m_Charge = 0;
@@ -35,7 +32,6 @@ public class PlayerState : MonoBehaviour {
 
     private void SetUIStrings()
     {
-        m_SpeedText.text = "Speed: " + m_Speed;
         m_TimeText.text = "Time: " + m_Time;
         m_PointsText.text = "Points: " + m_Points;
         m_ChargeText.text = "Charge: " + m_Charge;
@@ -45,13 +41,13 @@ public class PlayerState : MonoBehaviour {
     public void SpeedUp()
     {
         // increase player speed
-        m_Speed += 5;
+        GameManager.GetPlayer().GetComponent<Player>().StartCoroutine("SpeedUp");
     }
     
     public void SpeedDown()
     {
         // decrease player speed
-        m_Speed -= 5;
+        GameManager.GetPlayer().GetComponent<Player>().StartCoroutine("SpeedDown");
     }
 
     public void Time()

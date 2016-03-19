@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Player : StateChanger {
 
@@ -46,6 +47,12 @@ public class Player : StateChanger {
     public float m_JumpPower = 20; // The force added to the ball when it jumps.
 
     private const float k_GroundRayLength = 2.5f; // The length of the ray to check if the ball is grounded.
+
+    public int m_SpeedChangeAmount; // The Amount by which the forcemultiplier changes when speed pickup is consumed
+    public int m_SpeedChangeDuration; // How long the speed change is active
+    private bool m_SpeededUp;
+    private bool m_SpeededDown;
+
 
     private Rigidbody m_Rigidbody;
     private SphereCollider m_SphereCollider;
@@ -98,6 +105,9 @@ public class Player : StateChanger {
         m_Renderer.enabled = false;
 
         ChangeState(State.Solid);
+
+        m_SpeededUp = false;
+        m_SpeededDown = false;
     }
        
 
@@ -275,4 +285,40 @@ public class Player : StateChanger {
         ChangeState(--m_State);
     }
  
+    public IEnumerator SpeedUp()
+    {
+        m_ForceMultiplierSolid += m_SpeedChangeAmount;
+        m_ForceMultiplierLiquid += m_SpeedChangeAmount;
+        m_ForceMultiplierGas += m_SpeedChangeAmount;
+        m_SpeededUp = true;
+        StartCoroutine("PowerUpDisabler");
+        yield return null;
+    }
+
+    public IEnumerator SpeedDown()
+    {
+        m_ForceMultiplierSolid -= m_SpeedChangeAmount;
+        m_ForceMultiplierLiquid -= m_SpeedChangeAmount;
+        m_ForceMultiplierGas -= m_SpeedChangeAmount;
+        m_SpeededDown = true;
+        StartCoroutine("PowerUpDisabler");
+        yield return null;
+    }
+
+    private IEnumerator PowerUpDisabler()
+    {
+        yield return new WaitForSeconds(m_SpeedChangeDuration);
+        if (m_SpeededUp)
+        {
+            StopCoroutine("SpeedUp");
+            StartCoroutine("SpeedDown");
+        }
+        else
+        {
+            StopCoroutine("SpeedDown");
+            StartCoroutine("SpeedUp");
+        }
+        StopCoroutine("PowerUpDisabler");
+    }
+
 }
