@@ -219,19 +219,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 11444214, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+    - target: {fileID: 11413600, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_TimeText
       value: 
       objectReference: {fileID: 407626175}
-    - target: {fileID: 11444214, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+    - target: {fileID: 11413600, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_PointsText
       value: 
       objectReference: {fileID: 1487671773}
-    - target: {fileID: 11444214, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+    - target: {fileID: 11413600, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_ChargeText
       value: 
       objectReference: {fileID: 2054482559}
-    - target: {fileID: 11444214, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
+    - target: {fileID: 11413600, guid: 93874d07ee33eb848a499d8a4574da8b, type: 2}
       propertyPath: m_PuzzleText
       value: 
       objectReference: {fileID: 1312293412}
