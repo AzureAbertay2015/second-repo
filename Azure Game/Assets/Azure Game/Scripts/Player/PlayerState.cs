@@ -13,21 +13,32 @@ public class PlayerState : MonoBehaviour {
     private int m_Points;
     private int m_Charge;
     private int m_PuzzlePieces;
+    private int m_MaxPuzzlePieces;
+    public int m_TimePickup;
 
 
     void Start()
     {
+        
         m_Time = 50;
+        m_TimePickup = 15;
         m_Points = 0;
         m_Charge = 0;
         m_PuzzlePieces = 0;
-
+        foreach (GameObject o in GameObject.FindGameObjectsWithTag("Puzzle Piece"))
+        {
+            m_PuzzlePieces += 1;
+        }
+        m_MaxPuzzlePieces = m_PuzzlePieces;
         SetUIStrings();
+        StartCoroutine("CountDown");
     }
 
     void Update()
     {
         SetUIStrings();
+        if (m_Time <= 0)
+            StopCoroutine("CountDown");
     }
 
     private void SetUIStrings()
@@ -35,7 +46,7 @@ public class PlayerState : MonoBehaviour {
         m_TimeText.text = "Time: " + m_Time;
         m_PointsText.text = "Points: " + m_Points;
         m_ChargeText.text = "Charge: " + m_Charge;
-        m_PuzzleText.text = "Puzzle: " + m_PuzzlePieces;
+        m_PuzzleText.text = "Puzzle: " + (m_MaxPuzzlePieces - m_PuzzlePieces) + "/" + m_MaxPuzzlePieces;
     }
 
     public void SpeedUp()
@@ -53,7 +64,7 @@ public class PlayerState : MonoBehaviour {
     public void Time()
     {
         // Add time to the clock
-        m_Time += 10;
+        m_Time += m_TimePickup;
     }
 
     public void PointsUp()
@@ -71,13 +82,25 @@ public class PlayerState : MonoBehaviour {
     public void Charge()
     {
         // Add charge to the bar
-        m_Charge += 10;
+        FindObjectOfType<EnergyBarScript>().StartCoroutine("ChargeUp");
     }
 
     public void Puzzle()
     {
         // collect a puzzle piece
-        m_PuzzlePieces += 1;
+        m_PuzzlePieces -= 1;
+    }
+
+    private IEnumerator CountDown()
+    {
+        do
+        {
+            if (m_Time > 0)
+                m_Time -= 1;
+
+            yield return new WaitForSeconds(1);
+
+        } while (m_Time > 0);
     }
 
 }

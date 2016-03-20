@@ -83,6 +83,7 @@ MonoBehaviour:
   m_PointsText: {fileID: 0}
   m_ChargeText: {fileID: 0}
   m_PuzzleText: {fileID: 0}
+  m_TimePickup: 15
 --- !u!114 &11449068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,7 +120,8 @@ MonoBehaviour:
   m_MaxAngularVelocityLiquid: 25
   m_MaxAngularVelocityGas: 500
   m_JumpPower: 1
-  m_SpeedChangeAmount: 10
+  m_TimerCount: 60
+  m_SpeedChangeAmount: 3
   m_SpeedChangeDuration: 5
 --- !u!135 &13518192
 SphereCollider:
