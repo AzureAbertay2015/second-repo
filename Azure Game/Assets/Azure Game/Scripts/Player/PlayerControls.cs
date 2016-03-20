@@ -104,14 +104,5 @@ public class PlayerControls : MonoBehaviour {
         jump = false;
     }
 
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Collectible"))
-        {
-            other.SendMessage("Consume");
-            other.gameObject.SetActive(false);
-        }
-    }
 	
 }

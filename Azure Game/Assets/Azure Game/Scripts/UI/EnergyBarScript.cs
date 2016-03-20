@@ -11,14 +11,12 @@ public class EnergyBarScript : MonoBehaviour
     private Image Filler;
 
     public float m_Chargeamount;
-    public float m_FillSpeed;
 
     // Use this for initialization
     void Start()
     {
 
-        m_Fillamount = 1.0f;
-        m_FillSpeed = 5;
+        m_Fillamount = 0;
         m_Chargeamount = 0.01f;
 
     }
@@ -28,21 +26,16 @@ public class EnergyBarScript : MonoBehaviour
     {
 
         UpdateFiller();
-        /*
+
         if (m_Fillamount + (m_Chargeamount * Time.deltaTime) < 1.0f)
         {
             m_Fillamount += m_Chargeamount * Time.deltaTime;
         }
-        */
+
         //Debug.Log("fill amount " + m_Fillamount);
 
 
         m_Chargeamount += (0.01f * Time.deltaTime);
-        if (m_Fillamount >= 0.99f)
-        {
-            StopCoroutine("ChargeUp");
-            m_Fillamount = 1.0f;
-        }
        
     }
 
@@ -53,7 +46,7 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempUp()
     {
-        if (m_Fillamount >= 0.5f)
+        if (m_Fillamount > 0.5f)
         {
             m_Fillamount -= 0.5f;
 
@@ -69,7 +62,7 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempDown()
     {
-        if (m_Fillamount >= 0.5f)
+        if (m_Fillamount > 0.5f)
         {
             m_Fillamount -= 0.5f;
 
@@ -81,20 +74,5 @@ public class EnergyBarScript : MonoBehaviour
         {
             return false;
         }
-    }
-
-    public void AddCharge()
-    {
-        
-        
-    }
-
-    public IEnumerator ChargeUp()
-    {
-        do
-        {
-            m_Fillamount = Mathf.Lerp(m_Fillamount, 1.0f, m_FillSpeed * Time.deltaTime);
-            yield return null;
-        } while (m_Fillamount < 1.0f);
     }
 }
