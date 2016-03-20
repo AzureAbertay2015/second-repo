@@ -48,10 +48,16 @@ public class Player : StateChanger {
 
     private const float k_GroundRayLength = 2.5f; // The length of the ray to check if the ball is grounded.
 
-    public int m_SpeedChangeAmount; // The Amount by which the forcemultiplier changes when speed pickup is consumed
+    [SerializeField]
+    private int m_TimerCount = 60;
+
+    public float m_SpeedChangeAmount; // The Amount by which the forcemultiplier changes when speed pickup is consumed
     public int m_SpeedChangeDuration; // How long the speed change is active
     private bool m_SpeededUp;
     private bool m_SpeededDown;
+    private float m_OrigForceMultiplierSolid;
+    private float m_OrigForceMultiplierLiquid;
+    private float m_OrigForceMultiplierGas;
 
 
     private Rigidbody m_Rigidbody;
@@ -108,6 +114,10 @@ public class Player : StateChanger {
 
         m_SpeededUp = false;
         m_SpeededDown = false;
+
+        m_OrigForceMultiplierGas = m_ForceMultiplierGas;
+        m_OrigForceMultiplierLiquid = m_ForceMultiplierLiquid;
+        m_OrigForceMultiplierSolid = m_ForceMultiplierSolid;
     }
        
 
@@ -287,9 +297,9 @@ public class Player : StateChanger {
  
     public IEnumerator SpeedUp()
     {
-        m_ForceMultiplierSolid += m_SpeedChangeAmount;
-        m_ForceMultiplierLiquid += m_SpeedChangeAmount;
-        m_ForceMultiplierGas += m_SpeedChangeAmount;
+        m_ForceMultiplierSolid *= m_SpeedChangeAmount;
+        m_ForceMultiplierLiquid *= m_SpeedChangeAmount;
+        m_ForceMultiplierGas *= m_SpeedChangeAmount;
         m_SpeededUp = true;
         StartCoroutine("PowerUpDisabler");
         yield return null;
@@ -297,9 +307,9 @@ public class Player : StateChanger {
 
     public IEnumerator SpeedDown()
     {
-        m_ForceMultiplierSolid -= m_SpeedChangeAmount;
-        m_ForceMultiplierLiquid -= m_SpeedChangeAmount;
-        m_ForceMultiplierGas -= m_SpeedChangeAmount;
+        m_ForceMultiplierSolid /= m_SpeedChangeAmount;
+        m_ForceMultiplierLiquid /= m_SpeedChangeAmount;
+        m_ForceMultiplierGas /= m_SpeedChangeAmount;
         m_SpeededDown = true;
         StartCoroutine("PowerUpDisabler");
         yield return null;
@@ -308,17 +318,10 @@ public class Player : StateChanger {
     private IEnumerator PowerUpDisabler()
     {
         yield return new WaitForSeconds(m_SpeedChangeDuration);
-        if (m_SpeededUp)
-        {
-            StopCoroutine("SpeedUp");
-            StartCoroutine("SpeedDown");
-        }
-        else
-        {
-            StopCoroutine("SpeedDown");
-            StartCoroutine("SpeedUp");
-        }
-        StopCoroutine("PowerUpDisabler");
+        m_ForceMultiplierGas = m_OrigForceMultiplierGas;
+        m_ForceMultiplierLiquid = m_OrigForceMultiplierLiquid;
+        m_ForceMultiplierSolid = m_OrigForceMultiplierSolid;
     }
+    
 
 }
