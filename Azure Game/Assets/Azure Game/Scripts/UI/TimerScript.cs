@@ -40,4 +40,9 @@ using UnityEngine.UI;
  
          return minutes + ":" + seconds + ":" + milliSeconds;
      }
+
+    public void changeTime(float time)
+    {
+        m_time += time;
+    }
  }
