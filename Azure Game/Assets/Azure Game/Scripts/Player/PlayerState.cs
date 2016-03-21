@@ -102,5 +102,4 @@ public class PlayerState : MonoBehaviour {
 
         } while (m_Time > 0);
     }
-
 }
