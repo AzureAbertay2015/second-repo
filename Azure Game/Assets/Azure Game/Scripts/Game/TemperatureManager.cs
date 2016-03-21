@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.CrossPlatformInput;
 
 // Modified version of Adam's Temperature manager
 // Now can handle any number of state changing objects and not just player
@@ -36,9 +37,12 @@ public class TemperatureManager : MonoBehaviour {
     {
         bool upArrow = Input.GetKeyDown(KeyCode.E);
         bool downArrow = Input.GetKeyDown(KeyCode.Q);
+        bool increaseTemperature = CrossPlatformInputManager.GetButton("Increase Temperature");
+        bool decreaseTemperature = CrossPlatformInputManager.GetButton("Decrease Temperature");
 
-        if (upArrow)
+        if (CrossPlatformInputManager.GetButton("Increase Temperature"))
         {
+            CrossPlatformInputManager.SetButtonUp("Increase Temperature");
             if (m_Energyscript.TempUp())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
@@ -47,8 +51,9 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
-        if (downArrow)
+        if (CrossPlatformInputManager.GetButton("Decrease Temperature"))
         {
+            CrossPlatformInputManager.SetButtonUp("Decrease Temperature");
             if (m_Energyscript.TempDown())
             {
                 //Debug.Log("temp before: " + m_Playertemp);

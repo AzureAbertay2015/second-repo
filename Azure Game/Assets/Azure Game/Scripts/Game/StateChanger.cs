@@ -6,9 +6,9 @@ using System.Collections;
 
 public class StateChanger : MonoBehaviour {
 
-    public float m_SolidLiquidCutoff, m_LiquidGasCutoff, m_Temperature;
+    public float m_LiquidGasCutoff, m_Temperature;
     [HideInInspector]
-    public float m_PrevTemperature;
+    public float m_SolidLiquidCutoff, m_PrevTemperature;
 
     // Temperature states
 
@@ -33,6 +33,8 @@ public class StateChanger : MonoBehaviour {
         m_State = State.Solid;
 
         GetComponent<MeshFilter>().mesh = m_pSolidMesh;
+
+        m_SolidLiquidCutoff = m_LiquidGasCutoff;
 
         m_Renderer = GetComponent<Renderer>();
         m_Renderer.material = m_SolidMaterial;
