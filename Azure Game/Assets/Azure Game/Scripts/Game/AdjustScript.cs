@@ -19,7 +19,7 @@ public class AdjustScript : MonoBehaviour {
 		}
 		if (GUI.Button(new Rect(10, 220, 100, 30), "Experience Down"))
 		{
-			GameControl.control.health -= 10;
+			GameControl.control.experience -= 10;
 		}
 		if (GUI.Button(new Rect(10, 260, 100, 30), "Save"))
 		{
