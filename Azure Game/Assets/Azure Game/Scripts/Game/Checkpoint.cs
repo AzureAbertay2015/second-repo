@@ -16,7 +16,7 @@ public class Checkpoint : MonoBehaviour {
 
     void Awake()
     {
-      DontDestroyOnLoad(this);    
+        DontDestroyOnLoad(this);    
     }
 
    public void setResult(Vector3 pos)

@@ -14,8 +14,9 @@ public class PlayerState : MonoBehaviour {
     private int m_Charge;
     private int m_PuzzlePieces;
     private int m_MaxPuzzlePieces;
-    public int m_TimePickup;
+    public int  m_TimePickup;
 
+    private TimerScript m_Timer;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class PlayerState : MonoBehaviour {
         m_MaxPuzzlePieces = m_PuzzlePieces;
         SetUIStrings();
         StartCoroutine("CountDown");
+
     }
 
     void Update()
@@ -39,6 +41,11 @@ public class PlayerState : MonoBehaviour {
         SetUIStrings();
         if (m_Time <= 0)
             StopCoroutine("CountDown");
+    }
+
+    void Awake()
+    {
+        m_Timer = FindObjectOfType<TimerScript>();
     }
 
     private void SetUIStrings()
@@ -64,7 +71,7 @@ public class PlayerState : MonoBehaviour {
     public void Time()
     {
         // Add time to the clock
-        m_Time += m_TimePickup;
+        m_Timer.addTime(m_TimePickup);
     }
 
     public void PointsUp()
