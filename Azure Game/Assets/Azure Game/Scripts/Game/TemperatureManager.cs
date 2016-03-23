@@ -37,8 +37,8 @@ public class TemperatureManager : MonoBehaviour {
     {
         bool upArrow = Input.GetKeyDown(KeyCode.E);
         bool downArrow = Input.GetKeyDown(KeyCode.Q);
-        bool increaseTemperature = CrossPlatformInputManager.GetButton("Increase Temperature");
-        bool decreaseTemperature = CrossPlatformInputManager.GetButton("Decrease Temperature");
+        bool increaseTemperature = CrossPlatformInputManager.GetButtonDown("Increase Temperature");
+        bool decreaseTemperature = CrossPlatformInputManager.GetButtonDown("Decrease Temperature");
 
         if (increaseTemperature)
         {
