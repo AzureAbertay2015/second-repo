@@ -23,11 +23,6 @@ public class Checkpoint : MonoBehaviour {
     {
         result = pos;
     }
-
-   public void setResult(Vector3 pos)
-    {
-        result = pos;
-    }
 	
 	// Update is called once per frame
 	void Update () {

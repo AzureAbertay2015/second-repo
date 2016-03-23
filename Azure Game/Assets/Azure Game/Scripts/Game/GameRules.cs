@@ -9,7 +9,7 @@ public class GameRules : MonoBehaviour {
     private bool m_PlayerAlive;
 
     private Checkpoint m_Checkpoint;
-            
+                
     //----------------------------------------
     // handles
  
@@ -21,6 +21,7 @@ public class GameRules : MonoBehaviour {
         m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
 
         GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
+
     }
 
     public void TogglePauseMenu()

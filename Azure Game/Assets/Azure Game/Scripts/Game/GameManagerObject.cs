@@ -34,7 +34,7 @@ public class GameManagerObject : MonoBehaviour {
         //set level length if was not set
         if (m_LevelLength == 0)
         {
-            m_LevelLength = 30.0f;
+            m_LevelLength = 180.0f;
         }
 
         GameManager.LevelLoadBegin(m_Roomtemperature, m_Temperaturechange, m_Abilitytemperaturechange, m_LevelLength);

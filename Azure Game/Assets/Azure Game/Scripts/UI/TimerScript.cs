@@ -6,12 +6,14 @@ using UnityEngine.UI;
 {     
      private float m_time;
      private Text m_timeText;
+    private float m_timeSpent;
  
      // Use this for initialization
     void Start()
     {
         m_timeText = GetComponent<Text>();
         m_time = GameManager.m_LevelLength;
+        m_timeSpent = 0;
     }
  
  	void Awake()
@@ -24,11 +26,19 @@ using UnityEngine.UI;
      {
         m_time -= Time.deltaTime;
         m_timeText.text = timeConvert(m_time);
+
+        if(m_time > 0)
+        {
+            m_timeSpent += Time.deltaTime;
+        }
+        
         if (m_time <= 0)
         {
             m_time = 0;
             m_timeText.text = timeConvert(m_time);
             GameManager.GetGameRules().KillPlayer();
+
+            //m_time = GameManager.m_LevelLength;
         }
     }
  
@@ -44,5 +54,15 @@ using UnityEngine.UI;
     public void addTime(float time)
     {
         m_time += time;
+    }
+
+    public float getTimeLeft()
+    {
+        return m_time;
+    }
+
+    public float getTimeSpent()
+    {
+        return m_timeSpent;
     }
  }
