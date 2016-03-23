@@ -24,9 +24,9 @@ public class PipeScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
 		{
-			if (GameManager.GetPlayer().GetState() == Player.State.Liquid)
+			if (other.gameObject.GetComponent<StateChanger>().GetState() == StateChanger.State.Gas)
 			{
 				//other.gameObject.transform.position = m_EndPosition;
 				//Debug.Log("Player piped");

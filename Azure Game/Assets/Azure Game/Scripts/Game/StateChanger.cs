@@ -6,15 +6,14 @@ using System.Collections;
 
 public class StateChanger : MonoBehaviour {
 
-    public float m_SolidLiquidCutoff, m_LiquidGasCutoff, m_Temperature;
+    public float m_LiquidGasCutoff, m_Temperature;
     [HideInInspector]
-    public float m_PrevTemperature;
+    public float m_SolidLiquidCutoff, m_PrevTemperature;
 
     // Temperature states
 
     public enum State { Solid, Liquid, Gas };
     public State m_State;
-    private State m_PreviousState;
 
     public Mesh m_pSolidMesh;
     public Mesh m_pLiquidMesh;
@@ -32,9 +31,10 @@ public class StateChanger : MonoBehaviour {
     protected void LoadResources()
     {
         m_State = State.Solid;
-        m_PreviousState = State.Solid;
 
         GetComponent<MeshFilter>().mesh = m_pSolidMesh;
+
+        m_SolidLiquidCutoff = m_LiquidGasCutoff;
 
         m_Renderer = GetComponent<Renderer>();
         m_Renderer.material = m_SolidMaterial;
@@ -43,7 +43,6 @@ public class StateChanger : MonoBehaviour {
         {
             tag = "State Changer";
         }
-
     }
 
     void Start()

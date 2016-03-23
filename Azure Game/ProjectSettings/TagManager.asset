@@ -10,6 +10,8 @@ TagManager:
   - TemperatureManager
   - Checkpoint
   - State Changer
+  - Puzzle Piece
+  - Collectible
   layers:
   - Default
   - TransparentFX

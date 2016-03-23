@@ -18,8 +18,6 @@ public class PlayerControls : MonoBehaviour {
     private bool e_up;// is 'e' key released
     private bool q_up;//is 'q' key released
     
-    private bool jump_debounce = false;
-    
     private void Awake()
     {
             
@@ -46,41 +44,7 @@ public class PlayerControls : MonoBehaviour {
 
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
-        jump = CrossPlatformInputManager.GetButton("Jump");
-        bool e = Input.GetKey(KeyCode.E);
-        bool q = Input.GetKey(KeyCode.Q);
-
-
-        if (!jump)
-            jump_debounce = false; 
-        else
-        {
-            //if (jump_debounce)
-             //   jump = false;
-        }
-
-        if (!e)
-            e_up = false;
-
-        if (!q)
-            q_up = false;
-
-        if ( jump && !jump_debounce )
-            jump_debounce = true;
-        
-   //     if (e && !e_up)
-   //     {
-   //         e_up = true;
-			//m_pPlayer.RaiseState();
-   //     }
-
-   //     if (q && !q_up)
-   //     {
-   //         q_up = true;
-			//m_pPlayer.LowerState();
-   //     }
-
-        //Debug.Log("h = " + h + ".");
+        jump = CrossPlatformInputManager.GetButtonDown("Jump");
 
         // calculate move direction
         if (cam != null)
@@ -104,5 +68,14 @@ public class PlayerControls : MonoBehaviour {
         jump = false;
     }
 
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Collectible"))
+        {
+            other.SendMessage("Consume");
+            other.gameObject.SetActive(false);
+        }
+    }
 	
 }
