@@ -40,9 +40,8 @@ public class TemperatureManager : MonoBehaviour {
         bool increaseTemperature = CrossPlatformInputManager.GetButton("Increase Temperature");
         bool decreaseTemperature = CrossPlatformInputManager.GetButton("Decrease Temperature");
 
-        if (CrossPlatformInputManager.GetButton("Increase Temperature"))
+        if (increaseTemperature)
         {
-            CrossPlatformInputManager.SetButtonUp("Increase Temperature");
             if (m_Energyscript.TempUp())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
@@ -51,9 +50,8 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
-        if (CrossPlatformInputManager.GetButton("Decrease Temperature"))
+        if (decreaseTemperature)
         {
-            CrossPlatformInputManager.SetButtonUp("Decrease Temperature");
             if (m_Energyscript.TempDown())
             {
                 //Debug.Log("temp before: " + m_Playertemp);
