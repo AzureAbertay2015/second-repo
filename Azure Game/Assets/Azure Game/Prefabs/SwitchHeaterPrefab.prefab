@@ -331,6 +331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab2fccb188cc44980740fe024a2842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SwitchedOnMaterial: {fileID: 2100000, guid: d4502dc4bd502a441b56f7a3de777c5b,
+    type: 2}
+  m_SwitchedOffMaterial: {fileID: 2100000, guid: 063a27371d33fc240bb6b55863e026a4,
+    type: 2}
 --- !u!114 &11497110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,14 +348,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SwitchState: 0
   m_SwitchType: 0
-  m_Heater: {fileID: 0}
+  m_Heater: {fileID: 126650}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_SwitchedOnMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d4502dc4bd502a441b56f7a3de777c5b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_SwitchedOffMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 063a27371d33fc240bb6b55863e026a4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Heater
+      value: 
+      objectReference: {fileID: 126650}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116656}
