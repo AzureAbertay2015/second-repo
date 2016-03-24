@@ -5,7 +5,6 @@ using System;
 public class RestartLevelScript : MonoBehaviour {
 
     private Checkpoint m_Checkpoint;
-    public static GameObject[] m_Checkpoints;
 
     // Use this for initialization
     void Start () {
@@ -26,14 +25,17 @@ public class RestartLevelScript : MonoBehaviour {
 
 	public void NextScene(string scene_string)
 	{
-        m_Checkpoints = m_Checkpoint.GetCheckpoints();
+        //Application.LoadLevel(Application.loadedLevelName);
 
-        Application.LoadLevel(scene_string);
-
-        m_Checkpoint.SetCheckpoints(m_Checkpoints);
+        GameManager.GetGameRules().ToggleDeathMenu();
+        
+        GameManager.GetGameRules().RespawnPlayer();
 
         GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
 
         Time.timeScale = 1.0f;
-	}
+
+        GameManager.GetPlayer().GetComponent<Rigidbody>().velocity = Vector3.zero;
+        
+    }
 }

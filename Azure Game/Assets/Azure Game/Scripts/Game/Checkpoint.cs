@@ -5,18 +5,23 @@ public class Checkpoint : MonoBehaviour {
 
     public bool activated = false;
     public static GameObject[] m_Checkpoints;
+    private Vector3 result;
 
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         m_Checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
-	
-	}
+
+    }
 
     void Awake()
     {
-      DontDestroyOnLoad(this);    
+        DontDestroyOnLoad(this);    
+    }
+
+   public void setResult(Vector3 pos)
+    {
+        result = pos;
     }
 	
 	// Update is called once per frame
@@ -46,9 +51,7 @@ public class Checkpoint : MonoBehaviour {
 
     public Vector3 GetActiveCheckPoints()
     {
-        Vector3 result = GameManager.GetPlayer().transform.localPosition;
-
-        if(m_Checkpoints != null)
+       if (m_Checkpoints != null)
         {
             foreach(GameObject checkpt in m_Checkpoints)
             {

@@ -21,7 +21,7 @@ public class PlayerModel : MonoBehaviour {
             GetComponent<MeshFilter>().mesh = target_mesh;
 
         if ( target_material != null )
-             GetComponent<MeshRenderer>().material = target_material;
+             GetComponent<Renderer>().material = target_material;
     }
 
     // I was thinking about this for a while, we don't want too much logic for this

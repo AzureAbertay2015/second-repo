@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ff1b9ab9890dd4b529fd370e25a059b4
+guid: 0af1f61aa20ba7b4a874d0a274ba1890
 timeCreated: 1455878806
 licenseType: Free
 TextureImporter:
@@ -17,7 +17,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: .25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -42,7 +42,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
@@ -50,7 +50,6 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

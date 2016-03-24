@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityStandardAssets.CrossPlatformInput;
 
 // Modified version of Adam's Temperature manager
 // Now can handle any number of state changing objects and not just player
@@ -15,21 +17,19 @@ public class TemperatureManager : MonoBehaviour {
     private EnergyBarScript m_Energyscript;
     private StateChanger[] m_stateChangers;
 
-    private bool m_Trigger;
-
 	// Use this for initialization
 	void Start ()
     {        
         m_TemperatureChange = 2.0f;
         m_AbilityTemperatureChange = 20.0f;
-        m_Trigger = false;
 
         m_RoomTemperature = GameManager.temperatureValues[0];
         m_TemperatureChange = GameManager.temperatureValues[1];
         m_AbilityTemperatureChange = GameManager.temperatureValues[2];
 
         m_Energyscript = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<EnergyBarScript>();
-        m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[]; 
+        //m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as List<StateChanger>;
+        m_stateChangers = FindObjectsOfType(typeof(StateChanger)) as StateChanger[];
     }
 
     // Update is called once per frame
@@ -37,8 +37,10 @@ public class TemperatureManager : MonoBehaviour {
     {
         bool upArrow = Input.GetKeyDown(KeyCode.E);
         bool downArrow = Input.GetKeyDown(KeyCode.Q);
+        bool increaseTemperature = CrossPlatformInputManager.GetButtonDown("Increase Temperature");
+        bool decreaseTemperature = CrossPlatformInputManager.GetButtonDown("Decrease Temperature");
 
-        if (upArrow)
+        if (increaseTemperature)
         {
             if (m_Energyscript.TempUp())
             {
@@ -48,7 +50,7 @@ public class TemperatureManager : MonoBehaviour {
             }
         }
 
-        if (downArrow)
+        if (decreaseTemperature)
         {
             if (m_Energyscript.TempDown())
             {
@@ -57,27 +59,11 @@ public class TemperatureManager : MonoBehaviour {
                 //Debug.Log("temp after: " + m_Playertemp);
             }
         }
-
-       
+              
 
         foreach (StateChanger stateChanger in m_stateChangers)
         {
-            if(stateChanger.tag == "Player")
-            {
-                if (!m_Trigger)
-                {
-                    if (GameManager.GetPlayer().m_Temperature > m_RoomTemperature)
-                    {
-                        GameManager.GetPlayer().m_Temperature -= m_TemperatureChange * Time.deltaTime;
-                    }
-
-                    if (GameManager.GetPlayer().m_Temperature < m_RoomTemperature)
-                    {
-                        GameManager.GetPlayer().m_Temperature += m_TemperatureChange * Time.deltaTime;
-                    }
-                }
-            }
-            else
+            if (!stateChanger.m_Triggered)
             {
                 if (stateChanger.m_Temperature > m_RoomTemperature)
                 {
@@ -117,18 +103,24 @@ public class TemperatureManager : MonoBehaviour {
         m_RoomTemperature += t;
     }
 
-    public void ChangePlayerTemp(float t)
+    public void ChangeObjectTemp(float t, StateChanger statechanger)
     {
-        GameManager.GetPlayer().m_Temperature += t;
+        statechanger.m_Temperature += t;
     }
 
-    public void SetPlayerTemp(float t)
+    public void SetObjectTemp(float t, StateChanger statechanger)
     {
-        GameManager.GetPlayer().m_Temperature = t;
+        statechanger.m_Temperature = t;
     }
 
-    public void HeaterCooler(bool trigger)
+    public int GetNumberStateChangers()
     {
-        m_Trigger = trigger;
+        //return m_stateChangers.Count;
+        return 0;
+    }
+
+    public void AddStateChanger(StateChanger statechanger)
+    {
+       // m_stateChangers.Add(statechanger);
     }
 }

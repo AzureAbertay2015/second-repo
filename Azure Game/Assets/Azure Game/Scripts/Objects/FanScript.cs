@@ -3,7 +3,6 @@ using System.Collections;
 
 public class FanScript : MonoBehaviour {
 	public float m_FanForce;
-	private GameRules m_GameRules;
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +15,9 @@ public class FanScript : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
-		{
-			if (GameManager.GetPlayer().GetState() == Player.State.Gas)
-			{
-				other.gameObject.GetComponent<Rigidbody>().AddForce(GetComponentInParent<Transform>().up * m_FanForce);
-			}			
-		}
-		//Debug.Log(other.gameObject.tag);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Gas"))
+        {
+            other.gameObject.GetComponent<Rigidbody>().AddForce(GetComponentInParent<Transform>().up * m_FanForce);
+        }	
 	}
 }

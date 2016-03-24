@@ -8,21 +8,21 @@ public class PullScript : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
 		{
 			switch (m_PullerType)
 			{
 				case PullerType.Solid:
-					if (GameManager.GetPlayer().GetState() == Player.State.Solid)
+					if (other.gameObject.layer == LayerMask.NameToLayer("Solid"))
 						other.gameObject.GetComponent<Rigidbody>().AddForce(-transform.up * m_PullForce, ForceMode.Force);
 					break;
 				case PullerType.Liquid:
-					if (GameManager.GetPlayer().GetState() == Player.State.Liquid)
-						other.gameObject.GetComponent<Rigidbody>().AddForce(-transform.up * m_PullForce, ForceMode.Force);
+                    if (other.gameObject.layer == LayerMask.NameToLayer("Liquid"))
+                        other.gameObject.GetComponent<Rigidbody>().AddForce(-transform.up * m_PullForce, ForceMode.Force);
 					break;
 				case PullerType.Gas:
-					if (GameManager.GetPlayer().GetState() == Player.State.Gas)
-						other.gameObject.GetComponent<Rigidbody>().AddForce(-transform.up * m_PullForce, ForceMode.Force);
+                    if (other.gameObject.layer == LayerMask.NameToLayer("Gas"))
+                        other.gameObject.GetComponent<Rigidbody>().AddForce(-transform.up * m_PullForce, ForceMode.Force);
 					break;
 			}
 		}

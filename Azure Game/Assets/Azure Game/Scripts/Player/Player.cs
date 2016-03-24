@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Player : StateChanger {
 
@@ -47,6 +48,18 @@ public class Player : StateChanger {
 
     private const float k_GroundRayLength = 2.5f; // The length of the ray to check if the ball is grounded.
 
+    [SerializeField]
+    private int m_TimerCount = 60;
+
+    public float m_SpeedChangeAmount; // The Amount by which the forcemultiplier changes when speed pickup is consumed
+    public int m_SpeedChangeDuration; // How long the speed change is active
+    private bool m_SpeededUp;
+    private bool m_SpeededDown;
+    private float m_OrigForceMultiplierSolid;
+    private float m_OrigForceMultiplierLiquid;
+    private float m_OrigForceMultiplierGas;
+
+
     private Rigidbody m_Rigidbody;
     private SphereCollider m_SphereCollider;
    
@@ -58,6 +71,8 @@ public class Player : StateChanger {
     private Vector3 m_vecGroundNormal;
 
     private PlayerModel m_PlayerModel;
+
+    private Checkpoint m_Checkpoint;
 
     private void LoadPlayerResources()
     {    
@@ -72,6 +87,10 @@ public class Player : StateChanger {
         m_PlayerModel = o.GetComponent<PlayerModel>();
         m_PlayerModel.SetHostPlayer(this);
         m_PlayerModel.InitPlayerModel();
+
+        LoadResources();
+        // Ensure our tag is always Player!
+        tag = "Player";
     }
 
     private void InitPlayer()
@@ -80,26 +99,36 @@ public class Player : StateChanger {
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_SphereCollider = GetComponent<SphereCollider>();
-               
+
         // Don't use gravity, use our own force.
         m_Rigidbody.useGravity = false;
-
-        // Ensure our tag is always Player!
-        gameObject.tag = GameManager.PLAYER_TAG;
+        
 
         m_CollisionTable = new Dictionary<int, Collision>();
 
         m_vecGroundNormal.Set(0, 0, 0);
 
-        GetComponent<MeshRenderer>().enabled = false;
+        m_Renderer.enabled = false;
 
         ChangeState(State.Solid);
+
+        m_SpeededUp = false;
+        m_SpeededDown = false;
+
+        m_OrigForceMultiplierGas = m_ForceMultiplierGas;
+        m_OrigForceMultiplierLiquid = m_ForceMultiplierLiquid;
+        m_OrigForceMultiplierSolid = m_ForceMultiplierSolid;
     }
        
 
     void Awake()
     {
         InitPlayer();
+
+        m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
+
+        m_Checkpoint.setResult(transform.localPosition);
+
     }
 
     private bool IsValidCollision( Collision collision, int hash = -1 )
@@ -223,7 +252,6 @@ public class Player : StateChanger {
 
             // ... add force in upwards.
             m_Rigidbody.AddForce(m_vecGroundNormal * m_JumpPower, ForceMode.Impulse);
-            Debug.Log("Jump vector is " + m_vecGroundNormal.ToString() + ". (n=" + m_nCollisionCount + ").");
            // Debug.Log("Jumping! " + m_Rigidbody.velocity.y );
             
         }
@@ -236,14 +264,20 @@ public class Player : StateChanger {
             case State.Solid:
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
+                m_Renderer.enabled = true;
+                GetComponent<Cloth>().ClearTransformMotion();
                 break;
             case State.Liquid:
                 m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
+                m_Renderer.enabled = true;
+                GetComponent<Cloth>().ClearTransformMotion();
                 break;
             case State.Gas:
                 m_PlayerModel.SetEnableGasParticles(true);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
+                m_Renderer.enabled = false;
+                GetComponent<Cloth>().ClearTransformMotion();
                 break;
 
             default:
@@ -257,7 +291,7 @@ public class Player : StateChanger {
         // PeterM - Reset collision count since Unity seems to do this when we change physics material
         m_nCollisionCount = 0;
 
-        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().material);        
+        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<Renderer>().material);        
 
     }
 
@@ -271,4 +305,33 @@ public class Player : StateChanger {
         ChangeState(--m_State);
     }
  
+    public IEnumerator SpeedUp()
+    {
+        m_ForceMultiplierSolid *= m_SpeedChangeAmount;
+        m_ForceMultiplierLiquid *= m_SpeedChangeAmount;
+        m_ForceMultiplierGas *= m_SpeedChangeAmount;
+        m_SpeededUp = true;
+        StartCoroutine("PowerUpDisabler");
+        yield return null;
+    }
+
+    public IEnumerator SpeedDown()
+    {
+        m_ForceMultiplierSolid /= m_SpeedChangeAmount;
+        m_ForceMultiplierLiquid /= m_SpeedChangeAmount;
+        m_ForceMultiplierGas /= m_SpeedChangeAmount;
+        m_SpeededDown = true;
+        StartCoroutine("PowerUpDisabler");
+        yield return null;
+    }
+
+    private IEnumerator PowerUpDisabler()
+    {
+        yield return new WaitForSeconds(m_SpeedChangeDuration);
+        m_ForceMultiplierGas = m_OrigForceMultiplierGas;
+        m_ForceMultiplierLiquid = m_OrigForceMultiplierLiquid;
+        m_ForceMultiplierSolid = m_OrigForceMultiplierSolid;
+    }
+    
+
 }
