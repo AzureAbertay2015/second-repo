@@ -12,7 +12,6 @@ GameObject:
   - 23: {fileID: 2342930}
   - 64: {fileID: 6450268}
   - 114: {fileID: 11493268}
-  - 114: {fileID: 11413530}
   m_Layer: 12
   m_Name: button
   m_TagString: Untagged
@@ -48,7 +47,7 @@ GameObject:
   - 23: {fileID: 2311476}
   - 114: {fileID: 11488372}
   m_Layer: 0
-  m_Name: Door (1)
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,9 +77,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187332}
-  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -.5, y: -.00303506851, z: -.5}
-  m_LocalScale: {x: 1.08446455, y: 1.08446455, z: .461057037}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.863, y: -0.579, z: -1.927}
+  m_LocalScale: {x: 1.0844646, y: 1.0844646, z: 0.46105704}
   m_Children: []
   m_Father: {fileID: 494142}
   m_RootOrder: 0
@@ -90,9 +89,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186282}
-  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 2.48842478, y: .827986896, z: -2.09115219}
-  m_LocalScale: {x: 1.80850518, y: 2.52591133, z: .10087458}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 2.4884248, y: 0.8279869, z: -2.0911522}
+  m_LocalScale: {x: 1.8085052, y: 2.5259113, z: 0.10087458}
   m_Children: []
   m_Father: {fileID: 494142}
   m_RootOrder: 2
@@ -102,9 +101,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154182}
-  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -.5, y: .0909999982, z: -.5}
-  m_LocalScale: {x: 1.05463803, y: 1.05463803, z: .237048179}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.863, y: -0.485, z: -1.927}
+  m_LocalScale: {x: 1.054638, y: 1.054638, z: 0.23704818}
   m_Children: []
   m_Father: {fileID: 494142}
   m_RootOrder: 1
@@ -115,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.07188034, y: 1.10000002, z: 3.2389195}
+  m_LocalPosition: {x: 2.77, y: 1.1, z: 3.2389195}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 421300}
@@ -141,8 +140,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -165,8 +166,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -189,8 +192,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -226,7 +231,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
+  m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 54ac3bcd497d9da408904d29001ff052, type: 3}
 --- !u!65 &6538864
 BoxCollider:
@@ -250,21 +255,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .922101736, y: .922204971, z: .281961083}
-  m_Center: {x: 6.15417957e-06, y: 4.53442444e-05, z: .140980542}
---- !u!114 &11413530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec56291289c8cb4aa3454940610ec56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveAmount: {x: 0, y: -2, z: 0}
-  m_MoveSpeed: 1
+  m_Size: {x: 0.92210174, y: 0.922205, z: 0.28196108}
+  m_Center: {x: 0.0000061541796, y: 0.000045344244, z: 0.14098054}
 --- !u!114 &11488372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29de3567aa3664c4eab8559a295c858a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 186282}
+  m_ToActivate: {fileID: 186282}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

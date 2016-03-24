@@ -36,8 +36,13 @@ using UnityEngine.UI;
      {
          string minutes = Mathf.Floor(time / 60).ToString("00");
          string seconds = (Mathf.Floor(time % 60).ToString("00"));
-         string milliSeconds = ((time * 1000f) % 1000f).ToString("000");
- 
-         return minutes + ":" + seconds + ":" + milliSeconds;
+        //string milliSeconds = ((time * 1000f) % 1000f).ToString("000");
+
+        return minutes + "m " + seconds + "s ";// + milliSeconds + "ms";
      }
+
+    public void addTime(float time)
+    {
+        m_time += time;
+    }
  }
