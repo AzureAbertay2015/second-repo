@@ -170,6 +170,13 @@ public class Player : StateChanger {
         Vector3 vecFriction = -m_Rigidbody.velocity.normalized * force;
 
         m_Rigidbody.AddForce( vecFriction, ForceMode.Acceleration );
+     
+    }
+
+    private void AddGravity()
+    {
+
+
     }
 
     public void Move(Vector3 moveDirection, bool jump)
