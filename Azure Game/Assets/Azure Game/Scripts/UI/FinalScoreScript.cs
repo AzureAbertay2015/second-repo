@@ -13,7 +13,7 @@ public class FinalScoreScript : MonoBehaviour {
 
         m_scoreText = GetComponent<Text>();
 
-        m_scoreScript = FindObjectOfType<ScoreScript>();
+        //m_scoreScript = FindObjectOfType<ScoreScript>();
 
         m_LevelComplete = false;
 	}
@@ -23,13 +23,14 @@ public class FinalScoreScript : MonoBehaviour {
 	
       if(m_LevelComplete)
         {
+            m_LevelComplete = false;
             ShowScore();
         }
 	}
 
     private void ShowScore()
     {
-        m_scoreText.text = "You Won! Your score is " + m_scoreScript.CalculateFinalScore().ToString();
+        m_scoreText.text = "You Won! Your score is " + GameManager.GetGameRules().GetScoreScript().CalculateFinalScore();
     }
 
     public void LevelComplete()

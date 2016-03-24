@@ -48,15 +48,15 @@ public class PlayerState : MonoBehaviour {
     void Awake()
     {
         m_Timer = FindObjectOfType<TimerScript>();
-        m_scoreScript = FindObjectOfType<ScoreScript>();
+        m_scoreScript = GameManager.GetGameRules().GetScoreScript();
     }
 
     private void SetUIStrings()
     {
-        m_TimeText.text = "Time: " + m_Time;
-        m_PointsText.text = "Points: " + m_Points;
-        m_ChargeText.text = "Charge: " + m_Charge;
-        m_PuzzleText.text = "Puzzle: " + (m_MaxPuzzlePieces - m_PuzzlePieces) + "/" + m_MaxPuzzlePieces;
+        //m_TimeText.text = "Time: " + m_Time;
+        //m_PointsText.text = "Points: " + m_Points;
+        //m_ChargeText.text = "Charge: " + m_Charge;
+        //m_PuzzleText.text = "Puzzle: " + (m_MaxPuzzlePieces - m_PuzzlePieces) + "/" + m_MaxPuzzlePieces;
     }
 
     public void SpeedUp()

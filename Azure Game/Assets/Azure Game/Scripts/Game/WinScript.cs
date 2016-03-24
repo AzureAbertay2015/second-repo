@@ -10,8 +10,8 @@ public class WinScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_Toggled = false;
-        m_scoreScript = FindObjectOfType<ScoreScript>();
-        m_finalScoreScript = FindObjectOfType<FinalScoreScript>();
+        //m_scoreScript = FindObjectOfType<ScoreScript>();
+        m_finalScoreScript = GameManager.GetUIManager().gameObject.GetComponentInChildren<FinalScoreScript>();
     }
 	
 	// Update is called once per frame
@@ -23,7 +23,7 @@ public class WinScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player" && !m_Toggled)
 		{
-            m_scoreScript.LevelFinised();
+            GameManager.GetGameRules().GetScoreScript().LevelFinised();
             m_finalScoreScript.LevelComplete();
 			GameManager.GetGameRules().ToggleWinMenu();
 			m_Toggled = true;
