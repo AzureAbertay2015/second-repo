@@ -12,6 +12,8 @@ TagManager:
   - State Changer
   - Puzzle Piece
   - Collectible
+  - Event System
+  - Menu Canvas
   layers:
   - Default
   - TransparentFX
