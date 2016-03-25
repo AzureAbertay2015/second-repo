@@ -37,8 +37,14 @@ public class GameRules : MonoBehaviour {
         GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
 
         m_ScoreScript.Start();
+        m_HighScores.Start();
 
     }
+
+    //void Update()
+    //{
+
+    //}
 
     public void TogglePauseMenu()
     {
