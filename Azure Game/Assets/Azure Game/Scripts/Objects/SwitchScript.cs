@@ -54,12 +54,12 @@ public class SwitchScript : MonoBehaviour {
 		if (m_SwitchType == SwitchType.AirConditioner)
 		{
 			GameManager.GetGameRules().HeatUpRoom();
-			m_CoolerEmissionScript.EmissionSwitchOff();
+			//m_CoolerEmissionScript.EmissionSwitchOff();
 		}
 		else if (m_SwitchType == SwitchType.Heater)
 		{
 			GameManager.GetGameRules().CoolDownRoom();
-			m_HeaterEmissionScript.EmissionSwitchOff();
+			//m_HeaterEmissionScript.EmissionSwitchOff();
 		}
 	}
 

@@ -1,6 +1,8 @@
-﻿using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+﻿// Enable Q and E to instantly change state for debugging peterm
+#define ENABLE_STATE_DEBUG_KEYS
 
+using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerControls : MonoBehaviour {
 
@@ -13,11 +15,13 @@ public class PlayerControls : MonoBehaviour {
     private Vector3 camForward; // The current forward direction of the camera
     private bool jump; // whether the jump button is currently pressed
 
-    private bool e; // whether the 'e' key is pressed
-    private bool q; // whether the 'q' key is pressed
-    private bool e_up;// is 'e' key released
-    private bool q_up;//is 'q' key released
-    
+#if ENABLE_STATE_DEBUG_KEYS
+    private bool m_bQPressed;
+    private bool m_bEPressed;
+    private bool m_bQDebounce;
+    private bool m_bEDebounce;
+#endif
+
     private void Awake()
     {
             
@@ -58,6 +62,41 @@ public class PlayerControls : MonoBehaviour {
             // we use world-relative directions in the case of no main camera
             move = (v * Vector3.forward + h * Vector3.right).normalized;
         }
+
+#if ENABLE_STATE_DEBUG_KEYS
+
+        m_bEPressed = Input.GetKey(KeyCode.E);
+        m_bQPressed = Input.GetKey(KeyCode.Q);
+
+        if ( m_bEPressed  )
+        {
+            if (!m_bEDebounce)
+            {
+                m_pPlayer.RaiseState();
+            }
+
+            m_bEDebounce = true;
+        }
+        else
+        {
+            m_bEDebounce = false;
+        }
+
+        if (m_bQPressed)
+        {
+            if (!m_bQDebounce)
+            {
+                m_pPlayer.LowerState();
+            }
+
+            m_bQDebounce = true;
+        }
+        else
+        {
+            m_bQDebounce = false;
+        }
+#endif
+
     }
 
 

@@ -134,7 +134,7 @@ public class Player : StateChanger {
     private bool IsValidCollision( Collision collision, int hash = -1 )
     {
         // Only flag a valid collision for objects with a z normal that isn't 0.
-        // This filters out walls and other stuff that doesn't count as the ground entity.
+        // This filters out walls and other stuff that doesn't count as the ground.
 
         if ( hash != -1 )
         {
@@ -258,32 +258,30 @@ public class Player : StateChanger {
     }
 
     public override void OnChangeState(State state)
-	{      
+	{
+        m_PlayerModel.SetEnableWaterEffects(true);
+
         switch (state)
         {
             case State.Solid:
-                m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocitySolid;
-                m_Renderer.enabled = true;
-                GetComponent<Cloth>().ClearTransformMotion();
                 break;
             case State.Liquid:
-                m_PlayerModel.SetEnableGasParticles(false);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
-                m_Renderer.enabled = true;
-                GetComponent<Cloth>().ClearTransformMotion();
                 break;
             case State.Gas:
-                m_PlayerModel.SetEnableGasParticles(true);
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;
-                m_Renderer.enabled = false;
-                GetComponent<Cloth>().ClearTransformMotion();
                 break;
 
             default:
                 break;
         }
-             
+
+        // Set data based on our current state.
+        m_PlayerModel.SetEnableWaterEffects( GetState() == State.Liquid );
+        m_PlayerModel.SetEnableGasEffects(GetState() == State.Gas);
+        m_Renderer.enabled = GetState() != State.Gas;
+
         m_SphereCollider.sharedMaterial = m_pPhysicMaterials[(int)state];
         m_SphereCollider.enabled = false;
         m_SphereCollider.enabled = true;
@@ -291,7 +289,7 @@ public class Player : StateChanger {
         // PeterM - Reset collision count since Unity seems to do this when we change physics material
         m_nCollisionCount = 0;
 
-        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<Renderer>().material);        
+        m_PlayerModel.UpdateRenderableData(GetComponent<MeshFilter>().mesh, GetComponent<Renderer>().material, m_Renderer.enabled);        
 
     }
 

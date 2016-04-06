@@ -43,7 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - NOCOLLISION
   - Back
   m_SortingLayers:
   - name: Default
