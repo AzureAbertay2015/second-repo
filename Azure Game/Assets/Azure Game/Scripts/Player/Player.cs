@@ -70,7 +70,7 @@ public class Player : StateChanger {
 
     private Vector3 m_vecGroundNormal;
 
-    private PlayerModel m_PlayerModel;
+    public PlayerModel m_PlayerModel;
 
     private Checkpoint m_Checkpoint;
 
@@ -268,6 +268,7 @@ public class Player : StateChanger {
                 break;
             case State.Liquid:
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityLiquid;
+                //m_PlayerModel.StateChangeEffect(State.Gas, State.Liquid);
                 break;
             case State.Gas:
                 m_Rigidbody.maxAngularVelocity = m_MaxAngularVelocityGas;

@@ -68,6 +68,9 @@ public class PlayerControls : MonoBehaviour {
         m_bEPressed = Input.GetKey(KeyCode.E);
         m_bQPressed = Input.GetKey(KeyCode.Q);
 
+        if (Input.GetKeyDown(KeyCode.F))
+            m_pPlayer.m_PlayerModel.StateChangeEffect(StateChanger.State.Gas, StateChanger.State.Liquid);
+
         if ( m_bEPressed  )
         {
             if (!m_bEDebounce)
