@@ -18,9 +18,11 @@ public class VentScript : MonoBehaviour {
 		if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("State Changer"))
         {
 			Debug.Log("player/state changer collision stay");
-			if (other.gameObject.layer == 11) // Gas
+			if (other.gameObject.layer == 11)
+			{// Gas
 				Debug.Log("gas collision");
-                TeleportToOtherVent();
+				TeleportToOtherVent();
+			}
 		}
 	}
 
