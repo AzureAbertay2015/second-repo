@@ -5,15 +5,12 @@ using UnityEngine.UI;
 public class FinalScoreScript : MonoBehaviour {
 
     private Text m_scoreText;
-    private ScoreScript m_scoreScript;
     private bool m_LevelComplete;
 
 	// Use this for initialization
 	void Start () {
 
         m_scoreText = GetComponent<Text>();
-
-        //m_scoreScript = FindObjectOfType<ScoreScript>();
 
         m_LevelComplete = false;
 	}

@@ -6,17 +6,19 @@ public class Checkpoint : MonoBehaviour {
     public bool activated = false;
     public static GameObject[] m_Checkpoints;
     private Vector3 result;
+    private ParticleSystem m_CheckpointParticles;
 
     // Use this for initialization
     void Start () {
 
         m_Checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        m_CheckpointParticles = GetComponent<ParticleSystem>();
 
     }
 
     void Awake()
     {
-        DontDestroyOnLoad(this);    
+
     }
 
    public void setResult(Vector3 pos)
@@ -38,6 +40,8 @@ public class Checkpoint : MonoBehaviour {
         }
 
         activated = true;
+
+        m_CheckpointParticles.enableEmission = false;
 
     }
 

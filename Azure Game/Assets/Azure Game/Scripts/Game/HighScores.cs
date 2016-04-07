@@ -27,6 +27,7 @@ public class HighScores : MonoBehaviour {
 
     public bool CheckScore(string m_name, int m_currentScore)
     {
+        LoadScores();
        
         if(m_currentScore > m_HighScores[0].m_Score)
         {

@@ -36,7 +36,7 @@ public class ScoreScript : MonoBehaviour {
 
         if (m_LevelComplete == true)
         {
-            m_playerScore += 50;
+            m_playerScore += 25;
         }
 
         return m_playerScore;
@@ -55,5 +55,10 @@ public class ScoreScript : MonoBehaviour {
     public void TakeoffScore(int score)
     {
         m_playerScore -= score;
+    }
+
+    public int GetScore()
+    {
+        return m_playerScore;
     }
 }
