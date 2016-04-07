@@ -13,7 +13,7 @@ public class SwitchScript : MonoBehaviour {
 	void Start () {
 
 
-		transform.GetChild(0).gameObject.transform.Rotate(6, 0, 0, Space.Self);
+		//transform.GetChild(0).gameObject.transform.Rotate(6, 0, 0, Space.Self);
 		if (m_SwitchType == SwitchType.Heater)
 		{
 			m_HeaterEmissionScript = gameObject.transform.GetChild(1).GetComponent<HeaterEmissionScript>();
@@ -26,7 +26,7 @@ public class SwitchScript : MonoBehaviour {
 		{
 			Debug.LogError("Switch Type neither a cooler nor a heater. Check the Inspector.");
         }
-        SwitchOff();
+        //SwitchOff();
     }
 
 	public void SwitchOn()
