@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     private GameRules m_GameRules;
 	private bool m_GameRestarted;
+    private GameObject m_ResumeButton, m_RestartButton;
 
     // Use this for initialization
     void Start()
@@ -15,6 +19,7 @@ public class UIManager : MonoBehaviour
         {
             canvas.worldCamera = Camera.main;
         }
+
     }
 
     // Update is called once per frame
@@ -24,10 +29,20 @@ public class UIManager : MonoBehaviour
 		ScanForDeath();
     }
 
+    void Awake()
+    {
+        //get references to first button in each menu
+        m_RestartButton = GetComponentInChildren<RestartLevelScript>().gameObject.GetComponentInParent<Button>().gameObject;
+        m_ResumeButton = GetComponentInChildren<Button>().gameObject.GetComponentInParent<Button>().gameObject;
+    }
+
     void ScanForKeyStroke()
     {
-        if (Input.GetKeyDown("escape"))
+        if (CrossPlatformInputManager.GetButtonDown("Pause"))
+        {
             m_GameRules.TogglePauseMenu();
+            EventSystem.current.SetSelectedGameObject(m_ResumeButton);
+        }
     }
 	
 	void ScanForDeath()
@@ -35,7 +50,8 @@ public class UIManager : MonoBehaviour
 		if (!m_GameRules.IsPlayerAlive() && m_GameRestarted)
 		{
             m_GameRules.ToggleDeathMenu();
-			m_GameRestarted = false;
+            EventSystem.current.SetSelectedGameObject(m_RestartButton);
+            m_GameRestarted = false;
 		}
 		if (m_GameRules.IsPlayerAlive())
 			m_GameRestarted = true;

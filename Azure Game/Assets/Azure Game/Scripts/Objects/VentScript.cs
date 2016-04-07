@@ -13,12 +13,16 @@ public class VentScript : MonoBehaviour {
 		m_ApparitionPosition += Vector3.Scale(transform.forward, new Vector3(m_ApparitionDistance, m_ApparitionDistance, m_ApparitionDistance));
 	}
 	
-	void OnTriggerStay(Collider other)
+	void OnCollisionStay(Collision other)
 	{
-		if (other.gameObject.tag == "Player" || other.gameObject.tag == "State Changer")
+		if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("State Changer"))
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Gas"))
-                TeleportToOtherVent();
+			Debug.Log("player/state changer collision stay");
+			if (other.gameObject.layer == 11)
+			{// Gas
+				Debug.Log("gas collision");
+				TeleportToOtherVent();
+			}
 		}
 	}
 

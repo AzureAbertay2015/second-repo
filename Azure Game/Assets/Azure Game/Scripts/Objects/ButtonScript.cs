@@ -62,7 +62,6 @@ public class ButtonScript : MonoBehaviour {
                 transform.position = m_PressedVector;
                 ActivateObject();
             }
-            Debug.Log(i);
             yield return null;
         }
     }
@@ -77,7 +76,6 @@ public class ButtonScript : MonoBehaviour {
             {
                 transform.position = m_DepressedVector;
             }
-            Debug.Log(i);
             yield return null;
         }
         m_Pressed = false;
