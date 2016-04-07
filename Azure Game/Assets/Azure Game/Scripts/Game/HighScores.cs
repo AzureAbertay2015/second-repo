@@ -9,6 +9,7 @@ public class HighScores : MonoBehaviour {
     private HighScore[] m_HighScores;
     private HighScore[] m_tempScore;
     private bool m_scoreChanged;
+    public bool m_savedNewScore;
 
 	// Use this for initialization
 	public void Start () {
@@ -18,6 +19,8 @@ public class HighScores : MonoBehaviour {
 
         m_scoreChanged = false;
 
+        m_savedNewScore = false;
+
     }
 	
 	// Update is called once per frame
@@ -25,7 +28,7 @@ public class HighScores : MonoBehaviour {
 
 	}
 
-    public bool CheckScore(string m_name, int m_currentScore)
+    public void CheckScore(string m_name, int m_currentScore)
     {
         LoadScores();
        
@@ -98,13 +101,10 @@ public class HighScores : MonoBehaviour {
         if(m_scoreChanged)
         {
             SaveScores();
-            return true;
-        }
-        else
-        {
-            return false;
+    
         }
 
+        m_savedNewScore = true;
     }
 
     public void LoadScores()
@@ -130,11 +130,11 @@ public class HighScores : MonoBehaviour {
 
         }
 
-        Debug.Log(m_HighScores[0].m_playerName + " " + m_HighScores[0].m_Score);
-        Debug.Log(m_HighScores[1].m_playerName + " " + m_HighScores[1].m_Score);
-        Debug.Log(m_HighScores[2].m_playerName + " " + m_HighScores[2].m_Score);
-        Debug.Log(m_HighScores[3].m_playerName + " " + m_HighScores[3].m_Score);
-        Debug.Log(m_HighScores[4].m_playerName + " " + m_HighScores[4].m_Score);
+        //Debug.Log(m_HighScores[0].m_playerName + " " + m_HighScores[0].m_Score);
+        //Debug.Log(m_HighScores[1].m_playerName + " " + m_HighScores[1].m_Score);
+        //Debug.Log(m_HighScores[2].m_playerName + " " + m_HighScores[2].m_Score);
+        //Debug.Log(m_HighScores[3].m_playerName + " " + m_HighScores[3].m_Score);
+        //Debug.Log(m_HighScores[4].m_playerName + " " + m_HighScores[4].m_Score);
 
     }
 
@@ -152,12 +152,11 @@ public class HighScores : MonoBehaviour {
 
         //Debug.Log("SAVED");
     }
-}
 
-[Serializable]
-struct HighScore
-{
-    public string m_playerName;
-    public int m_Score;
-     
+    public HighScore[] GetScores()
+    {
+        LoadScores();
+
+        return m_HighScores;
+    }
 }

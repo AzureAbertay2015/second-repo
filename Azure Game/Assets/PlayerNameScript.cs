@@ -32,14 +32,9 @@ public class PlayerNameScript : MonoBehaviour {
             m_input.DeactivateInputField();
 
             m_enabled = false;
-
-            ShowScores();
+            
         }
 	
 	}
 
-    private void ShowScores()
-    {
-
-    }
 }
