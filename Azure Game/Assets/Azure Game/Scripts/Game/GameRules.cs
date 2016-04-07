@@ -41,11 +41,6 @@ public class GameRules : MonoBehaviour {
 
     }
 
-    //void Update()
-    //{
-
-    //}
-
     public void TogglePauseMenu()
     {
         // not the optimal way but for the sake of readability
@@ -100,7 +95,6 @@ public class GameRules : MonoBehaviour {
         {
             GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[3].enabled = false;
             Time.timeScale = 1.0f;
-
         }
         else
         {
