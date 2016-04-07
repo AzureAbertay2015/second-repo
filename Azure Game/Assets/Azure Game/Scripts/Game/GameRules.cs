@@ -77,7 +77,6 @@ public class GameRules : MonoBehaviour {
         {
             GameManager.GetUIManager().GetComponentsInChildren<Canvas>()[3].enabled = false;
             Time.timeScale = 1.0f;
-
         }
         else
         {
