@@ -36,6 +36,8 @@ public class StateChanger : MonoBehaviour {
 
         m_SolidLiquidCutoff = m_LiquidGasCutoff;
 
+        //m_SolidLiquidCutoff = 10.0f;
+
         m_Renderer = GetComponent<Renderer>();
         m_Renderer.material = m_SolidMaterial;
 

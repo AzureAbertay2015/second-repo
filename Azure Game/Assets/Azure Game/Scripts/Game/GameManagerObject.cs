@@ -4,6 +4,14 @@
 // This is necessary since the GameManager instantiates prefabs which is only legal in the main thread.
 // We ensure we are in the main thread by using Awake() and Start().
 
+[System.Serializable]
+public struct HighScore
+{
+    public string m_playerName;
+    public int m_Score;
+
+}
+
 public class GameManagerObject : MonoBehaviour {
 
     public float m_Roomtemperature;
@@ -34,7 +42,7 @@ public class GameManagerObject : MonoBehaviour {
         //set level length if was not set
         if (m_LevelLength == 0)
         {
-            m_LevelLength = 30.0f;
+            m_LevelLength = 180.0f;
         }
 
         GameManager.LevelLoadBegin(m_Roomtemperature, m_Temperaturechange, m_Abilitytemperaturechange, m_LevelLength);

@@ -24,11 +24,14 @@ using UnityEngine.UI;
      {
         m_time -= Time.deltaTime;
         m_timeText.text = timeConvert(m_time);
+       
         if (m_time <= 0)
         {
             m_time = 0;
             m_timeText.text = timeConvert(m_time);
             GameManager.GetGameRules().KillPlayer();
+
+            //m_time = GameManager.m_LevelLength;
         }
     }
  
@@ -45,4 +48,10 @@ using UnityEngine.UI;
     {
         m_time += time;
     }
+
+    public float getTimeLeft()
+    {
+        return m_time;
+    }
+
  }
