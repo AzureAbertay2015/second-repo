@@ -35,9 +35,7 @@ public class StateChanger : MonoBehaviour {
         GetComponent<MeshFilter>().mesh = m_pSolidMesh;
 
         m_SolidLiquidCutoff = m_LiquidGasCutoff;
-
-        //m_SolidLiquidCutoff = 10.0f;
-
+        
         m_Renderer = GetComponent<Renderer>();
         m_Renderer.material = m_SolidMaterial;
 
@@ -54,7 +52,7 @@ public class StateChanger : MonoBehaviour {
 
     void Awake()
     {
-        //GameManager.GetTemperatureManager().AddStateChanger(this);
+
     }
 
     private void SetupLayer()

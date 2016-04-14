@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     {
 		
 		m_GameRules = GameManager.GetGameRules();
+
+        //Attach camera to each canvas in ui manager
         foreach (Canvas canvas in GetComponentsInChildren<Canvas>())
         {
             canvas.worldCamera = Camera.main;
@@ -38,18 +40,24 @@ public class UIManager : MonoBehaviour
 
     void ScanForKeyStroke()
     {
+        //If pause button is pressed
         if (CrossPlatformInputManager.GetButtonDown("Pause"))
         {
             m_GameRules.TogglePauseMenu();
+
+            //Set resume button to be selected
             EventSystem.current.SetSelectedGameObject(m_ResumeButton);
         }
     }
 	
 	void ScanForDeath()
 	{
+        //If player is dead and the game has been restarted
 		if (!m_GameRules.IsPlayerAlive() && m_GameRestarted)
 		{
             m_GameRules.ToggleDeathMenu();
+
+            //Set restart button to be selected
             EventSystem.current.SetSelectedGameObject(m_RestartButton);
             m_GameRestarted = false;
 		}

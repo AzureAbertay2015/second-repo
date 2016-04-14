@@ -25,13 +25,12 @@ public class ScoreScript : MonoBehaviour {
 
     public int CalculateFinalScore()
     {
+        //Add the number of seconds left / 3 to the player's score
         m_playerScore += ((int)(m_Timer.getTimeLeft()) / 3);
-          
-        if (m_LevelComplete == true)
-        {
-            m_playerScore += 50;
-        }
-
+         
+        //Player is awarded +50 score for completing level 
+        m_playerScore += 50;
+       
         return m_playerScore;
     }
 

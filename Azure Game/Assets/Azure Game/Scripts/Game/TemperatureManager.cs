@@ -35,8 +35,6 @@ public class TemperatureManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        bool upArrow = Input.GetKeyDown(KeyCode.E);
-        bool downArrow = Input.GetKeyDown(KeyCode.Q);
         bool increaseTemperature = CrossPlatformInputManager.GetButtonDown("Increase Temperature");
         bool decreaseTemperature = CrossPlatformInputManager.GetButtonDown("Decrease Temperature");
 
@@ -44,9 +42,7 @@ public class TemperatureManager : MonoBehaviour {
         {
             if (m_Energyscript.TempUp())
             {
-                //Debug.Log("temp before: " + m_Playertemp);
                 GameManager.GetPlayer().m_Temperature += m_AbilityTemperatureChange;
-                //Debug.Log("temp after: " + m_Playertemp);
             }
         }
 
@@ -54,9 +50,7 @@ public class TemperatureManager : MonoBehaviour {
         {
             if (m_Energyscript.TempDown())
             {
-                //Debug.Log("temp before: " + m_Playertemp);
                 GameManager.GetPlayer().m_Temperature -= m_AbilityTemperatureChange;
-                //Debug.Log("temp after: " + m_Playertemp);
             }
         }
               
@@ -78,19 +72,16 @@ public class TemperatureManager : MonoBehaviour {
             
             if (stateChanger.m_Temperature >= stateChanger.m_LiquidGasCutoff && stateChanger.m_PrevTemperature < stateChanger.m_LiquidGasCutoff)
             {
-                //Debug.Log("GAS");
                 stateChanger.ChangeState(StateChanger.State.Gas);
             }
 
             if (stateChanger.m_Temperature >= stateChanger.m_SolidLiquidCutoff && stateChanger.m_Temperature < stateChanger.m_LiquidGasCutoff && (stateChanger.m_PrevTemperature >= stateChanger.m_LiquidGasCutoff || stateChanger.m_PrevTemperature < stateChanger.m_SolidLiquidCutoff))
             {
-                //Debug.Log("LIQUID");
                 stateChanger.ChangeState(StateChanger.State.Liquid);
             }
 
             if (stateChanger.m_Temperature < stateChanger.m_SolidLiquidCutoff && stateChanger.m_PrevTemperature >= stateChanger.m_SolidLiquidCutoff)
             {
-                //Debug.Log("SOLID");
                 stateChanger.ChangeState(StateChanger.State.Solid);
             }
 

@@ -8,14 +8,15 @@ public class WinScript : MonoBehaviour {
     private bool m_Toggled;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		m_Toggled = false;
-        //m_scoreScript = FindObjectOfType<ScoreScript>();
         m_finalScoreScript = GameManager.GetUIManager().gameObject.GetComponentInChildren<FinalScoreScript>();
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 

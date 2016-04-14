@@ -27,6 +27,8 @@ public class RestartLevelScript : MonoBehaviour {
 	{
         //Application.LoadLevel(Application.loadedLevelName);
 
+        //This script now returns player to previous position
+
         GameManager.GetGameRules().ToggleDeathMenu();
         
         GameManager.GetGameRules().RespawnPlayer();
