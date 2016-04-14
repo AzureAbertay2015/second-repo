@@ -6,14 +6,12 @@ using UnityEngine.UI;
 {     
      private float m_time;
      private Text m_timeText;
-    private float m_timeSpent;
  
      // Use this for initialization
     void Start()
     {
         m_timeText = GetComponent<Text>();
         m_time = GameManager.m_LevelLength;
-        m_timeSpent = 0;
     }
  
  	void Awake()
@@ -26,12 +24,7 @@ using UnityEngine.UI;
      {
         m_time -= Time.deltaTime;
         m_timeText.text = timeConvert(m_time);
-
-        if(m_time > 0)
-        {
-            m_timeSpent += Time.deltaTime;
-        }
-        
+       
         if (m_time <= 0)
         {
             m_time = 0;
@@ -61,8 +54,4 @@ using UnityEngine.UI;
         return m_time;
     }
 
-    public float getTimeSpent()
-    {
-        return m_timeSpent;
-    }
  }
