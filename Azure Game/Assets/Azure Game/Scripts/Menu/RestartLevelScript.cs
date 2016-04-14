@@ -36,6 +36,8 @@ public class RestartLevelScript : MonoBehaviour {
         Time.timeScale = 1.0f;
 
         GameManager.GetPlayer().GetComponent<Rigidbody>().velocity = Vector3.zero;
-        
+
+        GameManager.GetPlayer().GetComponent<Cloth>().ClearTransformMotion();
+
     }
 }

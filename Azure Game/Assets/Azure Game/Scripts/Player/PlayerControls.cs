@@ -17,6 +17,7 @@ public class PlayerControls : MonoBehaviour {
     private bool q; // whether the 'q' key is pressed
     private bool e_up;// is 'e' key released
     private bool q_up;//is 'q' key released
+    private bool debug;
     
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class PlayerControls : MonoBehaviour {
             // we use world-relative directions in the case of no main camera
             move = (v * Vector3.forward + h * Vector3.right).normalized;
         }
+
     }
 
 

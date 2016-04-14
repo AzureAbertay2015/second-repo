@@ -9,7 +9,21 @@ public class GameRules : MonoBehaviour {
     private bool m_PlayerAlive;
 
     private Checkpoint m_Checkpoint;
-            
+
+    private ScoreScript m_ScoreScript = new ScoreScript();
+
+    private HighScores m_HighScores = new HighScores();
+    
+    public ScoreScript GetScoreScript()
+    {
+        return m_ScoreScript;
+    }
+
+    public HighScores GetHighScores()
+    {
+        return m_HighScores;
+    }
+     
     //----------------------------------------
     // handles
  
@@ -21,6 +35,10 @@ public class GameRules : MonoBehaviour {
         m_Checkpoint = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
 
         GameManager.GetPlayer().transform.localPosition = m_Checkpoint.GetActiveCheckPoints();
+
+        m_ScoreScript.Start();
+        m_HighScores.Start();
+
     }
 
     public void TogglePauseMenu()

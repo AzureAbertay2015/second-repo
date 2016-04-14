@@ -17,6 +17,7 @@ public class PlayerState : MonoBehaviour {
     public int  m_TimePickup;
 
     private TimerScript m_Timer;
+    private ScoreScript m_scoreScript;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerState : MonoBehaviour {
         m_Points = 0;
         m_Charge = 0;
         m_PuzzlePieces = 0;
+
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("Puzzle Piece"))
         {
             m_PuzzlePieces += 1;
@@ -46,14 +48,15 @@ public class PlayerState : MonoBehaviour {
     void Awake()
     {
         m_Timer = FindObjectOfType<TimerScript>();
+        m_scoreScript = GameManager.GetGameRules().GetScoreScript();
     }
 
     private void SetUIStrings()
     {
-        /*m_TimeText.text = "Time: " + m_Time;
-        m_PointsText.text = "Points: " + m_Points;
-        m_ChargeText.text = "Charge: " + m_Charge;
-        m_PuzzleText.text = "Puzzle: " + (m_MaxPuzzlePieces - m_PuzzlePieces) + "/" + m_MaxPuzzlePieces;*/
+        //m_TimeText.text = "Time: " + m_Time;
+        //m_PointsText.text = "Points: " + m_Points;
+        //m_ChargeText.text = "Charge: " + m_Charge;
+        //m_PuzzleText.text = "Puzzle: " + (m_MaxPuzzlePieces - m_PuzzlePieces) + "/" + m_MaxPuzzlePieces;
     }
 
     public void SpeedUp()
@@ -78,12 +81,16 @@ public class PlayerState : MonoBehaviour {
     {
         // add points to the score
         m_Points += 1;
+
+        m_scoreScript.AddtoScore(5);
     }
 
     public void PointsDown()
     {
         // add points to the score
         m_Points -= 1;
+
+        m_scoreScript.TakeoffScore(5);
     }
 
     public void Charge()
@@ -96,6 +103,8 @@ public class PlayerState : MonoBehaviour {
     {
         // collect a puzzle piece
         m_PuzzlePieces -= 1;
+
+        m_scoreScript.AddtoScore(10);
     }
 
     private IEnumerator CountDown()
@@ -109,4 +118,5 @@ public class PlayerState : MonoBehaviour {
 
         } while (m_Time > 0);
     }
+
 }
