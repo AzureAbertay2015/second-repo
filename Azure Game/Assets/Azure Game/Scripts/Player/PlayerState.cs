@@ -23,7 +23,7 @@ public class PlayerState : MonoBehaviour {
     {
         
         m_Time = 50;
-        m_TimePickup = 15;
+        m_TimePickup = 30;
         m_Points = 0;
         m_Charge = 0;
         m_PuzzlePieces = 0;
