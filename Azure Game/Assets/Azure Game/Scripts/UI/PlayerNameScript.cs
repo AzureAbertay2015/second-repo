@@ -23,9 +23,9 @@ public class PlayerNameScript : MonoBehaviour {
 	void Update ()
     {
 
-        m_enter = Input.GetKeyDown(KeyCode.Return);
+        m_enter = UnityStandardAssets.CrossPlatformInput.CrossPlatformInputManager.GetButtonDown("Submit");
 
-        if(m_enter && m_enabled)
+        if (m_enter && m_enabled)
         {
             GameManager.GetGameRules().GetHighScores().CheckScore(m_playerName.text, GameManager.GetGameRules().GetScoreScript().GetScore());
 
