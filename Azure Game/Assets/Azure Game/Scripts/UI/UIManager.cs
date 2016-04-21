@@ -38,10 +38,13 @@ public class UIManager : MonoBehaviour
 
     void ScanForKeyStroke()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Pause"))
+        if (!CrossPlatformInputManager.GetButtonDown("Submit"))
         {
-            m_GameRules.TogglePauseMenu();
-            EventSystem.current.SetSelectedGameObject(m_ResumeButton);
+            if (CrossPlatformInputManager.GetButtonDown("Pause"))
+            {
+                m_GameRules.TogglePauseMenu();
+                EventSystem.current.SetSelectedGameObject(m_ResumeButton);
+            }
         }
     }
 	
