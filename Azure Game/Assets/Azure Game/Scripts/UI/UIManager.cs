@@ -1,3 +1,4 @@
+
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
@@ -40,13 +41,16 @@ public class UIManager : MonoBehaviour
 
     void ScanForKeyStroke()
     {
-        //If pause button is pressed
-        if (CrossPlatformInputManager.GetButtonDown("Pause"))
+        if (!CrossPlatformInputManager.GetButtonDown("Submit"))
         {
-            m_GameRules.TogglePauseMenu();
+			//If pause button is pressed
+            if (CrossPlatformInputManager.GetButtonDown("Pause"))
+            {
+                m_GameRules.TogglePauseMenu();
 
-            //Set resume button to be selected
-            EventSystem.current.SetSelectedGameObject(m_ResumeButton);
+				//Set resume button to be selected
+                EventSystem.current.SetSelectedGameObject(m_ResumeButton);
+            }
         }
     }
 	

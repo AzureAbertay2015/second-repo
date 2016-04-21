@@ -179,9 +179,10 @@ GameObject:
   - 4: {fileID: 449204}
   - 114: {fileID: 11448726}
   - 114: {fileID: 11455384}
+  - 114: {fileID: 11487418}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: Event System
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2246,6 +2247,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Return to Main Menu
+--- !u!114 &11487418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98651363aef5fb64cb534cbe886c4849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Current: {fileID: 0}
 --- !u!114 &11492140
 MonoBehaviour:
   m_ObjectHideFlags: 1
