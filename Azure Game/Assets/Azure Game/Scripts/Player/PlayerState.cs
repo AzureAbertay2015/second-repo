@@ -82,7 +82,7 @@ public class PlayerState : MonoBehaviour {
         // add points to the score
         m_Points += 1;
 
-        m_scoreScript.AddtoScore(5);
+        m_scoreScript.AddtoScore(50);
     }
 
     public void PointsDown()
@@ -90,7 +90,7 @@ public class PlayerState : MonoBehaviour {
         // add points to the score
         m_Points -= 1;
 
-        m_scoreScript.TakeoffScore(5);
+        m_scoreScript.TakeoffScore(50);
     }
 
     public void Charge()
@@ -104,7 +104,7 @@ public class PlayerState : MonoBehaviour {
         // collect a puzzle piece
         m_PuzzlePieces -= 1;
 
-        m_scoreScript.AddtoScore(10);
+        m_scoreScript.AddtoScore(50);
     }
 
     private IEnumerator CountDown()

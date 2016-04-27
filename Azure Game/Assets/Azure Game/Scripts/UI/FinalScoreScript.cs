@@ -20,6 +20,7 @@ public class FinalScoreScript : MonoBehaviour {
 	
       if(m_LevelComplete)
         {
+            //So that show score is not continuously called
             m_LevelComplete = false;
             ShowScore();
         }
