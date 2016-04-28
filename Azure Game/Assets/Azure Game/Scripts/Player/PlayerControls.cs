@@ -69,7 +69,10 @@ public class PlayerControls : MonoBehaviour {
         m_bQPressed = Input.GetKey(KeyCode.Q);
 
         if (Input.GetKeyDown(KeyCode.F))
+        {
+            m_pPlayer.ChangeState(StateChanger.State.Liquid);
             m_pPlayer.m_PlayerModel.StateChangeEffect(StateChanger.State.Gas, StateChanger.State.Liquid);
+        }
 
         if ( m_bEPressed  )
         {

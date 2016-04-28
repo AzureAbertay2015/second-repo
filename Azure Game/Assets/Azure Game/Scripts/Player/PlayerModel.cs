@@ -30,8 +30,8 @@ public class PlayerModel : MonoBehaviour {
        // m_pClothGroundCollider = GetComponent<Cloth>().sphereColliders[0].second;
         gameObject.layer = 30; // Layer 30 NOCOLLISION
 
-        m_GasParticleSystem.GetComponent<Renderer>().sortingLayerName = "Default";
-        
+        //m_GasParticleSystem.GetComponent<Renderer>().sortingLayerName = "PlayerGasParticles";
+        //GetComponent<Renderer>().sortingLayerName = "PlayerGasParticles";
     }
 
     // This will change the mesh and material of the player to the parameters.
@@ -166,9 +166,11 @@ public class PlayerModel : MonoBehaviour {
         {
             // Turn off emitter
             //SetEnableGasEffects(false);
-            m_GasParticleSystem.enableEmission = false;
+            //m_GasParticleSystem.enableEmission = false;
+            GetComponent<Renderer>().enabled = false;
+            SetEnableWaterEffects(false);
 
-            bool bEffectDone = Time.time > m_StateChangeEffect.flStartTime + 3.5f;
+            bool bEffectDone = Time.time > m_StateChangeEffect.flStartTime + 5.5f;
 
             // Enumerate particles.
             ParticleSystem.Particle[] particles = new ParticleSystem.Particle[m_GasParticleSystem.maxParticles];
@@ -178,8 +180,9 @@ public class PlayerModel : MonoBehaviour {
             {
                 if (!bEffectDone)
                 {
-                    particles[i].lifetime = Time.time + 0.25f;
-                    particles[i].startLifetime = Time.time;
+                    float timeAddition = Random.Range(0.0f, 0.15f);
+                    particles[i].lifetime = 0.15f + timeAddition; //Time.time + 0.25f;
+                    particles[i].startLifetime = 0.15f + timeAddition; //Time.time + 100.0f;
                 }
                     
 
@@ -189,14 +192,27 @@ public class PlayerModel : MonoBehaviour {
 
             m_GasParticleSystem.SetParticles(particles, activeParticles);
 
-            if (Time.time > m_StateChangeEffect.flStartTime + 1.0f)
+            
+
+            // Begin lerping our scale back to normal.
+            float curScale = Mathf.Lerp(transform.localScale.x, 1.0f, Time.deltaTime * 3);
+            if (curScale > 0.9f)
+                curScale = 1.0f;
+
+            Debug.Log(curScale);
+            transform.localScale = new Vector3(curScale, curScale, curScale);
+            GetComponent<Cloth>().ClearTransformMotion();
+
+            if (bEffectDone)
             {
                 GetComponent<Renderer>().enabled = true;
             }
-
-            if ( activeParticles == 0 )
+            
+            if ( transform.localScale.x >= 1.0f )
             {
-                //m_StateChangeEffect.bActive = false;
+                m_StateChangeEffect.bActive = false;
+                m_GasParticleSystem.enableEmission = true;
+                SetEnableGasEffects(false);
             }
 
 
@@ -221,6 +237,12 @@ public class PlayerModel : MonoBehaviour {
 
     private void StartStateChangeEffectFromGas()
     {
+        GetComponent<Renderer>().enabled = false;
+        SetEnableWaterEffects(false);
+
+        // Become small!
+        transform.localScale = new Vector3(0, 0, 0);
+        GetComponent<Cloth>().ClearTransformMotion();
 
     }
 

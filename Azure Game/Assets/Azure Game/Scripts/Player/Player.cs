@@ -259,7 +259,6 @@ public class Player : StateChanger {
 
     public override void OnChangeState(State state)
 	{
-        m_PlayerModel.SetEnableWaterEffects(true);
 
         switch (state)
         {
