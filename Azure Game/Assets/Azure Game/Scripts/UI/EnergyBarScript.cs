@@ -38,8 +38,11 @@ public class EnergyBarScript : MonoBehaviour
 
 
         m_Chargeamount += (0.01f * Time.deltaTime);
+
+        //if bar is full
         if (m_Fillamount >= 0.99f)
         {
+            //stop filling bar
             StopCoroutine("ChargeUp");
             m_Fillamount = 1.0f;
         }
@@ -53,6 +56,7 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempUp()
     {
+        //if bar is at least half full 
         if (m_Fillamount >= 0.5f)
         {
             m_Fillamount -= 0.5f;
@@ -69,6 +73,7 @@ public class EnergyBarScript : MonoBehaviour
 
     public bool TempDown()
     {
+        //if bar is at least half full 
         if (m_Fillamount >= 0.5f)
         {
             m_Fillamount -= 0.5f;
@@ -93,6 +98,7 @@ public class EnergyBarScript : MonoBehaviour
     {
         do
         {
+            //fill bar over time (quickly)
             m_Fillamount = Mathf.Lerp(m_Fillamount, 1.0f, m_FillSpeed * Time.deltaTime);
             yield return null;
         } while (m_Fillamount < 1.0f);

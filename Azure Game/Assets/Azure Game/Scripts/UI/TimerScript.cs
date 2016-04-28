@@ -22,9 +22,13 @@ using UnityEngine.UI;
  	// Update is called once per frame
  	void Update()
      {
+        //decrease time every frame
         m_time -= Time.deltaTime;
+
+        //convert seconds to minutes/seconds
         m_timeText.text = timeConvert(m_time);
-       
+
+        //end the game when the clock reaches 0
         if (m_time <= 0)
         {
             m_time = 0;
@@ -37,8 +41,13 @@ using UnityEngine.UI;
  
      string timeConvert(float time)
      {
-         string minutes = Mathf.Floor(time / 60).ToString("00");
-         string seconds = (Mathf.Floor(time % 60).ToString("00"));
+        //convert seconds to minutes
+        string minutes = Mathf.Floor(time / 60).ToString("00");
+
+        //get the remaining seconds
+        string seconds = (Mathf.Floor(time % 60).ToString("00"));
+
+        //get the remaining milliseconds
         //string milliSeconds = ((time * 1000f) % 1000f).ToString("000");
 
         return minutes + "m " + seconds + "s ";// + milliSeconds + "ms";

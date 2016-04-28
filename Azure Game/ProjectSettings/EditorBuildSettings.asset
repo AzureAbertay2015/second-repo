@@ -7,19 +7,19 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Azure Game/Scenes/Splash Screen.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Azure Game/Scenes/Menu Scene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Azure Game/Scenes/tutorial.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Azure Game/Scenes/Tims final level.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Azure Game/Scenes/tutorial.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Azure Game/Scenes/persistence-test1.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Azure Game/Scenes/persistence-test2.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Azure Game/Scenes/newtutorial.unity
   - enabled: 1
     path: Assets/Azure Game/Scenes/final level.unity
