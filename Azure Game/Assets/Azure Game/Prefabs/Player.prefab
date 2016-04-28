@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MaxAngularVelocitySolid: 15
   m_MaxAngularVelocityLiquid: 25
   m_MaxAngularVelocityGas: 500
-  m_JumpPower: 8
+  m_JumpPower: 10
   m_TimerCount: 60
   m_SpeedChangeAmount: 0
   m_SpeedChangeDuration: 0
