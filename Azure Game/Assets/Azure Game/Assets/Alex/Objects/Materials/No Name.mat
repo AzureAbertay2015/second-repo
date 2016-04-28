@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: No Name
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _DETAIL_MULX2 _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -33,7 +33,7 @@ Material:
         first:
           name: _DetailNormalMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 21c208b4ae0764cc28fb6d3300f83178, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -109,7 +109,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .219999999
+        second: .061999999
       data:
         first:
           name: _BumpScale
@@ -142,7 +142,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .413927317, g: .419723153, b: .426470578, a: 1}
       data:
         first:
           name: _SpecColor
